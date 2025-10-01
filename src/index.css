@@ -8,7 +8,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 186 35% 95%;
     --foreground: 0 0% 15%;
 
     --card: 0 0% 100%;
@@ -65,11 +65,12 @@ All colors MUST be HSL.
     height: 100%;
     z-index: -1;
     background: 
-      radial-gradient(circle at 20% 50%, hsl(186 42% 38% / 0.03) 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, hsl(186 35% 92% / 0.05) 0%, transparent 50%),
-      radial-gradient(circle at 40% 20%, hsl(4 90% 58% / 0.02) 0%, transparent 50%),
-      radial-gradient(circle at 60% 90%, hsl(186 42% 38% / 0.04) 0%, transparent 50%);
-    animation: wave-movement 20s ease-in-out infinite;
+      radial-gradient(ellipse at 15% 20%, hsl(186 42% 38% / 0.15) 0%, transparent 40%),
+      radial-gradient(ellipse at 85% 70%, hsl(186 42% 38% / 0.12) 0%, transparent 45%),
+      radial-gradient(ellipse at 30% 80%, hsl(186 35% 92% / 0.2) 0%, transparent 35%),
+      radial-gradient(ellipse at 70% 25%, hsl(4 90% 58% / 0.08) 0%, transparent 40%),
+      radial-gradient(circle at 50% 50%, hsl(186 42% 38% / 0.1) 0%, transparent 60%);
+    animation: wave-movement 25s ease-in-out infinite;
   }
 
   @keyframes wave-movement {
