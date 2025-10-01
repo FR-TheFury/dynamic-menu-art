@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { FileText, MapIcon, Users, Landmark } from "lucide-react";
 
 interface MenuItem {
@@ -37,13 +37,22 @@ const menuData: MenuItem[] = [
 
 export const NavigationMenu = () => {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
-  const [dropdownPosition, setDropdownPosition] = useState<{ centerY: number }>({ centerY: 0 });
+  const [dropdownPosition, setDropdownPosition] = useState<{ left: number; centerY: number }>({ left: 0, centerY: 0 });
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   const handleMouseEnter = (itemId: string, event: React.MouseEvent<HTMLDivElement>) => {
-    const rect = event.currentTarget.getBoundingClientRect();
+    const itemRect = event.currentTarget.getBoundingClientRect();
+    const containerRect = containerRef.current?.getBoundingClientRect();
+    const menuRect = menuRef.current?.getBoundingClientRect();
+
     setHoveredItem(itemId);
-    // Center of hovered block in page coordinates
-    setDropdownPosition({ centerY: rect.top + window.scrollY + rect.height / 2 });
+
+    const centerY = (itemRect.top - (containerRect?.top ?? 0)) + itemRect.height / 2;
+    const left = ((menuRect?.right ?? 0) - (containerRect?.left ?? 0)) + 16; // 16px gutter
+
+    setDropdownPosition({ left, centerY });
   };
 
   const handleMouseLeave = () => {
@@ -53,9 +62,9 @@ export const NavigationMenu = () => {
   const activeMenu = menuData.find(item => item.id === hoveredItem);
 
   return (
-    <div className="relative flex min-h-[600px]" onMouseLeave={handleMouseLeave}>
+    <div ref={containerRef} className="relative flex min-h-[600px]" onMouseLeave={handleMouseLeave}>
       {/* Left Menu */}
-      <div className="flex flex-col gap-3 p-3">
+      <div ref={menuRef} className="flex flex-col gap-3 p-3">
         {menuData.map((item) => (
           <div
             key={item.id}
@@ -85,7 +94,7 @@ export const NavigationMenu = () => {
         <div 
           className="absolute bg-white border border-dropdown-border rounded-2xl shadow-2xl p-8 min-w-[340px] z-50"
           style={{
-            left: '12rem',
+            left: `${dropdownPosition.left}px`,
             top: `${dropdownPosition.centerY}px`,
             transform: 'translateY(-50%)'
           }}
