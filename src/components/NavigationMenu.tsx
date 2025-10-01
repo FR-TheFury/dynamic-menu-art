@@ -13,7 +13,7 @@ const menuData: MenuItem[] = [
     id: "etatcivile",
     label: "État civile",
     icon: <FileText className="w-10 h-10" />,
-    subItems: ["Présentation", "Patrimoine", "Vie associative", "Commerces", "Tourisme"]
+    subItems: ["Carte d'identité", "Passeport", "Acte de naissance", "Acte de mariage", "Livret de famille", "Certificat de décès"]
   },
   {
     id: "urbanisme",
