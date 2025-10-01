@@ -42,7 +42,8 @@ export const NavigationMenu = () => {
   const handleMouseEnter = (itemId: string, event: React.MouseEvent<HTMLDivElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
     setHoveredItem(itemId);
-    setDropdownPosition({ top: rect.top + rect.height / 2 });
+    // Position the dropdown to align with the center of the hovered item
+    setDropdownPosition({ top: rect.top + window.scrollY });
   };
 
   const handleMouseLeave = () => {
@@ -54,15 +55,16 @@ export const NavigationMenu = () => {
   return (
     <div className="relative flex min-h-[600px]">
       {/* Left Menu */}
-      <div className="w-44 bg-menu-bg/85 backdrop-blur-sm flex flex-col gap-3 p-4">
-        {menuData.map((item) => (
+      <div className="w-48 bg-menu-bg/85 backdrop-blur-sm flex flex-col gap-0 p-0 rounded-2xl overflow-hidden shadow-xl">
+        {menuData.map((item, index) => (
           <div
             key={item.id}
             className={`
-              flex flex-col items-center justify-center gap-2 px-3 py-6 rounded-xl cursor-pointer
-              transition-all duration-200 aspect-square
+              flex flex-col items-center justify-center gap-3 px-4 py-8 cursor-pointer
+              transition-all duration-200
+              ${index !== 0 ? 'border-t border-white/10' : ''}
               ${hoveredItem === item.id 
-                ? 'bg-menu-hover text-white scale-105 shadow-lg' 
+                ? 'bg-menu-hover text-white shadow-lg' 
                 : 'text-white/95 hover:bg-menu-hover/50'
               }
             `}
@@ -72,7 +74,7 @@ export const NavigationMenu = () => {
             <div className="flex-shrink-0">
               {item.icon}
             </div>
-            <span className="text-xs font-medium text-center leading-tight whitespace-pre-line">
+            <span className="text-sm font-medium text-center leading-tight whitespace-pre-line">
               {item.label}
             </span>
           </div>
@@ -82,26 +84,24 @@ export const NavigationMenu = () => {
       {/* Right Dropdown */}
       {activeMenu && (
         <div 
-          className="absolute left-[200px] bg-dropdown-bg border border-dropdown-border rounded-lg shadow-xl p-6 min-w-[320px] z-50"
+          className="absolute left-[220px] bg-white border border-dropdown-border rounded-2xl shadow-2xl p-8 min-w-[340px] z-50"
           style={{
-            top: `${dropdownPosition.top - 100}px`,
+            top: `${dropdownPosition.top - 60}px`,
           }}
           onMouseEnter={() => setHoveredItem(activeMenu.id)}
           onMouseLeave={handleMouseLeave}
         >
           {/* Triangle pointer */}
           <div 
-            className="absolute left-[-10px] w-0 h-0 border-t-[10px] border-t-transparent border-r-[10px] border-r-dropdown-bg border-b-[10px] border-b-transparent"
+            className="absolute left-[-16px] w-0 h-0 border-t-[16px] border-t-transparent border-r-[16px] border-r-white border-b-[16px] border-b-transparent"
             style={{
-              top: '50%',
-              transform: 'translateY(-50%)'
+              top: '80px',
             }}
           />
           <div 
-            className="absolute left-[-11px] w-0 h-0 border-t-[10px] border-t-transparent border-r-[10px] border-r-dropdown-border border-b-[10px] border-b-transparent"
+            className="absolute left-[-17px] w-0 h-0 border-t-[16px] border-t-transparent border-r-[16px] border-r-dropdown-border border-b-[16px] border-b-transparent"
             style={{
-              top: '50%',
-              transform: 'translateY(-50%)'
+              top: '80px',
             }}
           />
 

@@ -28,15 +28,13 @@ export const Header = () => {
               Réserver salle des fête
             </Button>
             <Button 
-              variant="outline" 
-              className="border-white/30 text-white hover:bg-white/10 hover:text-white"
+              className="bg-white/20 backdrop-blur-sm text-white border-2 border-white/40 hover:bg-white/30 hover:border-white/60 font-medium"
             >
               Mon espace
             </Button>
             <Button 
-              variant="outline"
               size="icon"
-              className="border-white/30 text-white hover:bg-white/10 hover:text-white"
+              className="bg-white/20 backdrop-blur-sm text-white border-2 border-white/40 hover:bg-white/30 hover:border-white/60"
             >
               <Search className="w-5 h-5" />
             </Button>
@@ -49,20 +47,17 @@ export const Header = () => {
         <div className="container mx-auto px-6 py-3">
           <div className="flex gap-4 justify-center">
             <Button 
-              variant="outline"
-              className="border-white/30 text-white hover:bg-white/10 hover:text-white rounded-full px-8"
+              className="bg-white/15 backdrop-blur-sm text-white border-2 border-white/30 hover:bg-white/25 hover:border-white/50 rounded-full px-8 font-medium"
             >
               Mon village
             </Button>
             <Button 
-              variant="outline"
-              className="border-white/30 text-white hover:bg-white/10 hover:text-white rounded-full px-8"
+              className="bg-white/15 backdrop-blur-sm text-white border-2 border-white/30 hover:bg-white/25 hover:border-white/50 rounded-full px-8 font-medium"
             >
               Votre mairie
             </Button>
             <Button 
-              variant="outline"
-              className="border-white/30 text-white hover:bg-white/10 hover:text-white rounded-full px-8"
+              className="bg-white/15 backdrop-blur-sm text-white border-2 border-white/30 hover:bg-white/25 hover:border-white/50 rounded-full px-8 font-medium"
             >
               Sortir à mons-en-pévèle
             </Button>
