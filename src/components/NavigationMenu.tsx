@@ -49,8 +49,10 @@ export const NavigationMenu = () => {
 
     setHoveredItem(itemId);
 
-    const centerY = (itemRect.top - (containerRect?.top ?? 0)) + itemRect.height / 2;
-    const left = ((menuRect?.right ?? 0) - (containerRect?.left ?? 0)) + 16; // 16px gutter
+    // Calculate vertical center of the hovered item relative to container
+    const centerY = itemRect.top - (containerRect?.top ?? 0) + itemRect.height / 2;
+    // Position dropdown right after the menu with small gap
+    const left = (menuRect?.width ?? 0) + 8; // 8px gap
 
     setDropdownPosition({ left, centerY });
   };
