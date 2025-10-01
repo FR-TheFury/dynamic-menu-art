@@ -79,12 +79,28 @@ const newsData: NewsPost[] = [
 
 const allTags = ["Tous", "Événement", "Information", "Commerce", "Urbanisme", "Éducation", "Culture", "Environnement", "Mairie"];
 
+const tagColorMap: Record<string, string> = {
+  "Événement": "hsl(4, 90%, 58%)",
+  "Commerce": "hsl(45, 90%, 55%)",
+  "Urbanisme": "hsl(25, 75%, 55%)",
+  "Éducation": "hsl(220, 85%, 60%)",
+  "Culture": "hsl(280, 70%, 60%)",
+  "Environnement": "hsl(140, 60%, 45%)",
+  "Mairie": "hsl(200, 60%, 50%)",
+  "Information": "hsl(0, 0%, 50%)",
+  "Tous": "hsl(186, 42%, 38%)"
+};
+
 export const NewsSection = () => {
   const [selectedTag, setSelectedTag] = useState("Tous");
 
   const filteredNews = selectedTag === "Tous" 
     ? newsData 
     : newsData.filter(post => post.tags.includes(selectedTag));
+
+  const getCardBorderColor = (tags: string[]) => {
+    return tagColorMap[tags[0]] || "hsl(0, 0%, 88%)";
+  };
 
   return (
     <section className="container mx-auto px-6 py-12">
@@ -101,6 +117,14 @@ export const NewsSection = () => {
               size="sm"
               onClick={() => setSelectedTag(tag)}
               className="rounded-full"
+              style={selectedTag === tag ? {
+                backgroundColor: tagColorMap[tag],
+                borderColor: tagColorMap[tag],
+                color: 'white'
+              } : {
+                borderColor: tagColorMap[tag],
+                color: tagColorMap[tag]
+              }}
             >
               <Tag className="w-3 h-3 mr-1" />
               {tag}
@@ -112,7 +136,11 @@ export const NewsSection = () => {
       {/* News Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredNews.map((post) => (
-          <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-all duration-300 hover:scale-[1.02] cursor-pointer border-2">
+          <Card 
+            key={post.id} 
+            className="overflow-hidden hover:shadow-lg transition-all duration-300 hover:scale-[1.02] cursor-pointer border-2"
+            style={{ borderColor: getCardBorderColor(post.tags) }}
+          >
             <div className="relative h-48 overflow-hidden">
               <img 
                 src={post.image} 
