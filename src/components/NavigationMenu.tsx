@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FileText, Map, Users, Building2 } from "lucide-react";
+import { FileText, MapIcon, Users, Landmark } from "lucide-react";
 
 interface MenuItem {
   id: string;
@@ -10,27 +10,27 @@ interface MenuItem {
 
 const menuData: MenuItem[] = [
   {
-    id: "demarches",
-    label: "Démarches",
-    icon: <FileText className="w-6 h-6" />,
-    subItems: ["État civil", "Recensement", "Élections"]
+    id: "etatcivile",
+    label: "État civile",
+    icon: <FileText className="w-10 h-10" />,
+    subItems: ["Présentation", "Patrimoine", "Vie associative", "Commerces", "Tourisme"]
   },
   {
     id: "urbanisme",
-    label: "Urbanisme & Cadre de vie",
-    icon: <Map className="w-6 h-6" />,
+    label: "Urbanisme",
+    icon: <MapIcon className="w-10 h-10" />,
     subItems: ["PLU / Permis", "Occupation domaine public", "Déchets / déchetterie"]
   },
   {
-    id: "famille",
-    label: "Famille & Éducation",
-    icon: <Users className="w-6 h-6" />,
+    id: "perischool",
+    label: "Périschool",
+    icon: <Users className="w-10 h-10" />,
     subItems: ["Périscolaire / Restauration", "Écoles / petite enfance", "Jeunesse (clubs, loisirs)"]
   },
   {
     id: "communaute",
-    label: "Communauté & Services",
-    icon: <Building2 className="w-6 h-6" />,
+    label: "Communauté\nde commune",
+    icon: <Landmark className="w-10 h-10" />,
     subItems: ["CCAS", "Santé", "Associations", "Numéros utiles"]
   }
 ];
@@ -52,25 +52,29 @@ export const NavigationMenu = () => {
   const activeMenu = menuData.find(item => item.id === hoveredItem);
 
   return (
-    <div className="relative flex min-h-[500px]">
+    <div className="relative flex min-h-[600px]">
       {/* Left Menu */}
-      <div className="w-64 bg-menu-bg/90 backdrop-blur-sm flex flex-col gap-1 p-2">
+      <div className="w-44 bg-menu-bg/85 backdrop-blur-sm flex flex-col gap-3 p-4">
         {menuData.map((item) => (
           <div
             key={item.id}
             className={`
-              flex items-center gap-3 px-4 py-4 rounded-lg cursor-pointer
-              transition-all duration-200
+              flex flex-col items-center justify-center gap-2 px-3 py-6 rounded-xl cursor-pointer
+              transition-all duration-200 aspect-square
               ${hoveredItem === item.id 
-                ? 'bg-menu-hover text-white scale-105' 
-                : 'text-white/90 hover:bg-menu-hover/50'
+                ? 'bg-menu-hover text-white scale-105 shadow-lg' 
+                : 'text-white/95 hover:bg-menu-hover/50'
               }
             `}
             onMouseEnter={(e) => handleMouseEnter(item.id, e)}
             onMouseLeave={handleMouseLeave}
           >
-            {item.icon}
-            <span className="font-medium">{item.label}</span>
+            <div className="flex-shrink-0">
+              {item.icon}
+            </div>
+            <span className="text-xs font-medium text-center leading-tight whitespace-pre-line">
+              {item.label}
+            </span>
           </div>
         ))}
       </div>
@@ -78,23 +82,23 @@ export const NavigationMenu = () => {
       {/* Right Dropdown */}
       {activeMenu && (
         <div 
-          className="absolute left-[280px] bg-dropdown-bg border border-dropdown-border rounded-lg shadow-xl p-6 min-w-[300px] z-50"
+          className="absolute left-[200px] bg-dropdown-bg border border-dropdown-border rounded-lg shadow-xl p-6 min-w-[320px] z-50"
           style={{
-            top: `${dropdownPosition.top - 80}px`,
+            top: `${dropdownPosition.top - 100}px`,
           }}
           onMouseEnter={() => setHoveredItem(activeMenu.id)}
           onMouseLeave={handleMouseLeave}
         >
           {/* Triangle pointer */}
           <div 
-            className="absolute left-[-12px] w-0 h-0 border-t-[12px] border-t-transparent border-r-[12px] border-r-dropdown-bg border-b-[12px] border-b-transparent"
+            className="absolute left-[-10px] w-0 h-0 border-t-[10px] border-t-transparent border-r-[10px] border-r-dropdown-bg border-b-[10px] border-b-transparent"
             style={{
               top: '50%',
               transform: 'translateY(-50%)'
             }}
           />
           <div 
-            className="absolute left-[-13px] w-0 h-0 border-t-[12px] border-t-transparent border-r-[12px] border-r-dropdown-border border-b-[12px] border-b-transparent"
+            className="absolute left-[-11px] w-0 h-0 border-t-[10px] border-t-transparent border-r-[10px] border-r-dropdown-border border-b-[10px] border-b-transparent"
             style={{
               top: '50%',
               transform: 'translateY(-50%)'

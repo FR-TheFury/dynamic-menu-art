@@ -1,5 +1,6 @@
 import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logoRef from "@/assets/logo-reference.png";
 
 export const Header = () => {
   return (
@@ -8,9 +9,11 @@ export const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
-              <div className="w-8 h-8 bg-white rounded-full"></div>
-            </div>
+            <img 
+              src={logoRef} 
+              alt="Logo Mons-en-pévèle" 
+              className="w-16 h-16 object-contain"
+            />
             <div>
               <h1 className="text-xl font-bold">Mons-en-pévèle</h1>
               <p className="text-xs text-white/80">dans le prévôté Camrembault</p>
