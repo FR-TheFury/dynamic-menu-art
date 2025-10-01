@@ -37,13 +37,13 @@ const menuData: MenuItem[] = [
 
 export const NavigationMenu = () => {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
-  const [dropdownPosition, setDropdownPosition] = useState({ top: 0 });
+  const [dropdownPosition, setDropdownPosition] = useState<{ centerY: number }>({ centerY: 0 });
 
   const handleMouseEnter = (itemId: string, event: React.MouseEvent<HTMLDivElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
     setHoveredItem(itemId);
-    // Position the dropdown to align with the center of the hovered item
-    setDropdownPosition({ top: rect.top + window.scrollY });
+    // Center of hovered block in page coordinates
+    setDropdownPosition({ centerY: rect.top + window.scrollY + rect.height / 2 });
   };
 
   const handleMouseLeave = () => {
@@ -53,7 +53,7 @@ export const NavigationMenu = () => {
   const activeMenu = menuData.find(item => item.id === hoveredItem);
 
   return (
-    <div className="relative flex min-h-[600px]">
+    <div className="relative flex min-h-[600px]" onMouseLeave={handleMouseLeave}>
       {/* Left Menu */}
       <div className="w-48 bg-menu-bg/85 backdrop-blur-sm flex flex-col gap-0 p-0 rounded-2xl overflow-hidden shadow-xl">
         {menuData.map((item, index) => (
@@ -69,7 +69,6 @@ export const NavigationMenu = () => {
               }
             `}
             onMouseEnter={(e) => handleMouseEnter(item.id, e)}
-            onMouseLeave={handleMouseLeave}
           >
             <div className="flex-shrink-0">
               {item.icon}
@@ -84,9 +83,11 @@ export const NavigationMenu = () => {
       {/* Right Dropdown */}
       {activeMenu && (
         <div 
-          className="absolute left-[220px] bg-white border border-dropdown-border rounded-2xl shadow-2xl p-8 min-w-[340px] z-50"
+          className="absolute bg-white border border-dropdown-border rounded-2xl shadow-2xl p-8 min-w-[340px] z-50"
           style={{
-            top: `${dropdownPosition.top - 60}px`,
+            left: '12rem',
+            top: `${dropdownPosition.centerY}px`,
+            transform: 'translateY(-50%)'
           }}
           onMouseEnter={() => setHoveredItem(activeMenu.id)}
           onMouseLeave={handleMouseLeave}
@@ -95,13 +96,15 @@ export const NavigationMenu = () => {
           <div 
             className="absolute left-[-16px] w-0 h-0 border-t-[16px] border-t-transparent border-r-[16px] border-r-white border-b-[16px] border-b-transparent"
             style={{
-              top: '80px',
+              top: '50%',
+              transform: 'translateY(-50%)'
             }}
           />
           <div 
             className="absolute left-[-17px] w-0 h-0 border-t-[16px] border-t-transparent border-r-[16px] border-r-dropdown-border border-b-[16px] border-b-transparent"
             style={{
-              top: '80px',
+              top: '50%',
+              transform: 'translateY(-50%)'
             }}
           />
 

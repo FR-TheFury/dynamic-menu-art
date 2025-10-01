@@ -1,17 +1,50 @@
+import { useState } from "react";
 import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logoRef from "@/assets/logo-reference.png";
 
+type TopItem = { id: string; label: string; links: string[] };
+
+const topNav: TopItem[] = [
+  {
+    id: "monVillage",
+    label: "Mon village",
+    links: ["Présentation", "Patrimoine", "Vie associative", "Commerces", "Tourisme"],
+  },
+  {
+    id: "mairie",
+    label: "Votre mairie",
+    links: ["Élus", "Services municipaux", "CR Conseils", "Arrêtés", "Documents"],
+  },
+  {
+    id: "sortir",
+    label: "Sortir à mons-en-pévèle",
+    links: ["Associations", "Médiathèque", "Loisirs", "Agenda", "Consommons local"],
+  },
+];
+
 export const Header = () => {
+  const [hoveredTop, setHoveredTop] = useState<string | null>(null);
+  const [topPos, setTopPos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+  const activeTop = topNav.find((t) => t.id === hoveredTop);
+
+  const onTopEnter = (id: string, e: React.MouseEvent<HTMLButtonElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setHoveredTop(id);
+    setTopPos({ x: rect.left + rect.width / 2, y: rect.bottom + window.scrollY });
+  };
+
+  const closeTop = () => setHoveredTop(null);
+
   return (
-    <header className="bg-primary text-primary-foreground">
+    <header className="relative bg-primary text-primary-foreground">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <img 
-              src={logoRef} 
-              alt="Logo Mons-en-pévèle" 
+            <img
+              src={logoRef}
+              alt="Logo Mons-en-pévèle"
               className="w-16 h-16 object-contain"
             />
             <div>
@@ -22,48 +55,61 @@ export const Header = () => {
 
           {/* Actions */}
           <div className="flex items-center gap-4">
-            <Button 
-              className="bg-accent hover:bg-accent/90 text-accent-foreground font-medium px-6"
-            >
+            <Button className="bg-accent hover:bg-accent/90 text-accent-foreground font-medium px-6">
               Réserver salle des fête
             </Button>
-            <Button 
-              className="bg-white/20 backdrop-blur-sm text-white border-2 border-white/40 hover:bg-white/30 hover:border-white/60 font-medium"
-            >
+            <Button className="bg-white/20 backdrop-blur-sm text-white border-2 border-white/40 hover:bg-white/30 hover:border-white/60 font-medium">
               Mon espace
             </Button>
-            <Button 
-              size="icon"
-              className="bg-white/20 backdrop-blur-sm text-white border-2 border-white/40 hover:bg-white/30 hover:border-white/60"
-            >
+            <Button size="icon" className="bg-white/20 backdrop-blur-sm text-white border-2 border-white/40 hover:bg-white/30 hover:border-white/60">
               <Search className="w-5 h-5" />
             </Button>
           </div>
         </div>
       </div>
 
-      {/* Sub Navigation */}
+      {/* Sub Navigation with dropdowns */}
       <div className="bg-primary/80 backdrop-blur-sm border-t border-white/10">
         <div className="container mx-auto px-6 py-3">
           <div className="flex gap-4 justify-center">
-            <Button 
-              className="bg-white/15 backdrop-blur-sm text-white border-2 border-white/30 hover:bg-white/25 hover:border-white/50 rounded-full px-8 font-medium"
-            >
-              Mon village
-            </Button>
-            <Button 
-              className="bg-white/15 backdrop-blur-sm text-white border-2 border-white/30 hover:bg-white/25 hover:border-white/50 rounded-full px-8 font-medium"
-            >
-              Votre mairie
-            </Button>
-            <Button 
-              className="bg-white/15 backdrop-blur-sm text-white border-2 border-white/30 hover:bg-white/25 hover:border-white/50 rounded-full px-8 font-medium"
-            >
-              Sortir à mons-en-pévèle
-            </Button>
+            {topNav.map((item) => (
+              <Button
+                key={item.id}
+                onMouseEnter={(e) => onTopEnter(item.id, e)}
+                className="bg-white/15 backdrop-blur-sm text-white border-2 border-white/30 hover:bg-white/25 hover:border-white/50 rounded-full px-8 font-medium"
+              >
+                {item.label}
+              </Button>
+            ))}
           </div>
         </div>
       </div>
+
+      {activeTop && (
+        <div
+          className="fixed z-50 bg-white border border-dropdown-border rounded-2xl shadow-2xl p-6 min-w-[360px]"
+          style={{ left: topPos.x, top: topPos.y + 12, transform: "translateX(-50%)" }}
+          onMouseLeave={closeTop}
+          onMouseEnter={() => setHoveredTop(activeTop.id)}
+        >
+          {/* Upward triangle */}
+          <div
+            className="absolute -top-4 left-1/2 -translate-x-1/2 w-0 h-0 border-b-[16px] border-b-white border-x-[16px] border-x-transparent"
+          />
+          <div
+            className="absolute -top-[17px] left-1/2 -translate-x-1/2 w-0 h-0 border-b-[16px] border-b-dropdown-border border-x-[16px] border-x-transparent"
+          />
+
+          <h3 className="text-lg font-semibold text-primary mb-4">{activeTop.label}</h3>
+          <ul className="space-y-2">
+            {activeTop.links.map((l, i) => (
+              <li key={i} className="text-foreground hover:text-primary hover:translate-x-1 transition-all duration-200 cursor-pointer py-2 border-b border-border last:border-0">
+                - {l}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </header>
   );
 };
