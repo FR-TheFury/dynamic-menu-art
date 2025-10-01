@@ -1,6 +1,7 @@
 import { Header } from "@/components/Header";
 import { NavigationMenu } from "@/components/NavigationMenu";
 import { NewsSection } from "@/components/NewsSection";
+import { MerchantBanner } from "@/components/MerchantBanner";
 import villageBackground from "@/assets/village-background.jpg";
 
 const Index = () => {
@@ -22,6 +23,7 @@ const Index = () => {
       </main>
 
       <NewsSection />
+      <MerchantBanner />
     </div>
   );
 };
