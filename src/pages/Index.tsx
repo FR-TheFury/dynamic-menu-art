@@ -2,11 +2,13 @@ import { Header } from "@/components/Header";
 import { NavigationMenu } from "@/components/NavigationMenu";
 import { NewsSection } from "@/components/NewsSection";
 import { MerchantBanner } from "@/components/MerchantBanner";
+import { WaveBackground } from "@/components/WaveBackground";
 import villageBackground from "@/assets/village-background.jpg";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <WaveBackground />
       <Header />
       
       <main 
