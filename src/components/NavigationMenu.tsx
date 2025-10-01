@@ -55,17 +55,17 @@ export const NavigationMenu = () => {
   return (
     <div className="relative flex min-h-[600px]" onMouseLeave={handleMouseLeave}>
       {/* Left Menu */}
-      <div className="w-48 bg-menu-bg/85 backdrop-blur-sm flex flex-col gap-0 p-0 rounded-2xl overflow-hidden shadow-xl">
-        {menuData.map((item, index) => (
+      <div className="flex flex-col gap-3 p-3">
+        {menuData.map((item) => (
           <div
             key={item.id}
             className={`
-              flex flex-col items-center justify-center gap-3 px-4 py-8 cursor-pointer
+              flex flex-col items-center justify-center gap-2 px-4 py-6 cursor-pointer
+              rounded-xl backdrop-blur-md
               transition-all duration-200
-              ${index !== 0 ? 'border-t border-white/10' : ''}
               ${hoveredItem === item.id 
-                ? 'bg-menu-hover text-white shadow-lg' 
-                : 'text-white/95 hover:bg-menu-hover/50'
+                ? 'bg-white/30 text-white shadow-lg scale-105' 
+                : 'bg-white/15 text-white/95 hover:bg-white/25'
               }
             `}
             onMouseEnter={(e) => handleMouseEnter(item.id, e)}
