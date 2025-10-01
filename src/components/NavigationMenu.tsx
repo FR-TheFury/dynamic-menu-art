@@ -72,12 +72,12 @@ export const NavigationMenu = () => {
           <div
             key={item.id}
             className={`
-              flex flex-col items-center justify-center gap-2 px-4 py-6 cursor-pointer
-              rounded-xl backdrop-blur-md
-              transition-all duration-200
+              flex flex-col items-center justify-center gap-2 px-6 py-8 cursor-pointer
+              rounded-2xl backdrop-blur-md border-2
+              transition-all duration-300 shadow-lg
               ${hoveredItem === item.id 
-                ? 'bg-white/30 text-white shadow-lg scale-105' 
-                : 'bg-white/15 text-white/95 hover:bg-white/25'
+                ? 'bg-white/25 text-white border-white/40 shadow-xl scale-105' 
+                : 'bg-white/10 text-white/95 border-white/20 hover:bg-white/20 hover:border-white/30'
               }
             `}
             onMouseEnter={(e) => handleMouseEnter(item.id, e)}

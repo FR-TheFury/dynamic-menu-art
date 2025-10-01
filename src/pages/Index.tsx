@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header";
 import { NavigationMenu } from "@/components/NavigationMenu";
+import { NewsSection } from "@/components/NewsSection";
 import villageBackground from "@/assets/village-background.jpg";
 
 const Index = () => {
@@ -8,7 +9,7 @@ const Index = () => {
       <Header />
       
       <main 
-        className="relative min-h-[calc(100vh-180px)] bg-cover bg-center"
+        className="relative min-h-[600px] bg-cover bg-center"
         style={{ backgroundImage: `url(${villageBackground})` }}
       >
         {/* Overlay */}
@@ -19,6 +20,8 @@ const Index = () => {
           <NavigationMenu />
         </div>
       </main>
+
+      <NewsSection />
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logoRef from "@/assets/logo-reference.png";
+import logoMairie from "@/assets/logo-mairie.png";
 
 type TopItem = { id: string; label: string; links: string[] };
 
@@ -41,27 +41,27 @@ export const Header = () => {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <img
-              src={logoRef}
-              alt="Logo Mons-en-pévèle"
-              className="w-16 h-16 object-contain"
+              src={logoMairie}
+              alt="Logo Mons-en-Pévèle"
+              className="h-20 w-auto object-contain"
             />
             <div>
-              <h1 className="text-xl font-bold">Mons-en-pévèle</h1>
-              <p className="text-xs text-white/80">dans le prévôté Camrembault</p>
+              <h1 className="text-2xl font-bold">Mons-en-Pévèle</h1>
+              <p className="text-sm text-white/90">dans le prévôté Camrembault</p>
             </div>
           </div>
 
           {/* Actions */}
           <div className="flex items-center gap-4">
-            <Button className="bg-accent hover:bg-accent/90 text-accent-foreground font-medium px-6">
-              Réserver salle des fête
+            <Button className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              Réserver salle des fêtes
             </Button>
-            <Button className="bg-white/20 backdrop-blur-sm text-white border-2 border-white/40 hover:bg-white/30 hover:border-white/60 font-medium">
+            <Button className="bg-white/10 backdrop-blur-md text-white border-2 border-white/30 hover:bg-white/20 hover:border-white/50 font-semibold px-6 py-6 rounded-xl shadow-lg transition-all duration-300 hover:scale-105">
               Mon espace
             </Button>
-            <Button size="icon" className="bg-white/20 backdrop-blur-sm text-white border-2 border-white/40 hover:bg-white/30 hover:border-white/60">
+            <Button size="icon" className="bg-white/10 backdrop-blur-md text-white border-2 border-white/30 hover:bg-white/20 hover:border-white/50 rounded-xl shadow-lg transition-all duration-300 hover:scale-105 h-12 w-12">
               <Search className="w-5 h-5" />
             </Button>
           </div>
@@ -69,14 +69,14 @@ export const Header = () => {
       </div>
 
       {/* Sub Navigation with dropdowns */}
-      <div className="bg-primary/80 backdrop-blur-sm border-t border-white/10">
-        <div className="container mx-auto px-6 py-3">
-          <div className="flex gap-4 justify-center">
+      <div className="bg-primary/90 backdrop-blur-md border-t border-white/20">
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex gap-6 justify-center">
             {topNav.map((item) => (
               <Button
                 key={item.id}
                 onMouseEnter={(e) => onTopEnter(item.id, e)}
-                className="bg-white/15 backdrop-blur-sm text-white border-2 border-white/30 hover:bg-white/25 hover:border-white/50 rounded-full px-8 font-medium"
+                className="bg-white/10 backdrop-blur-md text-white border-2 border-white/20 hover:bg-white/20 hover:border-white/40 rounded-full px-10 py-6 font-semibold shadow-lg transition-all duration-300 hover:scale-105"
               >
                 {item.label}
               </Button>
