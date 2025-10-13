@@ -51,21 +51,14 @@ const partners = [
 
 export const ServicesSection = () => {
   const [currentPartnerIndex, setCurrentPartnerIndex] = useState(0);
-  const partnersPerPage = 3;
   
   const nextPartners = () => {
-    setCurrentPartnerIndex((prev) => 
-      prev + partnersPerPage >= partners.length ? 0 : prev + partnersPerPage
-    );
+    setCurrentPartnerIndex((prev) => (prev + 1) % partners.length);
   };
   
   const prevPartners = () => {
-    setCurrentPartnerIndex((prev) => 
-      prev === 0 ? Math.max(0, partners.length - partnersPerPage) : Math.max(0, prev - partnersPerPage)
-    );
+    setCurrentPartnerIndex((prev) => (prev - 1 + partners.length) % partners.length);
   };
-  
-  const displayedPartners = partners.slice(currentPartnerIndex, currentPartnerIndex + partnersPerPage);
 
   return (
     <section className="py-16 px-6 bg-background relative overflow-hidden">
@@ -156,43 +149,49 @@ export const ServicesSection = () => {
 
         {/* Carrousel partenaires */}
         <div className="relative" style={{ perspective: '1500px', perspectiveOrigin: '50% 50%' }}>
-          <div className="flex items-center justify-between gap-4">
+          <div className="flex items-center justify-center gap-4">
             <button
               onClick={prevPartners}
-              className="p-3 rounded-full hover:bg-muted/50 transition-all duration-300 hover:scale-110"
+              className="p-3 rounded-full hover:bg-muted/50 transition-all duration-300 hover:scale-110 z-10"
               aria-label="Partenaires précédents"
             >
               <ChevronLeft className="w-8 h-8 text-foreground" />
             </button>
             
             <div 
-              className="flex-1 grid grid-cols-3 gap-8 items-center justify-items-center"
+              className="flex-1 flex items-center justify-center relative h-48"
               style={{ transformStyle: 'preserve-3d' }}
             >
-              {displayedPartners.map((partner, index) => {
-                // Calculate 3D position - center card is at index 1
-                const centerIndex = 1;
-                const distanceFromCenter = index - centerIndex;
-                const rotateY = distanceFromCenter * 15; // 15 degrees rotation
-                const translateZ = -Math.abs(distanceFromCenter) * 80; // Move back
-                const scale = 1 - Math.abs(distanceFromCenter) * 0.1;
-                const opacity = 1 - Math.abs(distanceFromCenter) * 0.2;
+              {partners.map((partner, index) => {
+                // Calculate position relative to current index
+                const position = (index - currentPartnerIndex + partners.length) % partners.length;
+                const centerPosition = 1; // Center card position
+                const distanceFromCenter = position - centerPosition;
+                
+                // Calculate 3D transformations
+                const translateX = distanceFromCenter * 200; // Spacing between cards
+                const rotateY = distanceFromCenter * 20; // Rotation
+                const translateZ = -Math.abs(distanceFromCenter) * 100; // Depth
+                const scale = 1 - Math.abs(distanceFromCenter) * 0.15;
+                const opacity = position < 3 ? 1 - Math.abs(distanceFromCenter) * 0.3 : 0;
+                const visibility = position < 3 ? 'visible' : 'hidden';
                 
                 return (
                   <div
-                    key={currentPartnerIndex + index}
-                    className="text-center"
+                    key={index}
+                    className="absolute text-center"
                     style={{
-                      transform: `rotateY(${rotateY}deg) translateZ(${translateZ}px) scale(${scale})`,
+                      transform: `translateX(${translateX}px) rotateY(${rotateY}deg) translateZ(${translateZ}px) scale(${scale})`,
                       opacity: opacity,
-                      transition: 'all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                      visibility: visibility,
+                      transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
                       transformStyle: 'preserve-3d',
                     }}
                   >
                     <div 
                       className="w-32 h-32 rounded-xl bg-muted/30 flex items-center justify-center mb-2 shadow-lg"
                       style={{
-                        boxShadow: index === 1 ? '0 20px 60px rgba(0,0,0,0.15)' : '0 10px 30px rgba(0,0,0,0.1)',
+                        boxShadow: position === centerPosition ? '0 20px 60px rgba(0,0,0,0.15)' : '0 10px 30px rgba(0,0,0,0.1)',
                       }}
                     >
                       <p className="text-primary font-bold text-sm px-4">{partner}</p>
@@ -204,7 +203,7 @@ export const ServicesSection = () => {
             
             <button
               onClick={nextPartners}
-              className="p-3 rounded-full hover:bg-muted/50 transition-all duration-300 hover:scale-110"
+              className="p-3 rounded-full hover:bg-muted/50 transition-all duration-300 hover:scale-110 z-10"
               aria-label="Partenaires suivants"
             >
               <ChevronRight className="w-8 h-8 text-foreground" />

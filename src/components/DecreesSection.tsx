@@ -47,22 +47,15 @@ const decrees = [
 ];
 
 export const DecreesSection = () => {
-  const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerPage = 4;
-  const totalPages = Math.ceil(decrees.length / itemsPerPage);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextPage = () => {
-    setCurrentPage((prev) => (prev + 1) % totalPages);
+    setCurrentIndex((prev) => (prev + 1) % decrees.length);
   };
 
   const prevPage = () => {
-    setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
+    setCurrentIndex((prev) => (prev - 1 + decrees.length) % decrees.length);
   };
-
-  const displayedDecrees = decrees.slice(
-    currentPage * itemsPerPage,
-    (currentPage + 1) * itemsPerPage
-  );
 
   return (
     <section className="py-20 px-6 bg-primary relative overflow-hidden">
@@ -95,33 +88,36 @@ export const DecreesSection = () => {
             <ChevronRight className="w-12 h-12" />
           </button>
 
-          {/* 3D Carousel Grid */}
+          {/* 3D Carousel */}
           <div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="flex gap-8 justify-center items-center"
             style={{ 
               transformStyle: 'preserve-3d',
             }}
           >
-            {displayedDecrees.map((decree, index) => {
-              // Calculate 3D position for each card
-              const totalCards = displayedDecrees.length;
-              const centerIndex = (totalCards - 1) / 2;
-              const distanceFromCenter = index - centerIndex;
+            {decrees.map((decree, index) => {
+              // Calculate position relative to current index
+              const position = (index - currentIndex + decrees.length) % decrees.length;
+              const centerPosition = Math.floor(4 / 2); // Show 4 cards
+              const distanceFromCenter = position - centerPosition;
               
-              // Calculate rotation and translation based on position
-              const rotateY = distanceFromCenter * 8; // 8 degrees per card
-              const translateZ = -Math.abs(distanceFromCenter) * 50; // Move back based on distance from center
-              const scale = 1 - Math.abs(distanceFromCenter) * 0.05; // Slight scale reduction
-              const opacity = 1 - Math.abs(distanceFromCenter) * 0.15; // Fade edges
+              // Calculate 3D transformations
+              const translateX = distanceFromCenter * 320; // Spacing between cards
+              const rotateY = distanceFromCenter * 15; // Rotation
+              const translateZ = -Math.abs(distanceFromCenter) * 100; // Depth
+              const scale = 1 - Math.abs(distanceFromCenter) * 0.15;
+              const opacity = position < 5 ? 1 - Math.abs(distanceFromCenter) * 0.2 : 0;
+              const visibility = position < 5 ? 'visible' : 'hidden';
               
               return (
                 <Card
                   key={decree.id}
-                  className="bg-white border-0 hover:shadow-2xl p-7 space-y-4 rounded-[35px] group"
+                  className="bg-white border-0 hover:shadow-2xl p-7 space-y-4 rounded-[35px] group absolute w-72"
                   style={{
-                    transform: `rotateY(${rotateY}deg) translateZ(${translateZ}px) scale(${scale})`,
+                    transform: `translateX(${translateX}px) rotateY(${rotateY}deg) translateZ(${translateZ}px) scale(${scale})`,
                     opacity: opacity,
-                    transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                    visibility: visibility,
+                    transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
                     transformStyle: 'preserve-3d',
                     boxShadow: '0 25px 80px rgba(0,0,0,0.35)',
                   }}
@@ -148,13 +144,13 @@ export const DecreesSection = () => {
           </div>
 
           {/* Carousel Indicators */}
-          <div className="flex justify-center gap-3 mt-10">
-            {Array.from({ length: totalPages }).map((_, index) => (
+          <div className="flex justify-center gap-3 mt-[500px]">
+            {decrees.map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentPage(index)}
+                onClick={() => setCurrentIndex(index)}
                 className={`h-3 rounded-full transition-all duration-500 ${
-                  currentPage === index 
+                  currentIndex === index 
                     ? 'w-12 bg-white shadow-lg' 
                     : 'w-3 bg-white/40 hover:bg-white/60'
                 }`}
