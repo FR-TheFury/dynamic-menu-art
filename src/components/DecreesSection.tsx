@@ -67,7 +67,7 @@ export const DecreesSection = () => {
           </Button>
         </div>
 
-        <div className="relative" style={{ perspective: '2000px', perspectiveOrigin: '50% 50%' }}>
+        <div className="relative">
           {/* Navigation Arrows with 3D effect */}
           <button
             onClick={prevPage}
@@ -90,8 +90,10 @@ export const DecreesSection = () => {
 
           {/* 3D Carousel */}
           <div 
-            className="flex gap-8 justify-center items-center"
+            className="relative flex justify-center items-center h-[480px]"
             style={{ 
+              perspective: '2000px',
+              perspectiveOrigin: '50% 50%',
               transformStyle: 'preserve-3d',
             }}
           >
@@ -144,7 +146,7 @@ export const DecreesSection = () => {
           </div>
 
           {/* Carousel Indicators */}
-          <div className="flex justify-center gap-3 mt-[500px]">
+          <div className="flex justify-center gap-3 mt-8">
             {decrees.map((_, index) => (
               <button
                 key={index}

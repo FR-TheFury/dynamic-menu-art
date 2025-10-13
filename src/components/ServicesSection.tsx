@@ -148,7 +148,7 @@ export const ServicesSection = () => {
         </div>
 
         {/* Carrousel partenaires */}
-        <div className="relative" style={{ perspective: '1500px', perspectiveOrigin: '50% 50%' }}>
+        <div className="relative">
           <div className="flex items-center justify-center gap-4">
             <button
               onClick={prevPartners}
@@ -160,7 +160,11 @@ export const ServicesSection = () => {
             
             <div 
               className="flex-1 flex items-center justify-center relative h-48"
-              style={{ transformStyle: 'preserve-3d' }}
+              style={{ 
+                perspective: '1500px',
+                perspectiveOrigin: '50% 50%',
+                transformStyle: 'preserve-3d'
+              }}
             >
               {partners.map((partner, index) => {
                 // Calculate position relative to current index
