@@ -54,7 +54,7 @@ export const Header = () => {
   return (
     <header className="relative">
       {/* Top bar */}
-      <div className="bg-primary text-white py-3">
+      <div className="bg-primary text-white py-4">
         <div className="max-w-7xl mx-auto px-8">
           <div className="flex items-center justify-between">
             {/* Logo */}
@@ -62,27 +62,27 @@ export const Header = () => {
               <img
                 src={logoMairie}
                 alt="Logo Mairie Mons-en-Pévèle"
-                className="h-14 w-auto object-contain"
+                className="h-12 w-auto object-contain"
               />
               <div>
-                <h1 className="text-lg font-bold">Mons-en-pévèle</h1>
-                <p className="text-xs text-white/80">dans le prévôté Camrembault</p>
+                <h1 className="text-xl font-bold">Mons-en-pévèle</h1>
+                <p className="text-xs text-white/90">dans le prévèlé Camrembault</p>
               </div>
             </div>
 
             {/* Actions */}
-            <div className="flex items-center gap-2">
-              <Button className="bg-accent hover:bg-accent/90 text-white font-medium px-5 py-2 rounded-md text-sm">
+            <div className="flex items-center gap-3">
+              <Button className="bg-accent hover:bg-accent/90 text-white font-medium px-6 py-2.5 rounded-full text-sm">
                 Réserver salle des fête
               </Button>
-              <Button variant="secondary" className="font-medium px-5 py-2 rounded-md text-sm">
+              <Button className="bg-muted/60 hover:bg-muted/70 text-white font-medium px-6 py-2.5 rounded-full text-sm">
                 Mon espace
               </Button>
               <div className="relative">
                 <input
                   type="text"
                   placeholder="Recherche"
-                  className="pl-4 pr-10 py-2 rounded-md bg-white/20 text-white placeholder:text-white/70 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50 w-44 text-sm"
+                  className="pl-4 pr-10 py-2.5 rounded-full bg-transparent text-white placeholder:text-white/90 border border-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 w-44 text-sm"
                 />
                 <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white" />
               </div>
@@ -92,15 +92,15 @@ export const Header = () => {
       </div>
 
       {/* Navigation buttons - positioned over hero */}
-      <div className="absolute top-full left-0 right-0 z-20 pt-3">
+      <div className="absolute top-full left-0 right-0 z-20 pt-4">
         <div className="max-w-7xl mx-auto px-8">
-          <div className="flex gap-3 justify-center">
+          <div className="flex gap-4 justify-center">
             {topNav.map((item) => (
               <Button
                 key={item.id}
                 onMouseEnter={(e) => onTopEnter(item.id, e)}
                 onMouseLeave={scheduleClose}
-                className="bg-white/5 backdrop-blur-sm hover:bg-white/15 text-white border border-white/80 rounded-full px-6 py-2 font-medium transition-all text-sm"
+                className="bg-transparent hover:bg-white/10 text-white border-2 border-white rounded-lg px-6 py-2 font-medium transition-all text-sm"
               >
                 {item.label}
               </Button>

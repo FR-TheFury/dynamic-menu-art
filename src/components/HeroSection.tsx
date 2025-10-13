@@ -13,21 +13,21 @@ const menuItems = [
 export const HeroSection = () => {
   return (
     <section 
-      className="relative min-h-[550px] bg-cover bg-center flex items-center justify-center"
+      className="relative min-h-[540px] bg-cover bg-center flex items-center justify-center"
       style={{ backgroundImage: `url(${villageBackground})` }}
     >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/20"></div>
+      {/* Overlay - légèrement plus sombre */}
+      <div className="absolute inset-0 bg-black/30"></div>
 
-      {/* Menu vertical gauche */}
+      {/* Menu vertical gauche - fond turquoise foncé */}
       <div className="absolute left-0 top-0 z-20 space-y-0">
         {menuItems.map((item) => (
           <div
             key={item.id}
-            className="bg-primary text-white p-3 shadow-lg hover:bg-primary/90 transition-all cursor-pointer flex flex-col items-center gap-1.5 w-20 border-b border-white/10"
+            className="bg-[#2d5a5f] text-white p-4 shadow-lg hover:bg-[#3a6b71] transition-all cursor-pointer flex flex-col items-center gap-2 w-24 border-b border-white/20"
           >
-            <item.icon className="w-7 h-7" />
-            <span className="text-[10px] font-medium text-center leading-tight">
+            <item.icon className="w-8 h-8" />
+            <span className="text-[11px] font-normal text-center leading-tight">
               {item.label}
             </span>
           </div>
@@ -35,29 +35,29 @@ export const HeroSection = () => {
       </div>
 
       {/* Contenu central */}
-      <div className="relative z-10 text-center mt-8">
-        <h2 className="font-cursive text-6xl text-white drop-shadow-2xl">
+      <div className="relative z-10 text-center mt-6">
+        <h2 className="font-cursive text-7xl text-white drop-shadow-2xl">
           Bienvenue à Mons-en-pévèle
         </h2>
       </div>
 
-      {/* Icônes sociales en bas */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex gap-3">
+      {/* Icônes sociales en bas - icônes noires sur fond blanc */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex gap-4">
         <div className="bg-white hover:bg-white/90 p-3 rounded-full shadow-lg cursor-pointer transition-all hover:scale-110">
-          <Facebook className="w-6 h-6 text-primary" />
+          <Facebook className="w-7 h-7 text-black fill-black" />
         </div>
         <div className="bg-white hover:bg-white/90 p-3 rounded-full shadow-lg cursor-pointer transition-all hover:scale-110">
-          <Instagram className="w-6 h-6 text-primary" />
+          <Instagram className="w-7 h-7 text-black" />
         </div>
       </div>
 
-      {/* Blason en bas à droite */}
-      <div className="absolute bottom-6 right-6 z-10">
-        <div className="bg-accent p-3 rounded-lg shadow-xl">
+      {/* Blason en bas à droite - fond jaune/orange */}
+      <div className="absolute bottom-8 right-8 z-10">
+        <div className="bg-[#f4a532] p-3 rounded-lg shadow-xl">
           <img
             src={logoMairie}
             alt="Blason Mons-en-Pévèle"
-            className="h-16 w-auto"
+            className="h-20 w-auto"
           />
         </div>
       </div>
