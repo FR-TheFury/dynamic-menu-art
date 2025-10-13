@@ -52,52 +52,55 @@ export const Header = () => {
   };
 
   return (
-    <header className="relative bg-primary text-primary-foreground shadow-lg">
-      <div className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center gap-4">
-            <img
-              src={logoMairie}
-              alt="Logo Mairie Mons-en-Pévèle"
-              className="h-16 w-auto object-contain"
-            />
-            <div>
-              <h1 className="text-2xl font-bold">Mons-en-Pévèle</h1>
-              <p className="text-sm text-white/90">dans le prévôté Camrembault</p>
-            </div>
-          </div>
-
-          {/* Actions */}
-          <div className="flex items-center gap-3">
-            <Button className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-6 py-2.5 rounded-lg shadow-md hover:shadow-lg transition-all">
-              Réserver salle des fêtes
-            </Button>
-            <Button className="bg-muted hover:bg-muted/90 text-foreground font-semibold px-6 py-2.5 rounded-lg shadow-md transition-all">
-              Mon espace
-            </Button>
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Rechercher..."
-                className="pl-10 pr-4 py-2.5 rounded-lg bg-white/95 text-foreground border border-border focus:outline-none focus:ring-2 focus:ring-ring w-64"
+    <header className="relative">
+      {/* Top bar */}
+      <div className="bg-primary text-white">
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            {/* Logo */}
+            <div className="flex items-center gap-4">
+              <img
+                src={logoMairie}
+                alt="Logo Mairie Mons-en-Pévèle"
+                className="h-12 w-auto object-contain"
               />
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              <div>
+                <h1 className="text-xl font-bold">Mons-en-pévèle</h1>
+                <p className="text-xs text-white/90">dans le prévôté Camrembault</p>
+              </div>
+            </div>
+
+            {/* Actions */}
+            <div className="flex items-center gap-3">
+              <Button className="bg-accent hover:bg-accent/90 text-white font-semibold px-6 py-2 rounded-lg">
+                Réserver salle des fête
+              </Button>
+              <Button className="bg-muted hover:bg-muted/90 text-foreground font-semibold px-6 py-2 rounded-lg">
+                Mon espace
+              </Button>
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Recherche"
+                  className="pl-4 pr-10 py-2 rounded-lg bg-white/20 text-white placeholder:text-white/70 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50 w-48"
+                />
+                <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-white" />
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Sub Navigation with dropdowns */}
-      <div className="bg-primary/95 border-t border-white/10">
-        <div className="container mx-auto px-6 py-3">
-          <div className="flex gap-6 justify-center">
+      {/* Navigation buttons - positioned over hero */}
+      <div className="absolute top-full left-0 right-0 z-20 pt-4">
+        <div className="container mx-auto px-6">
+          <div className="flex gap-4 justify-center">
             {topNav.map((item) => (
               <Button
                 key={item.id}
                 onMouseEnter={(e) => onTopEnter(item.id, e)}
                 onMouseLeave={scheduleClose}
-                className="bg-transparent hover:bg-white/10 text-white border-2 border-white/30 hover:border-white/50 rounded-full px-8 py-2.5 font-semibold transition-all"
+                className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border-2 border-white rounded-full px-8 py-2.5 font-semibold transition-all"
               >
                 {item.label}
               </Button>
