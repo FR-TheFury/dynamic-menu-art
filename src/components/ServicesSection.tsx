@@ -155,32 +155,56 @@ export const ServicesSection = () => {
         </div>
 
         {/* Carrousel partenaires */}
-        <div className="relative">
+        <div className="relative" style={{ perspective: '1500px', perspectiveOrigin: '50% 50%' }}>
           <div className="flex items-center justify-between gap-4">
             <button
               onClick={prevPartners}
-              className="p-3 rounded-full hover:bg-muted/50 transition-colors"
+              className="p-3 rounded-full hover:bg-muted/50 transition-all duration-300 hover:scale-110"
               aria-label="Partenaires précédents"
             >
               <ChevronLeft className="w-8 h-8 text-foreground" />
             </button>
             
-            <div className="flex-1 grid grid-cols-3 gap-8 items-center justify-items-center">
-              {displayedPartners.map((partner, index) => (
-                <div
-                  key={currentPartnerIndex + index}
-                  className="text-center"
-                >
-                  <div className="w-32 h-32 rounded-xl bg-muted/30 flex items-center justify-center mb-2">
-                    <p className="text-primary font-bold text-sm px-4">{partner}</p>
+            <div 
+              className="flex-1 grid grid-cols-3 gap-8 items-center justify-items-center"
+              style={{ transformStyle: 'preserve-3d' }}
+            >
+              {displayedPartners.map((partner, index) => {
+                // Calculate 3D position - center card is at index 1
+                const centerIndex = 1;
+                const distanceFromCenter = index - centerIndex;
+                const rotateY = distanceFromCenter * 15; // 15 degrees rotation
+                const translateZ = -Math.abs(distanceFromCenter) * 80; // Move back
+                const scale = 1 - Math.abs(distanceFromCenter) * 0.1;
+                const opacity = 1 - Math.abs(distanceFromCenter) * 0.2;
+                
+                return (
+                  <div
+                    key={currentPartnerIndex + index}
+                    className="text-center"
+                    style={{
+                      transform: `rotateY(${rotateY}deg) translateZ(${translateZ}px) scale(${scale})`,
+                      opacity: opacity,
+                      transition: 'all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                      transformStyle: 'preserve-3d',
+                    }}
+                  >
+                    <div 
+                      className="w-32 h-32 rounded-xl bg-muted/30 flex items-center justify-center mb-2 shadow-lg"
+                      style={{
+                        boxShadow: index === 1 ? '0 20px 60px rgba(0,0,0,0.15)' : '0 10px 30px rgba(0,0,0,0.1)',
+                      }}
+                    >
+                      <p className="text-primary font-bold text-sm px-4">{partner}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
             
             <button
               onClick={nextPartners}
-              className="p-3 rounded-full hover:bg-muted/50 transition-colors"
+              className="p-3 rounded-full hover:bg-muted/50 transition-all duration-300 hover:scale-110"
               aria-label="Partenaires suivants"
             >
               <ChevronRight className="w-8 h-8 text-foreground" />

@@ -74,11 +74,11 @@ export const DecreesSection = () => {
           </Button>
         </div>
 
-        <div className="relative perspective-1000">
+        <div className="relative" style={{ perspective: '2000px', perspectiveOrigin: '50% 50%' }}>
           {/* Navigation Arrows with 3D effect */}
           <button
             onClick={prevPage}
-            className="absolute -left-20 top-1/2 -translate-y-1/2 z-30 bg-white hover:bg-white/90 text-primary rounded-full p-6 shadow-2xl transition-all duration-500 hover:scale-150 hover:-rotate-[20deg]"
+            className="absolute -left-20 top-1/2 -translate-y-1/2 z-30 bg-white hover:bg-white/90 text-primary rounded-full p-6 shadow-2xl transition-all duration-500 hover:scale-125"
             style={{ 
               boxShadow: '0 30px 80px rgba(0,0,0,0.4), 0 0 0 6px rgba(255,255,255,0.15), 0 0 40px rgba(76,175,180,0.3)'
             }}
@@ -87,7 +87,7 @@ export const DecreesSection = () => {
           </button>
           <button
             onClick={nextPage}
-            className="absolute -right-20 top-1/2 -translate-y-1/2 z-30 bg-white hover:bg-white/90 text-primary rounded-full p-6 shadow-2xl transition-all duration-500 hover:scale-150 hover:rotate-[20deg]"
+            className="absolute -right-20 top-1/2 -translate-y-1/2 z-30 bg-white hover:bg-white/90 text-primary rounded-full p-6 shadow-2xl transition-all duration-500 hover:scale-125"
             style={{ 
               boxShadow: '0 30px 80px rgba(0,0,0,0.4), 0 0 0 6px rgba(255,255,255,0.15), 0 0 40px rgba(76,175,180,0.3)'
             }}
@@ -96,26 +96,34 @@ export const DecreesSection = () => {
           </button>
 
           {/* 3D Carousel Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 preserve-3d">
+          <div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            style={{ 
+              transformStyle: 'preserve-3d',
+            }}
+          >
             {displayedDecrees.map((decree, index) => {
-              const isEdge = index === 0 || index === displayedDecrees.length - 1;
-              const rotation = index === 0 ? '-rotate-y-15' : index === displayedDecrees.length - 1 ? 'rotate-y-15' : '';
+              // Calculate 3D position for each card
+              const totalCards = displayedDecrees.length;
+              const centerIndex = (totalCards - 1) / 2;
+              const distanceFromCenter = index - centerIndex;
+              
+              // Calculate rotation and translation based on position
+              const rotateY = distanceFromCenter * 8; // 8 degrees per card
+              const translateZ = -Math.abs(distanceFromCenter) * 50; // Move back based on distance from center
+              const scale = 1 - Math.abs(distanceFromCenter) * 0.05; // Slight scale reduction
+              const opacity = 1 - Math.abs(distanceFromCenter) * 0.15; // Fade edges
               
               return (
                 <Card
                   key={decree.id}
-                  className={`
-                    bg-white border-0 hover:shadow-2xl transition-all duration-700 p-7 space-y-4 
-                    rounded-[35px] group backface-hidden
-                    ${isEdge ? 'scale-90 blur-[2px] opacity-80' : 'scale-100'}
-                    hover:scale-110 hover:blur-0 hover:z-20 hover:opacity-100
-                  `}
+                  className="bg-white border-0 hover:shadow-2xl p-7 space-y-4 rounded-[35px] group"
                   style={{
-                    transform: isEdge ? `perspective(1500px) ${rotation === '-rotate-y-15' ? 'rotateY(-15deg) translateZ(-80px)' : 'rotateY(15deg) translateZ(-80px)'}` : 'perspective(1500px) rotateY(0deg) translateZ(0px)',
-                    transition: 'all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
-                    boxShadow: isEdge 
-                      ? '0 15px 50px rgba(0,0,0,0.2)' 
-                      : '0 25px 80px rgba(0,0,0,0.35)',
+                    transform: `rotateY(${rotateY}deg) translateZ(${translateZ}px) scale(${scale})`,
+                    opacity: opacity,
+                    transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                    transformStyle: 'preserve-3d',
+                    boxShadow: '0 25px 80px rgba(0,0,0,0.35)',
                   }}
                 >
                   <div className="inline-block px-4 py-2 bg-primary/10 rounded-full">
