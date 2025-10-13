@@ -49,8 +49,11 @@ const decrees = [
 export const DecreesSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const cardsPerPage = 4;
+  const totalPages = Math.ceil(decrees.length / cardsPerPage);
+
   const nextPage = () => {
-    if (currentIndex < decrees.length - 4) {
+    if (currentIndex < totalPages - 1) {
       setCurrentIndex((prev) => prev + 1);
     }
   };
@@ -85,7 +88,7 @@ export const DecreesSection = () => {
           </button>
           <button
             onClick={nextPage}
-            disabled={currentIndex >= decrees.length - 4}
+            disabled={currentIndex >= totalPages - 1}
             className="absolute -right-20 top-1/2 -translate-y-1/2 z-30 bg-white hover:bg-white/90 text-primary rounded-full p-6 shadow-2xl transition-all duration-500 hover:scale-125 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             style={{ 
               boxShadow: '0 30px 80px rgba(0,0,0,0.4), 0 0 0 6px rgba(255,255,255,0.15), 0 0 40px rgba(76,175,180,0.3)'
@@ -97,44 +100,49 @@ export const DecreesSection = () => {
           {/* Carousel Container - Showing 4 cards in 2x2 grid */}
           <div className="overflow-hidden max-w-5xl mx-auto">
             <div 
-              className="grid grid-cols-2 grid-rows-2 gap-6 transition-transform duration-700 ease-in-out"
+              className="flex transition-transform duration-700 ease-in-out"
               style={{
-                transform: `translateX(-${currentIndex * 50}%)`,
-                width: `${(decrees.length / 2) * 100}%`,
+                transform: `translateX(-${currentIndex * 100}%)`,
               }}
             >
-              {decrees.map((decree) => (
-                <Card
-                  key={decree.id}
-                  className="bg-white border-0 hover:shadow-2xl p-7 space-y-4 rounded-[35px] group"
-                  style={{
-                    boxShadow: '0 25px 80px rgba(0,0,0,0.35)',
-                  }}
-                >
-                  <div className="inline-block px-4 py-2 bg-primary/10 rounded-full">
-                    <span className="text-primary font-semibold text-xs">Arrêté municipal</span>
-                  </div>
+              {Array.from({ length: totalPages }).map((_, pageIndex) => (
+                <div key={pageIndex} className="min-w-full grid grid-cols-2 grid-rows-2 gap-6">
+                  {decrees
+                    .slice(pageIndex * cardsPerPage, (pageIndex + 1) * cardsPerPage)
+                    .map((decree) => (
+                      <Card
+                        key={decree.id}
+                        className="bg-white border-0 hover:shadow-2xl p-7 space-y-4 rounded-[35px] group"
+                        style={{
+                          boxShadow: '0 25px 80px rgba(0,0,0,0.35)',
+                        }}
+                      >
+                        <div className="inline-block px-4 py-2 bg-primary/10 rounded-full">
+                          <span className="text-primary font-semibold text-xs">Arrêté municipal</span>
+                        </div>
 
-                  <h3 className="font-bold text-foreground text-lg leading-tight min-h-[56px] group-hover:text-primary transition-colors">
-                    {decree.title}
-                  </h3>
+                        <h3 className="font-bold text-foreground text-lg leading-tight min-h-[56px] group-hover:text-primary transition-colors">
+                          {decree.title}
+                        </h3>
 
-                  <p className="text-muted-foreground text-sm line-clamp-3">
-                    {decree.description}
-                  </p>
+                        <p className="text-muted-foreground text-sm line-clamp-3">
+                          {decree.description}
+                        </p>
 
-                  <Button className="w-full bg-primary hover:bg-primary/90 text-white rounded-xl font-semibold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:scale-105 transition-all py-3">
-                    <Download className="w-5 h-5" />
-                    Télécharger
-                  </Button>
-                </Card>
+                        <Button className="w-full bg-primary hover:bg-primary/90 text-white rounded-xl font-semibold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:scale-105 transition-all py-3">
+                          <Download className="w-5 h-5" />
+                          Télécharger
+                        </Button>
+                      </Card>
+                    ))}
+                </div>
               ))}
             </div>
           </div>
 
           {/* Carousel Indicators */}
           <div className="flex justify-center gap-3 mt-8">
-            {decrees.map((_, index) => (
+            {Array.from({ length: totalPages }).map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
