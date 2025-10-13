@@ -65,19 +65,19 @@ export const HeroSection = () => {
       className="relative min-h-[550px] bg-cover bg-center flex items-center justify-center"
       style={{ backgroundImage: `url(${villageBackground})` }}
     >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/30"></div>
+      {/* Radial vignette overlay */}
+      <div className="absolute inset-0 bg-[radial-gradient(1200px_600px_at_60%_55%,rgba(0,0,0,.15),rgba(0,0,0,.55))]"></div>
 
       {/* Navigation buttons - positioned above hero image */}
-      <div className="absolute top-4 left-0 right-0 z-20">
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="flex gap-4 justify-center">
+      <div className="absolute top-5 left-0 right-0 z-10">
+        <div className="max-w-[1100px] mx-auto px-4">
+          <div className="flex flex-wrap gap-4 justify-center font-manrope">
             {topNav.map((item) => (
               <Button
                 key={item.id}
                 onMouseEnter={(e) => onTopEnter(item.id, e)}
                 onMouseLeave={scheduleClose}
-                className="bg-black/40 hover:bg-black/50 text-white border-2 border-white rounded-lg px-6 py-2.5 font-medium transition-all text-sm backdrop-blur-sm"
+                className="bg-white/[0.08] hover:bg-white/[0.12] text-white border border-white/[0.18] rounded-full px-6 py-3 font-semibold transition-all text-[18px] backdrop-blur-md shadow-[0_6px_20px_rgba(0,0,0,.20)]"
               >
                 {item.label}
               </Button>
@@ -115,45 +115,48 @@ export const HeroSection = () => {
         </div>
       )}
 
-      {/* Menu vertical gauche - fond turquoise foncé */}
-      <div className="absolute left-0 top-0 bottom-0 z-20 flex flex-col">
+      {/* Menu vertical gauche - glassmorphism style */}
+      <aside className="hidden md:block fixed left-4 top-[140px] z-10 w-[92px] rounded-2xl bg-[linear-gradient(180deg,rgba(7,52,58,.9),rgba(7,52,58,.75))] p-3 ring-1 ring-white/15">
         {menuItems.map((item) => (
           <div
             key={item.id}
-            className="bg-[#2d7178] text-white p-4 shadow-lg hover:bg-[#3a8590] transition-all cursor-pointer flex flex-col items-center gap-2 w-24 border-b border-white/20 first:border-t-0"
+            className="mb-3 last:mb-0 rounded-xl p-2 text-center hover:bg-white/5 transition-all cursor-pointer text-white font-manrope"
           >
-            <item.icon className="w-8 h-8" />
-            <span className="text-[11px] font-normal text-center leading-tight">
+            <div className="mx-auto mb-1 grid h-12 w-12 place-items-center rounded-lg bg-white/10">
+              <item.icon className="w-5 h-5" />
+            </div>
+            <div className="text-[12px] leading-[1.05] opacity-95">
               {item.label}
-            </span>
+            </div>
           </div>
         ))}
-      </div>
+      </aside>
 
       {/* Contenu central */}
-      <div className="relative z-10 text-center">
-        <h2 className="font-cursive text-7xl text-white drop-shadow-2xl">
-          Bienvenue à Mons-en-pévèle
-        </h2>
+      <div className="relative z-0 mx-auto flex max-w-[1200px] items-center px-4 pt-[9vh] md:pt-[12vh]">
+        <h1 className="font-playfair text-4xl md:text-6xl leading-tight text-white drop-shadow-[0_4px_18px_rgba(0,0,0,.7)]">
+          <span className="opacity-95">Bienvenue à </span>
+          <span className="italic">Mons-en-pévèle</span>
+        </h1>
       </div>
 
-      {/* Icônes sociales en bas - icônes noires sur fond blanc */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex gap-4">
-        <div className="bg-white hover:bg-white/90 p-3 rounded-full shadow-lg cursor-pointer transition-all hover:scale-110">
-          <Facebook className="w-7 h-7 text-black fill-black" />
+      {/* Icônes sociales en bas - glassmorphism style */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-0 flex gap-6">
+        <div className="grid h-12 w-12 place-items-center rounded-full bg-white/10 ring-1 ring-white/30 cursor-pointer transition-all hover:bg-white/20">
+          <Facebook className="w-6 h-6 text-white fill-white" />
         </div>
-        <div className="bg-white hover:bg-white/90 p-3 rounded-full shadow-lg cursor-pointer transition-all hover:scale-110">
-          <Instagram className="w-7 h-7 text-black" />
+        <div className="grid h-12 w-12 place-items-center rounded-full bg-white/10 ring-1 ring-white/30 cursor-pointer transition-all hover:bg-white/20">
+          <Instagram className="w-6 h-6 text-white" />
         </div>
       </div>
 
-      {/* Blason en bas à droite - fond jaune/orange */}
-      <div className="absolute bottom-8 right-8 z-10">
-        <div className="bg-[#f4a532] p-3 rounded-lg shadow-xl">
+      {/* Blason en bas à droite - gradient style */}
+      <div className="absolute bottom-4 right-6 z-0">
+        <div className="h-14 w-14 rounded-lg bg-gradient-to-br from-yellow-400 to-red-600 opacity-90 ring-1 ring-white/30 grid place-items-center">
           <img
             src={logoMairie}
             alt="Blason Mons-en-Pévèle"
-            className="h-20 w-auto"
+            className="h-10 w-auto"
           />
         </div>
       </div>

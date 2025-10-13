@@ -15,6 +15,8 @@ export default {
     extend: {
       fontFamily: {
         'cursive': ['Dancing Script', 'cursive'],
+        'manrope': ['Manrope', 'system-ui', 'sans-serif'],
+        'playfair': ['Playfair Display', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
