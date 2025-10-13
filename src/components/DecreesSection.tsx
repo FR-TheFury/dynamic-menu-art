@@ -48,7 +48,7 @@ const decrees = [
 
 export const DecreesSection = () => {
   const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerPage = 8;
+  const itemsPerPage = 4;
   const totalPages = Math.ceil(decrees.length / itemsPerPage);
 
   const nextPage = () => {
