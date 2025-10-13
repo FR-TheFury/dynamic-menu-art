@@ -8,8 +8,8 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 186 35% 95%;
-    --foreground: 0 0% 15%;
+    --background: 0 0% 98%;
+    --foreground: 0 0% 10%;
 
     --card: 0 0% 100%;
     --card-foreground: 0 0% 15%;
@@ -56,35 +56,4 @@ All colors MUST be HSL.
     overflow-x: hidden;
   }
 
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background: 
-      radial-gradient(ellipse at 15% 20%, hsl(186 42% 38% / 0.15) 0%, transparent 40%),
-      radial-gradient(ellipse at 85% 70%, hsl(186 42% 38% / 0.12) 0%, transparent 45%),
-      radial-gradient(ellipse at 30% 80%, hsl(186 35% 92% / 0.2) 0%, transparent 35%),
-      radial-gradient(ellipse at 70% 25%, hsl(4 90% 58% / 0.08) 0%, transparent 40%),
-      radial-gradient(circle at 50% 50%, hsl(186 42% 38% / 0.1) 0%, transparent 60%);
-    animation: wave-movement 25s ease-in-out infinite;
-  }
-
-  @keyframes wave-movement {
-    0%, 100% {
-      background-position: 0% 0%, 100% 100%, 0% 0%, 100% 0%;
-    }
-    25% {
-      background-position: 100% 0%, 0% 100%, 100% 0%, 0% 100%;
-    }
-    50% {
-      background-position: 100% 100%, 0% 0%, 100% 100%, 0% 0%;
-    }
-    75% {
-      background-position: 0% 100%, 100% 0%, 0% 100%, 100% 100%;
-    }
-  }
 }

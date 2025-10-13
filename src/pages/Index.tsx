@@ -1,31 +1,25 @@
 import { Header } from "@/components/Header";
-import { NavigationMenu } from "@/components/NavigationMenu";
+import { HeroSection } from "@/components/HeroSection";
 import { NewsSection } from "@/components/NewsSection";
-import { MerchantBanner } from "@/components/MerchantBanner";
-import { WaveBackground } from "@/components/WaveBackground";
-import villageBackground from "@/assets/village-background.jpg";
+import { FeaturedSection } from "@/components/FeaturedSection";
+import { UsefulNumbers } from "@/components/UsefulNumbers";
+import { EventsSection } from "@/components/EventsSection";
+import { ServicesSection } from "@/components/ServicesSection";
+import { DecreesSection } from "@/components/DecreesSection";
+import { Footer } from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background relative">
-      <WaveBackground />
+    <div className="min-h-screen bg-background">
       <Header />
-      
-      <main 
-        className="relative min-h-[600px] bg-cover bg-center"
-        style={{ backgroundImage: `url(${villageBackground})` }}
-      >
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/20"></div>
-        
-        {/* Content */}
-        <div className="relative z-10 pt-8 pl-8">
-          <NavigationMenu />
-        </div>
-      </main>
-
+      <HeroSection />
       <NewsSection />
-      <MerchantBanner />
+      <FeaturedSection />
+      <UsefulNumbers />
+      <EventsSection />
+      <ServicesSection />
+      <DecreesSection />
+      <Footer />
     </div>
   );
 };

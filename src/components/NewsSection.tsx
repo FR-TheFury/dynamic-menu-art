@@ -1,183 +1,127 @@
-import { useState } from "react";
-import { Calendar, Tag } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import marcheImg from "@/assets/news-marche.jpg";
-import travauxImg from "@/assets/news-travaux.jpg";
-import ecoleImg from "@/assets/news-ecole.jpg";
-import feteImg from "@/assets/news-fete.jpg";
-import environnementImg from "@/assets/news-environnement.jpg";
-import conseilImg from "@/assets/news-conseil.jpg";
+import { Card } from "@/components/ui/card";
+import newsConseil from "@/assets/news-conseil.jpg";
+import newsEcole from "@/assets/news-ecole.jpg";
+import newsTravaux from "@/assets/news-travaux.jpg";
 
-interface NewsPost {
-  id: string;
-  title: string;
-  description: string;
-  date: string;
-  category: string;
-  tags: string[];
-  image: string;
-}
-
-const newsData: NewsPost[] = [
+const newsItems = [
   {
-    id: "1",
-    title: "Nouveau marché hebdomadaire",
-    description: "Tous les samedis matins, découvrez les producteurs locaux sur la place centrale.",
-    date: "15 Mars 2024",
-    category: "Vie locale",
-    tags: ["Commerce", "Événement"],
-    image: marcheImg
+    id: 1,
+    title: "Compte rendu du conseil municipal",
+    date: "15 Janvier 2025",
+    description: "Retrouvez le compte rendu détaillé de la dernière séance du conseil municipal.",
+    image: newsConseil,
+    color: "primary",
+    size: "large",
   },
   {
-    id: "2",
+    id: 2,
+    title: "Inscriptions scolaires 2025-2026",
+    date: "10 Janvier 2025",
+    description: "Les inscriptions pour l'année scolaire prochaine sont ouvertes.",
+    image: newsEcole,
+    color: "primary",
+    size: "medium",
+  },
+  {
+    id: 3,
+    title: "Rénovation de la place",
+    date: "8 Janvier 2025",
+    description: "Les travaux de rénovation de la place centrale débuteront en février.",
+    color: "primary",
+    size: "small",
+  },
+  {
+    id: 4,
     title: "Travaux rue principale",
-    description: "Réfection de la chaussée prévue du 20 au 30 mars. Circulation alternée.",
-    date: "12 Mars 2024",
-    category: "Travaux",
-    tags: ["Urbanisme", "Information"],
-    image: travauxImg
+    date: "5 Janvier 2025",
+    description: "Circulation alternée sur la rue principale pendant 3 semaines pour réfection de la chaussée.",
+    image: newsTravaux,
+    color: "accent",
+    size: "wide",
   },
   {
-    id: "3",
-    title: "Inscription scolaire 2024-2025",
-    description: "Les inscriptions pour la rentrée prochaine sont ouvertes en mairie.",
-    date: "10 Mars 2024",
-    category: "Éducation",
-    tags: ["Éducation", "Information"],
-    image: ecoleImg
+    id: 5,
+    title: "Nouvelle cantine scolaire",
+    date: "3 Janvier 2025",
+    description: "La nouvelle cantine de l'école primaire sera inaugurée le mois prochain.",
+    image: newsEcole,
+    color: "primary",
+    size: "tall",
   },
-  {
-    id: "4",
-    title: "Fête du village",
-    description: "Grande fête annuelle le 1er juin avec animations, restauration et feu d'artifice.",
-    date: "8 Mars 2024",
-    category: "Vie locale",
-    tags: ["Événement", "Culture"],
-    image: feteImg
-  },
-  {
-    id: "5",
-    title: "Collecte des déchets verts",
-    description: "Reprise de la collecte bimensuelle à partir du 1er avril.",
-    date: "5 Mars 2024",
-    category: "Environnement",
-    tags: ["Environnement", "Information"],
-    image: environnementImg
-  },
-  {
-    id: "6",
-    title: "Conseil municipal",
-    description: "Prochaine séance publique le 25 mars à 18h30 en salle du conseil.",
-    date: "3 Mars 2024",
-    category: "Mairie",
-    tags: ["Mairie", "Information"],
-    image: conseilImg
-  }
 ];
 
-const allTags = ["Tous", "Événement", "Information", "Commerce", "Urbanisme", "Éducation", "Culture", "Environnement", "Mairie"];
-
-const tagColorMap: Record<string, string> = {
-  "Événement": "hsl(4, 90%, 58%)",
-  "Commerce": "hsl(45, 90%, 55%)",
-  "Urbanisme": "hsl(25, 75%, 55%)",
-  "Éducation": "hsl(220, 85%, 60%)",
-  "Culture": "hsl(280, 70%, 60%)",
-  "Environnement": "hsl(140, 60%, 45%)",
-  "Mairie": "hsl(200, 60%, 50%)",
-  "Information": "hsl(0, 0%, 50%)",
-  "Tous": "hsl(186, 42%, 38%)"
-};
-
 export const NewsSection = () => {
-  const [selectedTag, setSelectedTag] = useState("Tous");
-
-  const filteredNews = selectedTag === "Tous" 
-    ? newsData 
-    : newsData.filter(post => post.tags.includes(selectedTag));
-
-  const getCardBorderColor = (tags: string[]) => {
-    return tagColorMap[tags[0]] || "hsl(0, 0%, 88%)";
-  };
-
   return (
-    <section className="container mx-auto px-6 py-12">
-      <div className="mb-8">
-        <h2 className="text-3xl font-bold text-primary mb-4">Actualités</h2>
-        <p className="text-muted-foreground mb-6">Restez informé de la vie de votre commune</p>
-        
-        {/* Tags Filter */}
-        <div className="flex flex-wrap gap-2">
-          {allTags.map((tag) => (
-            <Button
-              key={tag}
-              variant={selectedTag === tag ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedTag(tag)}
-              className="rounded-full"
-              style={selectedTag === tag ? {
-                backgroundColor: tagColorMap[tag],
-                borderColor: tagColorMap[tag],
-                color: 'white'
-              } : {
-                borderColor: tagColorMap[tag],
-                color: tagColorMap[tag]
-              }}
+    <section className="py-16 px-6 bg-background">
+      <div className="container mx-auto max-w-7xl">
+        <div className="flex items-end justify-between mb-12">
+          <div>
+            <h2 className="text-5xl font-bold">
+              <span className="text-foreground">Les actualités </span>
+              <span className="text-primary">de mon village</span>
+            </h2>
+            <p className="text-muted-foreground mt-2">
+              Restez informé de toutes les nouveautés de notre commune
+            </p>
+          </div>
+          <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-6 font-semibold shadow-lg">
+            Toutes les actualités
+          </Button>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-[200px]">
+          {newsItems.map((item) => (
+            <Card
+              key={item.id}
+              className={`
+                ${item.size === "large" ? "md:col-span-2 md:row-span-2" : ""}
+                ${item.size === "medium" ? "md:row-span-2" : ""}
+                ${item.size === "wide" ? "md:col-span-2" : ""}
+                ${item.size === "tall" ? "md:row-span-2" : ""}
+                ${item.color === "primary" ? "border-primary" : "border-accent"}
+                border-[3px] overflow-hidden group hover:shadow-2xl transition-all cursor-pointer relative
+              `}
             >
-              <Tag className="w-3 h-3 mr-1" />
-              {tag}
-            </Button>
+              {item.image && (
+                <div className="absolute inset-0">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                </div>
+              )}
+              
+              <div className={`relative h-full p-6 flex flex-col justify-end ${!item.image ? (item.color === "primary" ? "bg-primary/5" : "bg-accent/5") : ""}`}>
+                <div className="space-y-2">
+                  <h3 className={`font-bold text-lg leading-tight ${item.image ? "text-white" : "text-foreground"}`}>
+                    {item.title}
+                  </h3>
+                  <p className={`text-sm ${item.image ? "text-white/80" : "text-muted-foreground"}`}>
+                    {item.date}
+                  </p>
+                  {item.size !== "small" && (
+                    <p className={`text-sm ${item.image ? "text-white/90" : "text-foreground/80"}`}>
+                      {item.description}
+                    </p>
+                  )}
+                  <Button
+                    size="sm"
+                    className={`
+                      ${item.color === "primary" ? "bg-primary hover:bg-primary/90" : "bg-accent hover:bg-accent/90"}
+                      text-white rounded-full mt-2
+                    `}
+                  >
+                    Plus d'infos
+                  </Button>
+                </div>
+              </div>
+            </Card>
           ))}
         </div>
       </div>
-
-      {/* News Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredNews.map((post) => (
-          <Card 
-            key={post.id} 
-            className="overflow-hidden hover:shadow-lg transition-all duration-300 hover:scale-[1.02] cursor-pointer border-2"
-            style={{ borderColor: getCardBorderColor(post.tags) }}
-          >
-            <div className="relative h-48 overflow-hidden">
-              <img 
-                src={post.image} 
-                alt={post.title}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <CardHeader>
-              <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                <Calendar className="w-4 h-4" />
-                <span>{post.date}</span>
-              </div>
-              <CardTitle className="text-xl">{post.title}</CardTitle>
-              <CardDescription className="line-clamp-2">{post.description}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-2">
-                {post.tags.map((tag) => (
-                  <Badge 
-                    key={tag} 
-                    variant={tag.toLowerCase() as any}
-                    className="text-xs"
-                  >
-                    {tag}
-                  </Badge>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-
-      {filteredNews.length === 0 && (
-        <div className="text-center py-12">
-          <p className="text-muted-foreground">Aucune actualité dans cette catégorie</p>
-        </div>
-      )}
     </section>
   );
 };
