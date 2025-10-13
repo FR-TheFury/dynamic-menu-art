@@ -54,7 +54,7 @@ export const Header = () => {
   return (
     <header className="relative">
       {/* Top bar */}
-      <div className="bg-primary text-white py-4">
+      <div className="bg-primary/95 text-white py-4">
         <div className="max-w-7xl mx-auto px-8">
           <div className="flex items-center justify-between">
             {/* Logo */}
