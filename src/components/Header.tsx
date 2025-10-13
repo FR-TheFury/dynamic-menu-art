@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logoMairie from "@/assets/logo-mairie.png";
@@ -26,15 +26,30 @@ const topNav: TopItem[] = [
 export const Header = () => {
   const [hoveredTop, setHoveredTop] = useState<string | null>(null);
   const [topPos, setTopPos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+  const closeTimer = useRef<number | null>(null);
   const activeTop = topNav.find((t) => t.id === hoveredTop);
+
+  const cancelClose = () => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+  };
+
+  const scheduleClose = () => {
+    cancelClose();
+    closeTimer.current = window.setTimeout(() => setHoveredTop(null), 150);
+  };
 
   const onTopEnter = (id: string, e: React.MouseEvent<HTMLButtonElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const halfMin = 160;
+    const clampedX = Math.max(halfMin, Math.min(window.innerWidth - halfMin, centerX));
+    cancelClose();
     setHoveredTop(id);
-    setTopPos({ x: rect.left + rect.width / 2, y: rect.bottom + window.scrollY });
+    setTopPos({ x: clampedX, y: rect.bottom });
   };
-
-  const closeTop = () => setHoveredTop(null);
 
   return (
     <header className="relative bg-primary text-primary-foreground shadow-lg">
@@ -81,12 +96,7 @@ export const Header = () => {
               <Button
                 key={item.id}
                 onMouseEnter={(e) => onTopEnter(item.id, e)}
-                onMouseLeave={(e) => {
-                  const relatedTarget = e.relatedTarget as HTMLElement;
-                  if (!relatedTarget?.closest('[data-dropdown]')) {
-                    closeTop();
-                  }
-                }}
+                onMouseLeave={scheduleClose}
                 className="bg-transparent hover:bg-white/10 text-white border-2 border-white/30 hover:border-white/50 rounded-full px-8 py-2.5 font-semibold transition-all"
               >
                 {item.label}
@@ -100,9 +110,12 @@ export const Header = () => {
         <div
           data-dropdown
           className="fixed z-[100] bg-background border border-border rounded-xl shadow-2xl p-6 min-w-[300px]"
-          style={{ left: topPos.x, top: topPos.y + 8, transform: "translateX(-50%)" }}
-          onMouseLeave={closeTop}
-          onMouseEnter={() => setHoveredTop(activeTop.id)}
+          style={{ left: topPos.x, top: topPos.y + 4, transform: "translateX(-50%)" }}
+          onMouseEnter={() => {
+            cancelClose();
+            setHoveredTop(activeTop.id);
+          }}
+          onMouseLeave={scheduleClose}
         >
           <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-0 h-0 border-b-[12px] border-b-background border-x-[12px] border-x-transparent" />
           <div className="absolute -top-[14px] left-1/2 -translate-x-1/2 w-0 h-0 border-b-[12px] border-b-border border-x-[12px] border-x-transparent" />
