@@ -6,26 +6,30 @@ const numbers = [
   {
     id: 1,
     label: "Numéros",
+    subtitle: "Arrêter municipal",
     title: "Hac ex causa conlaticia stipe",
-    phone: "03 20 00 00 00",
+    phone: "06 24 52 23 46",
   },
   {
     id: 2,
     label: "Numéros",
+    subtitle: "Arrêter municipal",
     title: "Hac ex causa conlaticia stipe",
-    phone: "03 20 00 00 00",
+    phone: "06 24 52 23 46",
   },
   {
     id: 3,
-    label: "Arrêté municipal",
+    label: "Numéros",
+    subtitle: "Arrêter municipal",
     title: "Hac ex causa conlaticia stipe",
-    phone: "03 20 00 00 00",
+    phone: "06 24 52 23 46",
   },
   {
     id: 4,
     label: "Numéros",
+    subtitle: "Arrêter municipal",
     title: "Hac ex causa conlaticia stipe",
-    phone: "03 20 00 00 00",
+    phone: "06 24 52 23 46",
   },
 ];
 
@@ -33,41 +37,46 @@ export const UsefulNumbers = () => {
   return (
     <section className="py-16 px-6 bg-background">
       <div className="container mx-auto max-w-7xl">
-        <div className="mb-8">
-          <div className="flex items-center gap-3 mb-2">
-            <h2 className="text-4xl font-bold text-foreground">Numéros utiles</h2>
-            <Phone className="w-8 h-8 text-primary" />
-            <span className="text-2xl font-semibold text-primary">Et qui appeler ?</span>
+        <div className="mb-12 text-center">
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <Phone className="w-12 h-12 text-primary" />
+            <h2 className="text-5xl font-bold text-foreground inline-block">
+              <span className="relative">
+                Numéros utiles
+                <span className="absolute bottom-0 left-0 w-full h-1.5 bg-accent"></span>
+              </span>
+            </h2>
+            <span className="text-3xl font-semibold text-primary">Et qui appeler ?</span>
           </div>
-          <p className="text-muted-foreground">
-            Retrouvez tous les contacts importants de votre commune
+          <p className="text-foreground max-w-3xl mx-auto">
+            Vita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque, ut sit species matrimonii, dotis nomine futura coniunx
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-          {numbers.map((item, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+          {numbers.map((item) => (
             <Card
               key={item.id}
-              className="border-[6px] border-primary bg-white hover:shadow-2xl transition-all duration-500 p-7 space-y-4 rounded-[25px] neumorphic hover:scale-105 group"
-              style={{ 
-                transform: `rotate(${index % 2 === 0 ? '-' : ''}${0.5 + (index % 3)}deg)`,
-                transition: 'all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)'
-              }}
+              className="bg-primary text-white p-6 space-y-4 rounded-3xl shadow-xl border-0"
             >
-              <div className="inline-block px-5 py-2 bg-gradient-to-r from-primary/10 to-primary/20 rounded-full shadow-inner">
-                <span className="text-primary font-semibold text-sm">{item.label}</span>
+              <div className="text-sm font-semibold opacity-90">
+                {item.label}
               </div>
               
-              <h3 className="font-bold text-foreground text-lg leading-tight group-hover:text-primary transition-colors">
+              <div className="text-sm font-semibold">
+                {item.subtitle}
+              </div>
+
+              <h3 className="font-bold text-base leading-tight">
                 {item.title}
               </h3>
 
-              <div className="flex items-center gap-3 text-primary font-semibold bg-primary/5 p-3 rounded-xl">
-                <Phone className="w-6 h-6" />
-                <span className="text-lg">{item.phone}</span>
+              <div className="flex items-center gap-2 pt-2">
+                <Phone className="w-5 h-5" />
+                <span className="font-semibold">{item.phone}</span>
               </div>
 
-              <Button className="w-full bg-gradient-to-r from-purple-200 to-purple-300 hover:from-purple-300 hover:to-purple-400 text-purple-800 rounded-xl font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all py-3">
+              <Button className="w-full bg-white/20 hover:bg-white/30 text-white border-2 border-white/40 rounded-full font-semibold py-2.5">
                 Appeler
               </Button>
             </Card>
@@ -75,7 +84,7 @@ export const UsefulNumbers = () => {
         </div>
 
         <div className="text-center">
-          <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-12 py-6 font-semibold shadow-lg text-lg">
+          <Button className="bg-primary hover:bg-primary/90 text-white rounded-full px-12 py-3 font-semibold shadow-lg">
             Annuaire
           </Button>
         </div>
