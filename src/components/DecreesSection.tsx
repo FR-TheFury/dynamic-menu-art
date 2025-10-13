@@ -98,7 +98,7 @@ export const DecreesSection = () => {
           </button>
 
           {/* Carousel Container - Showing 4 cards in 2x2 grid */}
-          <div className="overflow-visible">
+          <div className="overflow-hidden">
             <div 
               className="flex transition-transform duration-700 ease-in-out"
               style={{
