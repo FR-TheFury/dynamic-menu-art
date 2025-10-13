@@ -54,157 +54,134 @@ const newsItems = [
 export const NewsSection = () => {
   return (
     <section className="py-20 px-6 bg-background relative overflow-hidden">
+      {/* Decorative dotted line */}
+      <div className="absolute left-1/2 top-0 bottom-0 w-px border-l-2 border-dotted border-primary/30 -translate-x-1/2" />
+      
       <div className="container mx-auto max-w-7xl relative z-10">
-        <div className="flex items-center justify-between mb-12">
+        <div className="flex items-center justify-between mb-4">
           <div>
-            <h2 className="text-5xl font-bold mb-2">
+            <h2 className="text-5xl font-bold mb-4 relative inline-block">
               <span className="text-foreground">Les actualités </span>
               <span className="text-primary">de mon village</span>
+              <div className="absolute -bottom-2 left-0 w-[400px] h-1 bg-accent" />
             </h2>
-            <p className="text-muted-foreground">
-              Restez informé des dernières actualités de votre commune
-            </p>
           </div>
-          <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-3 font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105">
+          <Button className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 py-3 font-semibold shadow-lg transition-all">
             Toutes les actualités
           </Button>
         </div>
+        
+        <p className="text-muted-foreground mb-12 max-w-2xl">
+          Vita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque, ut sit species matrimonii, dotis nomine futura coniunx
+        </p>
 
-        {/* Masonry Layout with Exotic Positioning */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 auto-rows-[200px]">
-          {/* Card 1 - Large Teal */}
-          <Card
-            className="md:col-span-5 md:row-span-3 border-[8px] border-primary overflow-hidden hover:shadow-[0_30px_90px_rgba(0,0,0,0.3)] transition-all duration-700 rounded-[40px] hover:-rotate-2 hover:scale-[1.03] bg-white group relative"
-            style={{ 
-              transform: 'rotate(-2deg)',
-              boxShadow: '0 25px 70px rgba(0,0,0,0.25), 0 10px 30px rgba(0,0,0,0.15)'
-            }}
-          >
-            <div className="relative h-48 overflow-hidden">
+        {/* Layout Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 auto-rows-[minmax(200px,auto)]">
+          
+          {/* Card 1 - Large left - Teal border */}
+          <div className="lg:col-span-5 lg:row-span-2 border-[12px] border-primary rounded-[40px] overflow-hidden bg-primary shadow-2xl">
+            <div className="relative h-64">
               <img
                 src={newsItems[0].image}
                 alt={newsItems[0].title}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                className="w-full h-full object-cover"
               />
             </div>
-            <div className="p-6 space-y-3">
-              <h3 className="font-bold text-foreground text-2xl leading-tight">
-                {newsItems[0].title}
-              </h3>
-              <p className="text-sm text-primary font-semibold">{newsItems[0].date}</p>
-              <p className="text-muted-foreground line-clamp-3">{newsItems[0].description}</p>
-              <Button className="w-full bg-white/30 hover:bg-white/50 text-primary border-2 border-primary/40 rounded-xl font-semibold backdrop-blur-sm transition-all hover:scale-105">
+            <div className="p-6 space-y-3 bg-primary text-white">
+              <h3 className="font-bold text-2xl">Lorem ipsum</h3>
+              <p className="text-sm opacity-90">29/09/2025</p>
+              <p className="text-sm opacity-90 leading-relaxed">
+                Vita est illis semper in fuga uxoresque mercenariae conductae
+              </p>
+              <Button className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/40 rounded-full px-6 py-2 font-semibold backdrop-blur-sm">
                 Plus d'infos
               </Button>
             </div>
-          </Card>
+          </div>
 
-          {/* Card 2 - Medium Teal */}
-          <Card
-            className="md:col-span-4 md:row-span-2 border-[8px] border-primary overflow-hidden hover:shadow-[0_30px_90px_rgba(0,0,0,0.3)] transition-all duration-700 rounded-[40px] hover:rotate-3 hover:scale-[1.03] bg-white group"
-            style={{ 
-              transform: 'rotate(3deg)',
-              boxShadow: '0 20px 60px rgba(0,0,0,0.2), 0 8px 25px rgba(0,0,0,0.12)'
-            }}
-          >
-            <div className="relative h-32 overflow-hidden">
+          {/* Card 2 - Medium center - Teal border */}
+          <div className="lg:col-span-4 lg:row-span-2 border-[12px] border-primary rounded-[40px] overflow-hidden bg-primary shadow-2xl">
+            <div className="relative h-48">
               <img
                 src={newsItems[1].image}
                 alt={newsItems[1].title}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                className="w-full h-full object-cover"
               />
             </div>
-            <div className="p-5 space-y-2">
-              <h3 className="font-bold text-foreground text-lg leading-tight">
-                {newsItems[1].title}
-              </h3>
-              <p className="text-xs text-primary font-semibold">{newsItems[1].date}</p>
-              <p className="text-sm text-muted-foreground line-clamp-2">{newsItems[1].description}</p>
-              <Button className="w-full bg-white/30 hover:bg-white/50 text-primary border-2 border-primary/40 rounded-xl font-semibold backdrop-blur-sm text-sm">
+            <div className="p-5 space-y-3 bg-primary text-white">
+              <h3 className="font-bold text-xl">Lorem ipsum</h3>
+              <p className="text-sm opacity-90">25/09/2025</p>
+              <p className="text-sm opacity-90 leading-relaxed line-clamp-3">
+                Vita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque, ut sit species matrimonii, ad tempus ex pacto atque
+              </p>
+              <Button className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/40 rounded-full px-6 py-2 font-semibold backdrop-blur-sm text-sm">
                 Plus d'infos
               </Button>
             </div>
-          </Card>
+          </div>
 
-          {/* Card 3 - Compact Teal */}
-          <Card
-            className="md:col-span-3 md:row-span-2 border-[8px] border-primary overflow-hidden hover:shadow-[0_30px_90px_rgba(0,0,0,0.3)] transition-all duration-700 rounded-[40px] hover:-rotate-3 hover:scale-[1.03] bg-white"
-            style={{ 
-              transform: 'rotate(4deg)',
-              boxShadow: '0 18px 55px rgba(0,0,0,0.22), 0 7px 22px rgba(0,0,0,0.14)'
-            }}
-          >
-            <div className="p-5 space-y-3 h-full flex flex-col justify-between">
+          {/* Card 3 - Text only right - Teal background */}
+          <div className="lg:col-span-3 lg:row-span-2 border-[12px] border-primary rounded-[40px] overflow-hidden bg-primary shadow-2xl">
+            <div className="p-6 space-y-3 text-white h-full flex flex-col justify-between">
               <div>
-                <h3 className="font-bold text-foreground text-lg leading-tight">
-                  {newsItems[2].title}
-                </h3>
-                <p className="text-xs text-primary font-semibold mt-2">{newsItems[2].date}</p>
-                <p className="text-sm text-muted-foreground mt-3 line-clamp-4">{newsItems[2].description}</p>
+                <h3 className="font-bold text-xl mb-3">Lorem ipsum</h3>
+                <p className="text-sm opacity-90 mb-4">01/10/2025</p>
+                <p className="text-sm opacity-90 leading-relaxed">
+                  Vita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque, ut sit species matrimonii, ad tempus ex pacto atque, ut sit species matrimonii
+                </p>
               </div>
-              <Button className="w-full bg-white/30 hover:bg-white/50 text-primary border-2 border-primary/40 rounded-xl font-semibold backdrop-blur-sm text-sm">
+              <Button className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/40 rounded-full px-6 py-2 font-semibold backdrop-blur-sm text-sm mt-4">
                 Plus d'infos
               </Button>
             </div>
-          </Card>
+          </div>
 
-          {/* Card 4 - Wide Red */}
-          <Card
-            className="md:col-span-7 md:row-span-2 border-[8px] border-accent overflow-hidden hover:shadow-[0_30px_90px_rgba(239,68,68,0.3)] transition-all duration-700 rounded-[40px] hover:rotate-2 hover:scale-[1.03] bg-white group"
-            style={{ 
-              transform: 'rotate(-3deg)',
-              boxShadow: '0 22px 65px rgba(239,68,68,0.25), 0 9px 28px rgba(239,68,68,0.15)'
-            }}
-          >
+          {/* Card 4 - Wide bottom left - RED border */}
+          <div className="lg:col-span-7 lg:row-span-2 border-[12px] border-accent rounded-[40px] overflow-hidden bg-accent shadow-2xl">
             <div className="flex flex-col md:flex-row h-full">
-              <div className="relative md:w-1/2 h-48 md:h-auto overflow-hidden">
+              <div className="relative md:w-1/2 h-48 md:h-auto">
                 <img
                   src={newsItems[3].image}
                   alt={newsItems[3].title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-full object-cover"
                 />
               </div>
-              <div className="p-6 md:w-1/2 flex flex-col justify-between">
+              <div className="p-6 md:w-1/2 flex flex-col justify-between bg-accent text-white">
                 <div>
-                  <h3 className="font-bold text-foreground text-xl leading-tight">
-                    {newsItems[3].title}
-                  </h3>
-                  <p className="text-sm text-accent font-semibold mt-2">{newsItems[3].date}</p>
-                  <p className="text-muted-foreground mt-3 line-clamp-3">{newsItems[3].description}</p>
+                  <h3 className="font-bold text-2xl mb-3">Lorem ipsum</h3>
+                  <p className="text-sm opacity-90 mb-4">28/09/2025</p>
+                  <p className="text-sm opacity-90 leading-relaxed">
+                    Vita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque, ut sit species matrimonii, ad tempus ex pacto atque, ut sit species matrimonii, vita est illis semper in fuga
+                  </p>
                 </div>
-                <Button className="w-full bg-white/30 hover:bg-white/50 text-accent border-2 border-accent/40 rounded-xl font-semibold backdrop-blur-sm mt-4">
+                <Button className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/40 rounded-full px-6 py-2 font-semibold backdrop-blur-sm mt-4">
                   Plus d'infos
                 </Button>
               </div>
             </div>
-          </Card>
+          </div>
 
-          {/* Card 5 - Vertical Teal */}
-          <Card
-            className="md:col-span-5 md:row-span-3 border-[8px] border-primary overflow-hidden hover:shadow-[0_30px_90px_rgba(0,0,0,0.3)] transition-all duration-700 rounded-[40px] hover:rotate-3 hover:scale-[1.03] bg-white group"
-            style={{ 
-              transform: 'rotate(2deg)',
-              boxShadow: '0 25px 70px rgba(0,0,0,0.25), 0 10px 30px rgba(0,0,0,0.15)'
-            }}
-          >
-            <div className="relative h-56 overflow-hidden">
+          {/* Card 5 - Vertical right bottom - Teal border */}
+          <div className="lg:col-span-5 lg:row-span-2 border-[12px] border-primary rounded-[40px] overflow-hidden bg-primary shadow-2xl">
+            <div className="relative h-56">
               <img
                 src={newsItems[4].image}
                 alt={newsItems[4].title}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                className="w-full h-full object-cover"
               />
             </div>
-            <div className="p-6 space-y-3">
-              <h3 className="font-bold text-foreground text-xl leading-tight">
-                {newsItems[4].title}
-              </h3>
-              <p className="text-sm text-primary font-semibold">{newsItems[4].date}</p>
-              <p className="text-muted-foreground line-clamp-4">{newsItems[4].description}</p>
-              <Button className="w-full bg-white/30 hover:bg-white/50 text-primary border-2 border-primary/40 rounded-xl font-semibold backdrop-blur-sm">
+            <div className="p-6 space-y-3 bg-primary text-white">
+              <h3 className="font-bold text-xl">Lorem ipsum</h3>
+              <p className="text-sm opacity-90">26/09/2025</p>
+              <p className="text-sm opacity-90 leading-relaxed line-clamp-3">
+                Vita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque, ut sit species matrimonii, ad tempus ex pacto atque. Vita est illis semper in fuga
+              </p>
+              <Button className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/40 rounded-full px-6 py-2 font-semibold backdrop-blur-sm">
                 Plus d'infos
               </Button>
             </div>
-          </Card>
+          </div>
+
         </div>
       </div>
     </section>
