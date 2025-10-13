@@ -92,12 +92,12 @@ export const Header = () => {
 
       {activeTop && (
         <div
-          className="fixed z-50 bg-white border border-border rounded-xl shadow-2xl p-6 min-w-[300px]"
+          className="fixed z-[100] bg-background border border-border rounded-xl shadow-2xl p-6 min-w-[300px]"
           style={{ left: topPos.x, top: topPos.y + 8, transform: "translateX(-50%)" }}
           onMouseLeave={closeTop}
           onMouseEnter={() => setHoveredTop(activeTop.id)}
         >
-          <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-0 h-0 border-b-[12px] border-b-white border-x-[12px] border-x-transparent" />
+          <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-0 h-0 border-b-[12px] border-b-background border-x-[12px] border-x-transparent" />
           <div className="absolute -top-[14px] left-1/2 -translate-x-1/2 w-0 h-0 border-b-[12px] border-b-border border-x-[12px] border-x-transparent" />
 
           <h3 className="text-base font-bold text-primary mb-3">{activeTop.label}</h3>
