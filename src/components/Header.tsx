@@ -54,37 +54,37 @@ export const Header = () => {
   return (
     <header className="relative">
       {/* Top bar */}
-      <div className="bg-primary text-white">
-        <div className="container mx-auto px-6 py-4">
+      <div className="bg-primary text-white py-3">
+        <div className="max-w-7xl mx-auto px-8">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               <img
                 src={logoMairie}
                 alt="Logo Mairie Mons-en-Pévèle"
-                className="h-12 w-auto object-contain"
+                className="h-14 w-auto object-contain"
               />
               <div>
-                <h1 className="text-xl font-bold">Mons-en-pévèle</h1>
-                <p className="text-xs text-white/90">dans le prévôté Camrembault</p>
+                <h1 className="text-lg font-bold">Mons-en-pévèle</h1>
+                <p className="text-xs text-white/80">dans le prévôté Camrembault</p>
               </div>
             </div>
 
             {/* Actions */}
-            <div className="flex items-center gap-3">
-              <Button className="bg-accent hover:bg-accent/90 text-white font-semibold px-6 py-2 rounded-lg">
+            <div className="flex items-center gap-2">
+              <Button className="bg-accent hover:bg-accent/90 text-white font-medium px-5 py-2 rounded-md text-sm">
                 Réserver salle des fête
               </Button>
-              <Button className="bg-muted hover:bg-muted/90 text-foreground font-semibold px-6 py-2 rounded-lg">
+              <Button variant="secondary" className="font-medium px-5 py-2 rounded-md text-sm">
                 Mon espace
               </Button>
               <div className="relative">
                 <input
                   type="text"
                   placeholder="Recherche"
-                  className="pl-4 pr-10 py-2 rounded-lg bg-white/20 text-white placeholder:text-white/70 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50 w-48"
+                  className="pl-4 pr-10 py-2 rounded-md bg-white/20 text-white placeholder:text-white/70 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50 w-44 text-sm"
                 />
-                <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-white" />
+                <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white" />
               </div>
             </div>
           </div>
@@ -92,15 +92,15 @@ export const Header = () => {
       </div>
 
       {/* Navigation buttons - positioned over hero */}
-      <div className="absolute top-full left-0 right-0 z-20 pt-4">
-        <div className="container mx-auto px-6">
-          <div className="flex gap-4 justify-center">
+      <div className="absolute top-full left-0 right-0 z-20 pt-3">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="flex gap-3 justify-center">
             {topNav.map((item) => (
               <Button
                 key={item.id}
                 onMouseEnter={(e) => onTopEnter(item.id, e)}
                 onMouseLeave={scheduleClose}
-                className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border-2 border-white rounded-full px-8 py-2.5 font-semibold transition-all"
+                className="bg-white/5 backdrop-blur-sm hover:bg-white/15 text-white border border-white/80 rounded-full px-6 py-2 font-medium transition-all text-sm"
               >
                 {item.label}
               </Button>
