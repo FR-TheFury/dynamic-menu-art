@@ -78,21 +78,21 @@ export const DecreesSection = () => {
           {/* Navigation Arrows with 3D effect */}
           <button
             onClick={prevPage}
-            className="absolute -left-20 top-1/2 -translate-y-1/2 z-30 bg-white hover:bg-white/90 text-primary rounded-full p-5 shadow-2xl transition-all duration-500 hover:scale-125 hover:-rotate-12"
+            className="absolute -left-20 top-1/2 -translate-y-1/2 z-30 bg-white hover:bg-white/90 text-primary rounded-full p-6 shadow-2xl transition-all duration-500 hover:scale-150 hover:-rotate-[20deg]"
             style={{ 
-              boxShadow: '0 20px 60px rgba(0,0,0,0.3), 0 0 0 4px rgba(255,255,255,0.1)'
+              boxShadow: '0 30px 80px rgba(0,0,0,0.4), 0 0 0 6px rgba(255,255,255,0.15), 0 0 40px rgba(76,175,180,0.3)'
             }}
           >
-            <ChevronLeft className="w-10 h-10" />
+            <ChevronLeft className="w-12 h-12" />
           </button>
           <button
             onClick={nextPage}
-            className="absolute -right-20 top-1/2 -translate-y-1/2 z-30 bg-white hover:bg-white/90 text-primary rounded-full p-5 shadow-2xl transition-all duration-500 hover:scale-125 hover:rotate-12"
+            className="absolute -right-20 top-1/2 -translate-y-1/2 z-30 bg-white hover:bg-white/90 text-primary rounded-full p-6 shadow-2xl transition-all duration-500 hover:scale-150 hover:rotate-[20deg]"
             style={{ 
-              boxShadow: '0 20px 60px rgba(0,0,0,0.3), 0 0 0 4px rgba(255,255,255,0.1)'
+              boxShadow: '0 30px 80px rgba(0,0,0,0.4), 0 0 0 6px rgba(255,255,255,0.15), 0 0 40px rgba(76,175,180,0.3)'
             }}
           >
-            <ChevronRight className="w-10 h-10" />
+            <ChevronRight className="w-12 h-12" />
           </button>
 
           {/* 3D Carousel Grid */}
@@ -106,16 +106,16 @@ export const DecreesSection = () => {
                   key={decree.id}
                   className={`
                     bg-white border-0 hover:shadow-2xl transition-all duration-700 p-7 space-y-4 
-                    rounded-[25px] group backface-hidden
-                    ${isEdge ? 'scale-95 blur-[1px]' : 'scale-100'}
-                    hover:scale-105 hover:blur-0 hover:z-20
+                    rounded-[35px] group backface-hidden
+                    ${isEdge ? 'scale-90 blur-[2px] opacity-80' : 'scale-100'}
+                    hover:scale-110 hover:blur-0 hover:z-20 hover:opacity-100
                   `}
                   style={{
-                    transform: isEdge ? `perspective(1000px) ${rotation === '-rotate-y-15' ? 'rotateY(-8deg)' : 'rotateY(8deg)'}` : 'none',
-                    transition: 'all 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+                    transform: isEdge ? `perspective(1500px) ${rotation === '-rotate-y-15' ? 'rotateY(-15deg) translateZ(-80px)' : 'rotateY(15deg) translateZ(-80px)'}` : 'perspective(1500px) rotateY(0deg) translateZ(0px)',
+                    transition: 'all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
                     boxShadow: isEdge 
-                      ? '0 10px 40px rgba(0,0,0,0.15)' 
-                      : '0 15px 60px rgba(0,0,0,0.25)',
+                      ? '0 15px 50px rgba(0,0,0,0.2)' 
+                      : '0 25px 80px rgba(0,0,0,0.35)',
                   }}
                 >
                   <div className="inline-block px-4 py-2 bg-primary/10 rounded-full">

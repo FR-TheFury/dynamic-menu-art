@@ -71,11 +71,14 @@ export const NewsSection = () => {
         </div>
 
         {/* Masonry Layout with Exotic Positioning */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[200px]">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 auto-rows-[200px]">
           {/* Card 1 - Large Teal */}
           <Card
-            className="md:col-span-5 md:row-span-3 border-[6px] border-primary overflow-hidden hover:shadow-2xl transition-all duration-500 rounded-[30px] hover:-rotate-1 hover:scale-[1.02] bg-white group relative"
-            style={{ transform: 'rotate(-0.5deg)' }}
+            className="md:col-span-5 md:row-span-3 border-[8px] border-primary overflow-hidden hover:shadow-[0_30px_90px_rgba(0,0,0,0.3)] transition-all duration-700 rounded-[40px] hover:-rotate-2 hover:scale-[1.03] bg-white group relative"
+            style={{ 
+              transform: 'rotate(-2deg) translateY(-10px)',
+              boxShadow: '0 25px 70px rgba(0,0,0,0.25), 0 10px 30px rgba(0,0,0,0.15)'
+            }}
           >
             <div className="relative h-48 overflow-hidden">
               <img
@@ -98,8 +101,11 @@ export const NewsSection = () => {
 
           {/* Card 2 - Medium Teal */}
           <Card
-            className="md:col-span-4 md:row-span-2 border-[6px] border-primary overflow-hidden hover:shadow-2xl transition-all duration-500 rounded-[30px] hover:rotate-1 hover:scale-[1.02] bg-white group"
-            style={{ transform: 'rotate(0.5deg)', marginTop: '20px' }}
+            className="md:col-span-4 md:row-span-2 border-[8px] border-primary overflow-hidden hover:shadow-[0_30px_90px_rgba(0,0,0,0.3)] transition-all duration-700 rounded-[40px] hover:rotate-3 hover:scale-[1.03] bg-white group"
+            style={{ 
+              transform: 'rotate(3deg) translateY(30px) translateX(-15px)',
+              boxShadow: '0 20px 60px rgba(0,0,0,0.2), 0 8px 25px rgba(0,0,0,0.12)'
+            }}
           >
             <div className="relative h-32 overflow-hidden">
               <img
@@ -122,8 +128,11 @@ export const NewsSection = () => {
 
           {/* Card 3 - Compact Teal */}
           <Card
-            className="md:col-span-3 md:row-span-2 border-[6px] border-primary overflow-hidden hover:shadow-2xl transition-all duration-500 rounded-[30px] hover:-rotate-2 hover:scale-[1.02] bg-white"
-            style={{ transform: 'rotate(1deg)' }}
+            className="md:col-span-3 md:row-span-2 border-[8px] border-primary overflow-hidden hover:shadow-[0_30px_90px_rgba(0,0,0,0.3)] transition-all duration-700 rounded-[40px] hover:-rotate-3 hover:scale-[1.03] bg-white"
+            style={{ 
+              transform: 'rotate(4deg) translateY(15px) translateX(10px)',
+              boxShadow: '0 18px 55px rgba(0,0,0,0.22), 0 7px 22px rgba(0,0,0,0.14)'
+            }}
           >
             <div className="p-5 space-y-3 h-full flex flex-col justify-between">
               <div>
@@ -141,8 +150,11 @@ export const NewsSection = () => {
 
           {/* Card 4 - Wide Red */}
           <Card
-            className="md:col-span-7 md:row-span-2 border-[6px] border-accent overflow-hidden hover:shadow-2xl transition-all duration-500 rounded-[30px] hover:rotate-1 hover:scale-[1.02] bg-white group"
-            style={{ transform: 'rotate(-1deg)', marginTop: '-10px' }}
+            className="md:col-span-7 md:row-span-2 border-[8px] border-accent overflow-hidden hover:shadow-[0_30px_90px_rgba(239,68,68,0.3)] transition-all duration-700 rounded-[40px] hover:rotate-2 hover:scale-[1.03] bg-white group"
+            style={{ 
+              transform: 'rotate(-3deg) translateY(-25px) translateX(20px)',
+              boxShadow: '0 22px 65px rgba(239,68,68,0.25), 0 9px 28px rgba(239,68,68,0.15)'
+            }}
           >
             <div className="flex flex-col md:flex-row h-full">
               <div className="relative md:w-1/2 h-48 md:h-auto overflow-hidden">
@@ -169,8 +181,11 @@ export const NewsSection = () => {
 
           {/* Card 5 - Vertical Teal */}
           <Card
-            className="md:col-span-5 md:row-span-3 border-[6px] border-primary overflow-hidden hover:shadow-2xl transition-all duration-500 rounded-[30px] hover:rotate-2 hover:scale-[1.02] bg-white group"
-            style={{ transform: 'rotate(0.5deg)', marginTop: '-20px' }}
+            className="md:col-span-5 md:row-span-3 border-[8px] border-primary overflow-hidden hover:shadow-[0_30px_90px_rgba(0,0,0,0.3)] transition-all duration-700 rounded-[40px] hover:rotate-3 hover:scale-[1.03] bg-white group"
+            style={{ 
+              transform: 'rotate(2deg) translateY(-35px) translateX(-10px)',
+              boxShadow: '0 25px 70px rgba(0,0,0,0.25), 0 10px 30px rgba(0,0,0,0.15)'
+            }}
           >
             <div className="relative h-56 overflow-hidden">
               <img
