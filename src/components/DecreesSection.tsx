@@ -98,7 +98,7 @@ export const DecreesSection = () => {
           </button>
 
           {/* Carousel Container - Showing 4 cards in 2x2 grid */}
-          <div className="overflow-hidden max-w-5xl mx-auto">
+          <div className="overflow-visible">
             <div 
               className="flex transition-transform duration-700 ease-in-out"
               style={{
@@ -106,13 +106,13 @@ export const DecreesSection = () => {
               }}
             >
               {Array.from({ length: totalPages }).map((_, pageIndex) => (
-                <div key={pageIndex} className="min-w-full grid grid-cols-2 grid-rows-2 gap-6">
+                <div key={pageIndex} className="min-w-full grid grid-cols-2 grid-rows-2 gap-8 px-4">
                   {decrees
                     .slice(pageIndex * cardsPerPage, (pageIndex + 1) * cardsPerPage)
                     .map((decree) => (
                       <Card
                         key={decree.id}
-                        className="bg-white border-0 hover:shadow-2xl p-7 space-y-4 rounded-[35px] group"
+                        className="bg-white border-0 hover:shadow-2xl p-7 space-y-4 rounded-[35px] group transform hover:scale-105 transition-all duration-300"
                         style={{
                           boxShadow: '0 25px 80px rgba(0,0,0,0.35)',
                         }}
