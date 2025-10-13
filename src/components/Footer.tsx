@@ -1,90 +1,90 @@
-import { MapPin, Clock, Phone, Facebook, Instagram } from "lucide-react";
+import { Facebook, Instagram, Phone } from "lucide-react";
 import logoMairie from "@/assets/logo-mairie.png";
-import logoReference from "@/assets/logo-reference.png";
+import logoReference from "@/assets/logo-pevele-carembault.png";
 
 export const Footer = () => {
   return (
-    <footer className="bg-slate-700 text-white">
+    <footer className="bg-[#4A7C8C] text-white">
       <div className="container mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12 divide-x-0 md:divide-x divide-white/30">
           {/* Adresse */}
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <MapPin className="w-6 h-6 text-primary" />
-              <h3 className="text-xl font-bold">Adresse</h3>
-            </div>
-            <div className="space-y-2 text-white/90">
-              <p className="font-semibold">Mairie de Mons-en-Pévèle</p>
+          <div className="text-center md:text-left px-8">
+            <h3 className="text-2xl font-bold mb-6">Adresse</h3>
+            <div className="space-y-1 text-white">
+              <p className="font-medium">Mairie de</p>
+              <p className="font-medium">Mons-en-Pévèle</p>
               <p>230 rue du Moulin</p>
               <p>59246 Mons-en-Pévèle</p>
             </div>
           </div>
 
           {/* Horaires */}
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <Clock className="w-6 h-6 text-primary" />
-              <h3 className="text-xl font-bold">Horaires</h3>
-            </div>
-            <div className="space-y-2 text-white/90">
-              <p><span className="font-semibold">Lundi et jeudi :</span> 9h00 à 12h00</p>
-              <p><span className="font-semibold">Mardi, mercredi, vendredi :</span></p>
-              <p className="pl-4">9h00 à 12h00 et 14h00 à 17h30</p>
-              <p><span className="font-semibold">Samedi :</span> 9h00 à 12h00</p>
-              <p className="text-sm italic">(1 samedi sur 2)</p>
+          <div className="text-center px-8">
+            <h3 className="text-2xl font-bold mb-6">Horraires</h3>
+            <div className="space-y-1 text-white">
+              <p>Lundi et jeudi</p>
+              <p>de 9h00 à 12h00</p>
+              <p className="mt-3">Mardi, mercredi,</p>
+              <p>vendredi</p>
+              <p>de 9h00 à 12h00 et</p>
+              <p>de 14h00 à 17h30</p>
+              <p className="mt-3">Samedi 9h00 à 12h00.</p>
+              <p>1 samedi sur 2.</p>
             </div>
           </div>
 
           {/* Contact */}
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <Phone className="w-6 h-6 text-primary" />
-              <h3 className="text-xl font-bold">Nous contacter</h3>
-            </div>
-            <div className="flex gap-4 mt-6">
+          <div className="text-center md:text-right px-8">
+            <h3 className="text-2xl font-bold mb-6">Nous contactez</h3>
+            <div className="flex gap-4 justify-center md:justify-end">
               <a
                 href="#"
-                className="bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all hover:scale-110"
+                className="bg-white p-4 rounded-full transition-all hover:scale-110"
+                aria-label="Facebook"
               >
-                <Facebook className="w-6 h-6" />
+                <Facebook className="w-8 h-8 text-[#4A7C8C]" />
               </a>
               <a
                 href="#"
-                className="bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all hover:scale-110"
+                className="bg-white p-4 rounded-full transition-all hover:scale-110"
+                aria-label="Instagram"
               >
-                <Instagram className="w-6 h-6" />
+                <Instagram className="w-8 h-8 text-[#4A7C8C]" />
               </a>
               <a
                 href="tel:0320000000"
-                className="bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all hover:scale-110"
+                className="bg-white p-4 rounded-full transition-all hover:scale-110"
+                aria-label="Téléphone"
               >
-                <Phone className="w-6 h-6" />
+                <Phone className="w-8 h-8 text-[#4A7C8C]" />
               </a>
             </div>
           </div>
         </div>
 
         {/* Bande logos */}
-        <div className="border-t border-white/20 pt-8">
-          <div className="bg-white rounded-2xl p-6 flex items-center justify-around flex-wrap gap-8">
+        <div className="border-t border-white/30 pt-8">
+          <div className="bg-white rounded-none p-8 flex items-center justify-between flex-wrap gap-8">
             <img
               src={logoMairie}
               alt="Logo Mons-en-Pévèle"
-              className="h-16 w-auto object-contain"
+              className="h-20 w-auto object-contain"
             />
             <img
               src={logoMairie}
-              alt="Blason"
-              className="h-16 w-auto object-contain"
+              alt="Blason Mons-en-Pévèle"
+              className="h-20 w-auto object-contain"
             />
             <img
               src={logoReference}
               alt="Logo Pévèle Carembault"
-              className="h-16 w-auto object-contain"
+              className="h-20 w-auto object-contain"
             />
-            <div className="text-primary font-bold text-xl">
-              République Française
-            </div>
+            <img
+              src={logoReference}
+              alt="République Française"
+              className="h-20 w-auto object-contain"
+            />
           </div>
         </div>
       </div>
