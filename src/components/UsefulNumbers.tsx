@@ -44,26 +44,30 @@ export const UsefulNumbers = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          {numbers.map((item) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          {numbers.map((item, index) => (
             <Card
               key={item.id}
-              className="border-[3px] border-primary bg-white hover:shadow-2xl transition-all p-6 space-y-4"
+              className="border-[6px] border-primary bg-white hover:shadow-2xl transition-all duration-500 p-7 space-y-4 rounded-[25px] neumorphic hover:scale-105 group"
+              style={{ 
+                transform: `rotate(${index % 2 === 0 ? '-' : ''}${0.5 + (index % 3)}deg)`,
+                transition: 'all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)'
+              }}
             >
-              <div className="inline-block px-4 py-1 bg-primary/10 rounded-full">
+              <div className="inline-block px-5 py-2 bg-gradient-to-r from-primary/10 to-primary/20 rounded-full shadow-inner">
                 <span className="text-primary font-semibold text-sm">{item.label}</span>
               </div>
               
-              <h3 className="font-bold text-foreground text-lg leading-tight">
+              <h3 className="font-bold text-foreground text-lg leading-tight group-hover:text-primary transition-colors">
                 {item.title}
               </h3>
 
-              <div className="flex items-center gap-2 text-primary font-semibold">
-                <Phone className="w-5 h-5" />
-                <span>{item.phone}</span>
+              <div className="flex items-center gap-3 text-primary font-semibold bg-primary/5 p-3 rounded-xl">
+                <Phone className="w-6 h-6" />
+                <span className="text-lg">{item.phone}</span>
               </div>
 
-              <Button className="w-full bg-purple-200 hover:bg-purple-300 text-purple-800 rounded-lg font-semibold">
+              <Button className="w-full bg-gradient-to-r from-purple-200 to-purple-300 hover:from-purple-300 hover:to-purple-400 text-purple-800 rounded-xl font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all py-3">
                 Appeler
               </Button>
             </Card>

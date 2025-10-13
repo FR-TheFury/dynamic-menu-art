@@ -65,54 +65,92 @@ export const DecreesSection = () => {
   );
 
   return (
-    <section className="py-20 px-6 bg-primary relative">
+    <section className="py-20 px-6 bg-primary relative overflow-hidden">
       <div className="container mx-auto max-w-7xl relative z-10">
-        <div className="flex items-center justify-between mb-12">
-          <h2 className="text-5xl font-bold text-white">Arrêtés municipaux</h2>
-          <Button className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/50 rounded-full px-8 py-3 font-semibold backdrop-blur-sm">
+        <div className="flex items-center justify-between mb-16">
+          <h2 className="text-6xl font-bold text-white drop-shadow-2xl">Arrêtés municipaux</h2>
+          <Button className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/50 rounded-full px-10 py-4 font-semibold backdrop-blur-sm shadow-2xl hover:scale-110 transition-all duration-300">
             Plus d'infos
           </Button>
         </div>
 
-        <div className="relative">
-          {/* Navigation Arrows */}
+        <div className="relative perspective-1000">
+          {/* Navigation Arrows with 3D effect */}
           <button
             onClick={prevPage}
-            className="absolute -left-16 top-1/2 -translate-y-1/2 z-20 bg-white hover:bg-white/90 text-primary rounded-full p-4 shadow-2xl transition-all hover:scale-110"
+            className="absolute -left-20 top-1/2 -translate-y-1/2 z-30 bg-white hover:bg-white/90 text-primary rounded-full p-5 shadow-2xl transition-all duration-500 hover:scale-125 hover:-rotate-12"
+            style={{ 
+              boxShadow: '0 20px 60px rgba(0,0,0,0.3), 0 0 0 4px rgba(255,255,255,0.1)'
+            }}
           >
-            <ChevronLeft className="w-8 h-8" />
+            <ChevronLeft className="w-10 h-10" />
           </button>
           <button
             onClick={nextPage}
-            className="absolute -right-16 top-1/2 -translate-y-1/2 z-20 bg-white hover:bg-white/90 text-primary rounded-full p-4 shadow-2xl transition-all hover:scale-110"
+            className="absolute -right-20 top-1/2 -translate-y-1/2 z-30 bg-white hover:bg-white/90 text-primary rounded-full p-5 shadow-2xl transition-all duration-500 hover:scale-125 hover:rotate-12"
+            style={{ 
+              boxShadow: '0 20px 60px rgba(0,0,0,0.3), 0 0 0 4px rgba(255,255,255,0.1)'
+            }}
           >
-            <ChevronRight className="w-8 h-8" />
+            <ChevronRight className="w-10 h-10" />
           </button>
 
-          {/* Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {displayedDecrees.map((decree) => (
-              <Card
-                key={decree.id}
-                className="bg-white border-2 border-white hover:shadow-2xl transition-all p-6 space-y-4"
-              >
-                <div className="inline-block px-4 py-1 bg-primary/10 rounded-full">
-                  <span className="text-primary font-semibold text-xs">Arrêté municipal</span>
-                </div>
+          {/* 3D Carousel Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 preserve-3d">
+            {displayedDecrees.map((decree, index) => {
+              const isEdge = index === 0 || index === displayedDecrees.length - 1;
+              const rotation = index === 0 ? '-rotate-y-15' : index === displayedDecrees.length - 1 ? 'rotate-y-15' : '';
+              
+              return (
+                <Card
+                  key={decree.id}
+                  className={`
+                    bg-white border-0 hover:shadow-2xl transition-all duration-700 p-7 space-y-4 
+                    rounded-[25px] group backface-hidden
+                    ${isEdge ? 'scale-95 blur-[1px]' : 'scale-100'}
+                    hover:scale-105 hover:blur-0 hover:z-20
+                  `}
+                  style={{
+                    transform: isEdge ? `perspective(1000px) ${rotation === '-rotate-y-15' ? 'rotateY(-8deg)' : 'rotateY(8deg)'}` : 'none',
+                    transition: 'all 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+                    boxShadow: isEdge 
+                      ? '0 10px 40px rgba(0,0,0,0.15)' 
+                      : '0 15px 60px rgba(0,0,0,0.25)',
+                  }}
+                >
+                  <div className="inline-block px-4 py-2 bg-primary/10 rounded-full">
+                    <span className="text-primary font-semibold text-xs">Arrêté municipal</span>
+                  </div>
 
-                <h3 className="font-bold text-foreground text-lg leading-tight min-h-[56px]">
-                  {decree.title}
-                </h3>
+                  <h3 className="font-bold text-foreground text-lg leading-tight min-h-[56px] group-hover:text-primary transition-colors">
+                    {decree.title}
+                  </h3>
 
-                <p className="text-muted-foreground text-sm line-clamp-3">
-                  {decree.description}
-                </p>
+                  <p className="text-muted-foreground text-sm line-clamp-3">
+                    {decree.description}
+                  </p>
 
-                <Button className="w-full bg-primary hover:bg-primary/90 text-white rounded-lg font-semibold flex items-center justify-center gap-2">
-                  <Download className="w-4 h-4" />
-                  Télécharger
-                </Button>
-              </Card>
+                  <Button className="w-full bg-primary hover:bg-primary/90 text-white rounded-xl font-semibold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:scale-105 transition-all py-3">
+                    <Download className="w-5 h-5" />
+                    Télécharger
+                  </Button>
+                </Card>
+              );
+            })}
+          </div>
+
+          {/* Carousel Indicators */}
+          <div className="flex justify-center gap-3 mt-10">
+            {Array.from({ length: totalPages }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentPage(index)}
+                className={`h-3 rounded-full transition-all duration-500 ${
+                  currentPage === index 
+                    ? 'w-12 bg-white shadow-lg' 
+                    : 'w-3 bg-white/40 hover:bg-white/60'
+                }`}
+              />
             ))}
           </div>
         </div>

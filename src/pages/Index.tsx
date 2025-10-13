@@ -7,10 +7,12 @@ import { EventsSection } from "@/components/EventsSection";
 import { ServicesSection } from "@/components/ServicesSection";
 import { DecreesSection } from "@/components/DecreesSection";
 import { Footer } from "@/components/Footer";
+import { OrganicShapes } from "@/components/OrganicShapes";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <OrganicShapes />
       <Header />
       <HeroSection />
       <NewsSection />

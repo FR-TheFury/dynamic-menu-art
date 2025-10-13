@@ -55,5 +55,38 @@ All colors MUST be HSL.
     position: relative;
     overflow-x: hidden;
   }
+}
 
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  
+  .rotate-y-15 {
+    transform: rotateY(15deg);
+  }
+  
+  .rotate-y-minus-15 {
+    transform: rotateY(-15deg);
+  }
+  
+  .neumorphic {
+    box-shadow: 
+      8px 8px 16px rgba(163, 177, 198, 0.6),
+      -8px -8px 16px rgba(255, 255, 255, 0.5);
+  }
+  
+  .neumorphic-inset {
+    box-shadow: 
+      inset 4px 4px 8px rgba(163, 177, 198, 0.4),
+      inset -4px -4px 8px rgba(255, 255, 255, 0.4);
+  }
 }

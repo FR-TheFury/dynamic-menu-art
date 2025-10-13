@@ -53,73 +53,143 @@ const newsItems = [
 
 export const NewsSection = () => {
   return (
-    <section className="py-16 px-6 bg-background">
-      <div className="container mx-auto max-w-7xl">
-        <div className="flex items-end justify-between mb-12">
+    <section className="py-20 px-6 bg-background relative overflow-hidden">
+      <div className="container mx-auto max-w-7xl relative z-10">
+        <div className="flex items-center justify-between mb-12">
           <div>
-            <h2 className="text-5xl font-bold">
+            <h2 className="text-5xl font-bold mb-2">
               <span className="text-foreground">Les actualités </span>
               <span className="text-primary">de mon village</span>
             </h2>
-            <p className="text-muted-foreground mt-2">
-              Restez informé de toutes les nouveautés de notre commune
+            <p className="text-muted-foreground">
+              Restez informé des dernières actualités de votre commune
             </p>
           </div>
-          <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-6 font-semibold shadow-lg">
+          <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-3 font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105">
             Toutes les actualités
           </Button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-[200px]">
-          {newsItems.map((item) => (
-            <Card
-              key={item.id}
-              className={`
-                ${item.size === "large" ? "md:col-span-2 md:row-span-2" : ""}
-                ${item.size === "medium" ? "md:row-span-2" : ""}
-                ${item.size === "wide" ? "md:col-span-2" : ""}
-                ${item.size === "tall" ? "md:row-span-2" : ""}
-                ${item.color === "primary" ? "border-primary" : "border-accent"}
-                border-[3px] overflow-hidden group hover:shadow-2xl transition-all cursor-pointer relative
-              `}
-            >
-              {item.image && (
-                <div className="absolute inset-0">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                </div>
-              )}
-              
-              <div className={`relative h-full p-6 flex flex-col justify-end ${!item.image ? (item.color === "primary" ? "bg-primary/5" : "bg-accent/5") : ""}`}>
-                <div className="space-y-2">
-                  <h3 className={`font-bold text-lg leading-tight ${item.image ? "text-white" : "text-foreground"}`}>
-                    {item.title}
-                  </h3>
-                  <p className={`text-sm ${item.image ? "text-white/80" : "text-muted-foreground"}`}>
-                    {item.date}
-                  </p>
-                  {item.size !== "small" && (
-                    <p className={`text-sm ${item.image ? "text-white/90" : "text-foreground/80"}`}>
-                      {item.description}
-                    </p>
-                  )}
-                  <Button
-                    size="sm"
-                    className={`
-                      ${item.color === "primary" ? "bg-primary hover:bg-primary/90" : "bg-accent hover:bg-accent/90"}
-                      text-white rounded-full mt-2
-                    `}
-                  >
-                    Plus d'infos
-                  </Button>
-                </div>
+        {/* Masonry Layout with Exotic Positioning */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[200px]">
+          {/* Card 1 - Large Teal */}
+          <Card
+            className="md:col-span-5 md:row-span-3 border-[6px] border-primary overflow-hidden hover:shadow-2xl transition-all duration-500 rounded-[30px] hover:-rotate-1 hover:scale-[1.02] bg-white group relative"
+            style={{ transform: 'rotate(-0.5deg)' }}
+          >
+            <div className="relative h-48 overflow-hidden">
+              <img
+                src={newsItems[0].image}
+                alt={newsItems[0].title}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+            </div>
+            <div className="p-6 space-y-3">
+              <h3 className="font-bold text-foreground text-2xl leading-tight">
+                {newsItems[0].title}
+              </h3>
+              <p className="text-sm text-primary font-semibold">{newsItems[0].date}</p>
+              <p className="text-muted-foreground line-clamp-3">{newsItems[0].description}</p>
+              <Button className="w-full bg-white/30 hover:bg-white/50 text-primary border-2 border-primary/40 rounded-xl font-semibold backdrop-blur-sm transition-all hover:scale-105">
+                Plus d'infos
+              </Button>
+            </div>
+          </Card>
+
+          {/* Card 2 - Medium Teal */}
+          <Card
+            className="md:col-span-4 md:row-span-2 border-[6px] border-primary overflow-hidden hover:shadow-2xl transition-all duration-500 rounded-[30px] hover:rotate-1 hover:scale-[1.02] bg-white group"
+            style={{ transform: 'rotate(0.5deg)', marginTop: '20px' }}
+          >
+            <div className="relative h-32 overflow-hidden">
+              <img
+                src={newsItems[1].image}
+                alt={newsItems[1].title}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+            </div>
+            <div className="p-5 space-y-2">
+              <h3 className="font-bold text-foreground text-lg leading-tight">
+                {newsItems[1].title}
+              </h3>
+              <p className="text-xs text-primary font-semibold">{newsItems[1].date}</p>
+              <p className="text-sm text-muted-foreground line-clamp-2">{newsItems[1].description}</p>
+              <Button className="w-full bg-white/30 hover:bg-white/50 text-primary border-2 border-primary/40 rounded-xl font-semibold backdrop-blur-sm text-sm">
+                Plus d'infos
+              </Button>
+            </div>
+          </Card>
+
+          {/* Card 3 - Compact Teal */}
+          <Card
+            className="md:col-span-3 md:row-span-2 border-[6px] border-primary overflow-hidden hover:shadow-2xl transition-all duration-500 rounded-[30px] hover:-rotate-2 hover:scale-[1.02] bg-white"
+            style={{ transform: 'rotate(1deg)' }}
+          >
+            <div className="p-5 space-y-3 h-full flex flex-col justify-between">
+              <div>
+                <h3 className="font-bold text-foreground text-lg leading-tight">
+                  {newsItems[2].title}
+                </h3>
+                <p className="text-xs text-primary font-semibold mt-2">{newsItems[2].date}</p>
+                <p className="text-sm text-muted-foreground mt-3 line-clamp-4">{newsItems[2].description}</p>
               </div>
-            </Card>
-          ))}
+              <Button className="w-full bg-white/30 hover:bg-white/50 text-primary border-2 border-primary/40 rounded-xl font-semibold backdrop-blur-sm text-sm">
+                Plus d'infos
+              </Button>
+            </div>
+          </Card>
+
+          {/* Card 4 - Wide Red */}
+          <Card
+            className="md:col-span-7 md:row-span-2 border-[6px] border-accent overflow-hidden hover:shadow-2xl transition-all duration-500 rounded-[30px] hover:rotate-1 hover:scale-[1.02] bg-white group"
+            style={{ transform: 'rotate(-1deg)', marginTop: '-10px' }}
+          >
+            <div className="flex flex-col md:flex-row h-full">
+              <div className="relative md:w-1/2 h-48 md:h-auto overflow-hidden">
+                <img
+                  src={newsItems[3].image}
+                  alt={newsItems[3].title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+              </div>
+              <div className="p-6 md:w-1/2 flex flex-col justify-between">
+                <div>
+                  <h3 className="font-bold text-foreground text-xl leading-tight">
+                    {newsItems[3].title}
+                  </h3>
+                  <p className="text-sm text-accent font-semibold mt-2">{newsItems[3].date}</p>
+                  <p className="text-muted-foreground mt-3 line-clamp-3">{newsItems[3].description}</p>
+                </div>
+                <Button className="w-full bg-white/30 hover:bg-white/50 text-accent border-2 border-accent/40 rounded-xl font-semibold backdrop-blur-sm mt-4">
+                  Plus d'infos
+                </Button>
+              </div>
+            </div>
+          </Card>
+
+          {/* Card 5 - Vertical Teal */}
+          <Card
+            className="md:col-span-5 md:row-span-3 border-[6px] border-primary overflow-hidden hover:shadow-2xl transition-all duration-500 rounded-[30px] hover:rotate-2 hover:scale-[1.02] bg-white group"
+            style={{ transform: 'rotate(0.5deg)', marginTop: '-20px' }}
+          >
+            <div className="relative h-56 overflow-hidden">
+              <img
+                src={newsItems[4].image}
+                alt={newsItems[4].title}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+            </div>
+            <div className="p-6 space-y-3">
+              <h3 className="font-bold text-foreground text-xl leading-tight">
+                {newsItems[4].title}
+              </h3>
+              <p className="text-sm text-primary font-semibold">{newsItems[4].date}</p>
+              <p className="text-muted-foreground line-clamp-4">{newsItems[4].description}</p>
+              <Button className="w-full bg-white/30 hover:bg-white/50 text-primary border-2 border-primary/40 rounded-xl font-semibold backdrop-blur-sm">
+                Plus d'infos
+              </Button>
+            </div>
+          </Card>
         </div>
       </div>
     </section>

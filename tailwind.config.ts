@@ -89,11 +89,33 @@ export default {
             transform: "translateX(-25px) translateY(10px)",
           },
         },
+        float: {
+          '0%, 100%': { transform: 'translateY(0) translateX(0)' },
+          '33%': { transform: 'translateY(-20px) translateX(10px)' },
+          '66%': { transform: 'translateY(-10px) translateX(-10px)' },
+        },
+        blob: {
+          '0%, 100%': { borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%' },
+          '50%': { borderRadius: '30% 60% 70% 40% / 50% 60% 30% 60%' },
+        },
+        rotate3d: {
+          '0%': { transform: 'rotateY(0deg)' },
+          '100%': { transform: 'rotateY(360deg)' },
+        },
+        elastic: {
+          '0%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.05)' },
+          '100%': { transform: 'scale(1)' },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         wave: "wave 15s ease-in-out infinite",
+        float: 'float 6s ease-in-out infinite',
+        blob: 'blob 8s ease-in-out infinite',
+        rotate3d: 'rotate3d 20s linear infinite',
+        elastic: 'elastic 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
       },
     },
   },
