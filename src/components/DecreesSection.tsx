@@ -50,11 +50,15 @@ export const DecreesSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextPage = () => {
-    setCurrentIndex((prev) => (prev + 1) % decrees.length);
+    if (currentIndex < decrees.length - 1) {
+      setCurrentIndex((prev) => prev + 1);
+    }
   };
 
   const prevPage = () => {
-    setCurrentIndex((prev) => (prev - 1 + decrees.length) % decrees.length);
+    if (currentIndex > 0) {
+      setCurrentIndex((prev) => prev - 1);
+    }
   };
 
   return (
@@ -68,10 +72,11 @@ export const DecreesSection = () => {
         </div>
 
         <div className="relative">
-          {/* Navigation Arrows with 3D effect */}
+          {/* Navigation Arrows */}
           <button
             onClick={prevPage}
-            className="absolute -left-20 top-1/2 -translate-y-1/2 z-30 bg-white hover:bg-white/90 text-primary rounded-full p-6 shadow-2xl transition-all duration-500 hover:scale-125"
+            disabled={currentIndex === 0}
+            className="absolute -left-20 top-1/2 -translate-y-1/2 z-30 bg-white hover:bg-white/90 text-primary rounded-full p-6 shadow-2xl transition-all duration-500 hover:scale-125 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             style={{ 
               boxShadow: '0 30px 80px rgba(0,0,0,0.4), 0 0 0 6px rgba(255,255,255,0.15), 0 0 40px rgba(76,175,180,0.3)'
             }}
@@ -80,7 +85,8 @@ export const DecreesSection = () => {
           </button>
           <button
             onClick={nextPage}
-            className="absolute -right-20 top-1/2 -translate-y-1/2 z-30 bg-white hover:bg-white/90 text-primary rounded-full p-6 shadow-2xl transition-all duration-500 hover:scale-125"
+            disabled={currentIndex >= decrees.length - 1}
+            className="absolute -right-20 top-1/2 -translate-y-1/2 z-30 bg-white hover:bg-white/90 text-primary rounded-full p-6 shadow-2xl transition-all duration-500 hover:scale-125 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             style={{ 
               boxShadow: '0 30px 80px rgba(0,0,0,0.4), 0 0 0 6px rgba(255,255,255,0.15), 0 0 40px rgba(76,175,180,0.3)'
             }}
@@ -88,39 +94,20 @@ export const DecreesSection = () => {
             <ChevronRight className="w-12 h-12" />
           </button>
 
-          {/* 3D Carousel */}
-          <div 
-            className="relative flex justify-center items-center h-[480px]"
-            style={{ 
-              perspective: '2000px',
-              perspectiveOrigin: '50% 50%',
-              transformStyle: 'preserve-3d',
-            }}
-          >
-            {decrees.map((decree, index) => {
-              // Calculate position relative to current index
-              const position = (index - currentIndex + decrees.length) % decrees.length;
-              const centerPosition = Math.floor(4 / 2); // Show 4 cards
-              const distanceFromCenter = position - centerPosition;
-              
-              // Calculate 3D transformations
-              const translateX = distanceFromCenter * 320; // Spacing between cards
-              const rotateY = distanceFromCenter * 15; // Rotation
-              const translateZ = -Math.abs(distanceFromCenter) * 100; // Depth
-              const scale = 1 - Math.abs(distanceFromCenter) * 0.15;
-              const opacity = position < 5 ? 1 - Math.abs(distanceFromCenter) * 0.2 : 0;
-              const visibility = position < 5 ? 'visible' : 'hidden';
-              
-              return (
+          {/* Carousel Container */}
+          <div className="overflow-hidden">
+            <div 
+              className="grid grid-cols-2 gap-6 transition-transform duration-700 ease-in-out"
+              style={{
+                transform: `translateX(-${currentIndex * (100 / 2)}%)`,
+                width: `${(decrees.length / 2) * 100}%`,
+              }}
+            >
+              {decrees.map((decree) => (
                 <Card
                   key={decree.id}
-                  className="bg-white border-0 hover:shadow-2xl p-7 space-y-4 rounded-[35px] group absolute w-72"
+                  className="bg-white border-0 hover:shadow-2xl p-7 space-y-4 rounded-[35px] group"
                   style={{
-                    transform: `translateX(${translateX}px) rotateY(${rotateY}deg) translateZ(${translateZ}px) scale(${scale})`,
-                    opacity: opacity,
-                    visibility: visibility,
-                    transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
-                    transformStyle: 'preserve-3d',
                     boxShadow: '0 25px 80px rgba(0,0,0,0.35)',
                   }}
                 >
@@ -141,8 +128,8 @@ export const DecreesSection = () => {
                     Télécharger
                   </Button>
                 </Card>
-              );
-            })}
+              ))}
+            </div>
           </div>
 
           {/* Carousel Indicators */}
