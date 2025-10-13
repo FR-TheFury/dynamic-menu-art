@@ -76,7 +76,7 @@ export const NewsSection = () => {
           <Card
             className="md:col-span-5 md:row-span-3 border-[8px] border-primary overflow-hidden hover:shadow-[0_30px_90px_rgba(0,0,0,0.3)] transition-all duration-700 rounded-[40px] hover:-rotate-2 hover:scale-[1.03] bg-white group relative"
             style={{ 
-              transform: 'rotate(-2deg) translateY(-10px)',
+              transform: 'rotate(-2deg)',
               boxShadow: '0 25px 70px rgba(0,0,0,0.25), 0 10px 30px rgba(0,0,0,0.15)'
             }}
           >
@@ -103,7 +103,7 @@ export const NewsSection = () => {
           <Card
             className="md:col-span-4 md:row-span-2 border-[8px] border-primary overflow-hidden hover:shadow-[0_30px_90px_rgba(0,0,0,0.3)] transition-all duration-700 rounded-[40px] hover:rotate-3 hover:scale-[1.03] bg-white group"
             style={{ 
-              transform: 'rotate(3deg) translateY(30px) translateX(-15px)',
+              transform: 'rotate(3deg)',
               boxShadow: '0 20px 60px rgba(0,0,0,0.2), 0 8px 25px rgba(0,0,0,0.12)'
             }}
           >
@@ -130,7 +130,7 @@ export const NewsSection = () => {
           <Card
             className="md:col-span-3 md:row-span-2 border-[8px] border-primary overflow-hidden hover:shadow-[0_30px_90px_rgba(0,0,0,0.3)] transition-all duration-700 rounded-[40px] hover:-rotate-3 hover:scale-[1.03] bg-white"
             style={{ 
-              transform: 'rotate(4deg) translateY(15px) translateX(10px)',
+              transform: 'rotate(4deg)',
               boxShadow: '0 18px 55px rgba(0,0,0,0.22), 0 7px 22px rgba(0,0,0,0.14)'
             }}
           >
@@ -152,7 +152,7 @@ export const NewsSection = () => {
           <Card
             className="md:col-span-7 md:row-span-2 border-[8px] border-accent overflow-hidden hover:shadow-[0_30px_90px_rgba(239,68,68,0.3)] transition-all duration-700 rounded-[40px] hover:rotate-2 hover:scale-[1.03] bg-white group"
             style={{ 
-              transform: 'rotate(-3deg) translateY(-25px) translateX(20px)',
+              transform: 'rotate(-3deg)',
               boxShadow: '0 22px 65px rgba(239,68,68,0.25), 0 9px 28px rgba(239,68,68,0.15)'
             }}
           >
@@ -183,7 +183,7 @@ export const NewsSection = () => {
           <Card
             className="md:col-span-5 md:row-span-3 border-[8px] border-primary overflow-hidden hover:shadow-[0_30px_90px_rgba(0,0,0,0.3)] transition-all duration-700 rounded-[40px] hover:rotate-3 hover:scale-[1.03] bg-white group"
             style={{ 
-              transform: 'rotate(2deg) translateY(-35px) translateX(-10px)',
+              transform: 'rotate(2deg)',
               boxShadow: '0 25px 70px rgba(0,0,0,0.25), 0 10px 30px rgba(0,0,0,0.15)'
             }}
           >

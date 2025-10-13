@@ -76,7 +76,7 @@ export const EventsSection = () => {
           {/* Event 1 - Small white card */}
           <Card
             className="md:col-span-3 md:row-span-2 bg-white border-[8px] border-primary hover:shadow-[0_40px_100px_rgba(0,0,0,0.4)] transition-all duration-700 overflow-hidden rounded-[45px] group hover:-translate-y-6 hover:scale-110 hover:rotate-0 backface-hidden"
-            style={{ transform: 'rotate(-4deg) translateY(-20px) translateX(10px)', boxShadow: '0 30px 80px rgba(0,0,0,0.3)' }}
+            style={{ transform: 'rotate(-4deg)', boxShadow: '0 30px 80px rgba(0,0,0,0.3)' }}
           >
             <div className="p-6 space-y-3 h-full flex flex-col justify-between">
               <div>
@@ -95,7 +95,7 @@ export const EventsSection = () => {
           {/* Event 2 - Medium with image */}
           <Card
             className="md:col-span-4 md:row-span-3 bg-white border-[8px] border-primary hover:shadow-[0_40px_100px_rgba(0,0,0,0.4)] transition-all duration-700 overflow-hidden rounded-[45px] group hover:-translate-y-8 hover:scale-110 hover:rotate-0 backface-hidden"
-            style={{ transform: 'rotate(5deg) translateY(15px) translateX(-15px)', boxShadow: '0 28px 75px rgba(0,0,0,0.28)' }}
+            style={{ transform: 'rotate(5deg)', boxShadow: '0 28px 75px rgba(0,0,0,0.28)' }}
           >
             {events[1].image && (
               <div className="relative h-44 overflow-hidden">
@@ -121,7 +121,7 @@ export const EventsSection = () => {
           {/* Event 3 - Red accent card */}
           <Card
             className="md:col-span-5 md:row-span-2 bg-accent border-[8px] border-white hover:shadow-[0_40px_100px_rgba(239,68,68,0.4)] transition-all duration-700 overflow-hidden rounded-[45px] group hover:-translate-y-6 hover:scale-110 hover:rotate-0 backface-hidden"
-            style={{ transform: 'rotate(-3deg) translateY(25px) translateX(20px)', boxShadow: '0 25px 70px rgba(239,68,68,0.3)' }}
+            style={{ transform: 'rotate(-3deg)', boxShadow: '0 25px 70px rgba(239,68,68,0.3)' }}
           >
             <div className="p-6 space-y-3 h-full flex flex-col justify-between">
               <div>
@@ -140,7 +140,7 @@ export const EventsSection = () => {
           {/* Event 4 - Tall white card */}
           <Card
             className="md:col-span-3 md:row-span-3 bg-white border-[8px] border-primary hover:shadow-[0_40px_100px_rgba(0,0,0,0.4)] transition-all duration-700 overflow-hidden rounded-[45px] group hover:-translate-y-8 hover:scale-110 hover:rotate-0 backface-hidden"
-            style={{ transform: 'rotate(4deg) translateY(-15px) translateX(-10px)', boxShadow: '0 32px 85px rgba(0,0,0,0.32)' }}
+            style={{ transform: 'rotate(4deg)', boxShadow: '0 32px 85px rgba(0,0,0,0.32)' }}
           >
             <div className="p-6 space-y-3 h-full flex flex-col justify-between">
               <div>
@@ -159,7 +159,7 @@ export const EventsSection = () => {
           {/* Event 5 - Wide white card with image */}
           <Card
             className="md:col-span-6 md:row-span-2 bg-white border-[8px] border-primary hover:shadow-[0_40px_100px_rgba(0,0,0,0.4)] transition-all duration-700 overflow-hidden rounded-[45px] group hover:-translate-y-6 hover:scale-110 hover:rotate-0 backface-hidden"
-            style={{ transform: 'rotate(-5deg) translateY(10px) translateX(15px)', boxShadow: '0 27px 72px rgba(0,0,0,0.27)' }}
+            style={{ transform: 'rotate(-5deg)', boxShadow: '0 27px 72px rgba(0,0,0,0.27)' }}
           >
             <div className="flex flex-col md:flex-row h-full">
               {events[4].image && (
@@ -189,7 +189,7 @@ export const EventsSection = () => {
           {/* Event 6 - Small white card */}
           <Card
             className="md:col-span-3 md:row-span-2 bg-white border-[8px] border-primary hover:shadow-[0_40px_100px_rgba(0,0,0,0.4)] transition-all duration-700 overflow-hidden rounded-[45px] group hover:-translate-y-6 hover:scale-110 hover:rotate-0 backface-hidden"
-            style={{ transform: 'rotate(3deg) translateY(5px) translateX(-8px)', boxShadow: '0 26px 68px rgba(0,0,0,0.26)' }}
+            style={{ transform: 'rotate(3deg)', boxShadow: '0 26px 68px rgba(0,0,0,0.26)' }}
           >
             <div className="p-6 space-y-3 h-full flex flex-col justify-between">
               <div>
