@@ -1,6 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Users, Trash2, CreditCard, Briefcase, Building, Heart, ChevronLeft, ChevronRight } from "lucide-react";
-import logoReference from "@/assets/logo-reference.png";
+import logoReference from "@/assets/logo-pevele-carembault.png";
+import partnerFlexipervilles from "@/assets/partner-flexipervilles.png";
+import partnerGraines from "@/assets/partner-graines.png";
+import partnerPerischool from "@/assets/partner-perischool.png";
+import partnerServicesPlus from "@/assets/partner-services-plus.png";
 import { useState } from "react";
 
 const services = [
@@ -43,10 +47,10 @@ const services = [
 ];
 
 const partners = [
-  "Flexi'Pér'villes",
-  "Graines de Culture(s)",
-  "Peri'school",
-  "Services +",
+  { name: "Flexi'Pér'villes", image: partnerFlexipervilles },
+  { name: "Graines de Culture(s)", image: partnerGraines },
+  { name: "Peri'school", image: partnerPerischool },
+  { name: "Services +", image: partnerServicesPlus },
 ];
 
 export const ServicesSection = () => {
@@ -193,12 +197,16 @@ export const ServicesSection = () => {
                     }}
                   >
                     <div 
-                      className="w-56 h-56 rounded-xl bg-muted/30 flex items-center justify-center mb-2 shadow-lg"
+                      className="w-56 h-56 rounded-xl bg-background flex items-center justify-center mb-2 shadow-lg overflow-hidden"
                       style={{
                         boxShadow: position === centerPosition ? '0 20px 60px rgba(0,0,0,0.15)' : '0 10px 30px rgba(0,0,0,0.1)',
                       }}
                     >
-                      <p className="text-primary font-bold text-lg px-6">{partner}</p>
+                      <img 
+                        src={partner.image} 
+                        alt={partner.name}
+                        className="w-full h-full object-contain p-4"
+                      />
                     </div>
                   </div>
                 );
