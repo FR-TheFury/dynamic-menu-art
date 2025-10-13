@@ -159,7 +159,7 @@ export const ServicesSection = () => {
             </button>
             
             <div 
-              className="flex-1 flex items-center justify-center relative h-48"
+              className="flex-1 flex items-center justify-center relative h-72"
               style={{ 
                 perspective: '1500px',
                 perspectiveOrigin: '50% 50%',
@@ -173,7 +173,7 @@ export const ServicesSection = () => {
                 const distanceFromCenter = position - centerPosition;
                 
                 // Calculate 3D transformations
-                const translateX = distanceFromCenter * 200; // Spacing between cards
+                const translateX = distanceFromCenter * 300; // Spacing between cards
                 const rotateY = distanceFromCenter * 20; // Rotation
                 const translateZ = -Math.abs(distanceFromCenter) * 100; // Depth
                 const scale = 1 - Math.abs(distanceFromCenter) * 0.15;
@@ -193,12 +193,12 @@ export const ServicesSection = () => {
                     }}
                   >
                     <div 
-                      className="w-32 h-32 rounded-xl bg-muted/30 flex items-center justify-center mb-2 shadow-lg"
+                      className="w-56 h-56 rounded-xl bg-muted/30 flex items-center justify-center mb-2 shadow-lg"
                       style={{
                         boxShadow: position === centerPosition ? '0 20px 60px rgba(0,0,0,0.15)' : '0 10px 30px rgba(0,0,0,0.1)',
                       }}
                     >
-                      <p className="text-primary font-bold text-sm px-4">{partner}</p>
+                      <p className="text-primary font-bold text-lg px-6">{partner}</p>
                     </div>
                   </div>
                 );
