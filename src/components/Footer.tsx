@@ -56,7 +56,7 @@ export const Footer = () => {
                 className="bg-white p-4 rounded-full transition-all hover:scale-110"
                 aria-label="Téléphone"
               >
-                <Phone className="w-8 h-8 text-[#4A7C8C]" />
+                <img src="/Image-Mairie/appel.png" alt="Téléphone" className="w-8 h-8" />
               </a>
             </div>
           </div>
@@ -76,12 +76,12 @@ export const Footer = () => {
               className="h-20 w-auto object-contain"
             />
             <img
-              src={logoReference}
+              src="/Image-Mairie/logo_ccpc.png"
               alt="Logo Pévèle Carembault"
               className="h-20 w-auto object-contain"
             />
             <img
-              src={logoReference}
+              src="/Image-Mairie/Logo_de_la_République_française_(1999).svg"
               alt="République Française"
               className="h-20 w-auto object-contain"
             />

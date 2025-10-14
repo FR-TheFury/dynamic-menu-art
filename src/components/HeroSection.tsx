@@ -1,15 +1,15 @@
 import { useState, useRef } from "react";
-import { IdCard, Map, Users, Building2, Users2, Facebook, Instagram } from "lucide-react";
+import { Facebook, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import villageBackground from "@/assets/village-background.jpg";
 import logoMairie from "@/assets/logo-mairie.png";
 
 const menuItems = [
-  { id: "etatcivile", label: "État civil", icon: IdCard },
-  { id: "urbanisme", label: "Urbanisme", icon: Map },
-  { id: "perischool", label: "Perishcool", icon: Users },
-  { id: "communaute", label: "Communauté de commune", icon: Building2 },
-  { id: "seniors", label: "Séniors", icon: Users2 },
+  { id: "etatcivile", label: "État civil", icon: "/Image-Mairie/carte-didentite.png" },
+  { id: "urbanisme", label: "Urbanisme", icon: "/Image-Mairie/maison-de-repos.png" },
+  { id: "perischool", label: "Perishcool", icon: "/Image-Mairie/retour-a-lecole.png" },
+  { id: "communaute", label: "Communauté de commune", icon: "/Image-Mairie/mairie.png" },
+  { id: "seniors", label: "Séniors", icon: "/Image-Mairie/personne-agee.png" },
 ];
 
 type TopItem = { id: string; label: string; links: string[] };
@@ -125,7 +125,7 @@ export const HeroSection = () => {
             }`}
           >
             <div className="flex flex-col items-center gap-2">
-              <item.icon className="w-8 h-8" />
+              <img src={item.icon} alt={item.label} className="w-8 h-8 object-contain" />
               <div className="text-[13px] leading-tight">
                 {item.label}
               </div>

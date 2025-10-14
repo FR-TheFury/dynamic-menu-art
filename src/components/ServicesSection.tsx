@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Users, Trash2, CreditCard, Briefcase, Building, Heart, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import logoReference from "@/assets/logo-pevele-carembault.png";
 import partnerFlexipervilles from "@/assets/partner-flexipervilles.png";
 import partnerGraines from "@/assets/partner-graines.png";
@@ -11,37 +11,37 @@ const services = [
   {
     id: 1,
     title: "Inscription accueil et loisirs",
-    icon: Users,
+    icon: "/Image-Mairie/famille.png",
     color: "orange",
   },
   {
     id: 2,
     title: "Demander mon Pass'déchetteries",
-    icon: Trash2,
+    icon: "/Image-Mairie/poubelle-de-recyclage.png",
     color: "green",
   },
   {
     id: 3,
     title: "Demander ma carte Pass Prév'ailles",
-    icon: CreditCard,
+    icon: "/Image-Mairie/cartes-de-poker.png",
     color: "cyan",
   },
   {
     id: 4,
     title: "Trouver un emploi",
-    icon: Briefcase,
+    icon: "/Image-Mairie/mallette.png",
     color: "purple",
   },
   {
     id: 5,
     title: "Demande d'urbanisme",
-    icon: Building,
+    icon: "/Image-Mairie/immeubles.png",
     color: "brown",
   },
   {
     id: 6,
     title: "Séniors",
-    icon: Heart,
+    icon: "/Image-Mairie/personne-agee.png",
     color: "beige",
   },
 ];
@@ -107,7 +107,7 @@ export const ServicesSection = () => {
                     ${service.color === "beige" ? "bg-[#D4AF6A]" : ""}
                   `}
                 >
-                  <service.icon className="w-12 h-12 text-white" strokeWidth={2} />
+                  <img src={service.icon} alt={service.title} className="w-12 h-12 object-contain" />
                 </div>
                 <h3 className="font-bold text-white text-sm leading-tight">
                   {service.title}
