@@ -49,7 +49,7 @@ const decrees = [
 export const DecreesSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const cardsPerPage = 3;
+  const cardsPerPage = 6;
   const totalPages = Math.ceil(decrees.length / cardsPerPage);
 
   const nextPage = () => {
@@ -79,7 +79,7 @@ export const DecreesSection = () => {
           <button
             onClick={prevPage}
             disabled={currentIndex === 0}
-            className="absolute -left-20 top-1/2 -translate-y-1/2 z-30 bg-white hover:bg-white/90 text-primary rounded-full p-6 shadow-2xl transition-all duration-500 hover:scale-125 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+            className="absolute -left-28 top-1/2 -translate-y-1/2 z-30 bg-white hover:bg-white/90 text-primary rounded-full p-6 shadow-2xl transition-all duration-500 hover:scale-125 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             style={{ 
               boxShadow: '0 30px 80px rgba(0,0,0,0.4), 0 0 0 6px rgba(255,255,255,0.15), 0 0 40px rgba(76,175,180,0.3)'
             }}
@@ -89,7 +89,7 @@ export const DecreesSection = () => {
           <button
             onClick={nextPage}
             disabled={currentIndex >= totalPages - 1}
-            className="absolute -right-20 top-1/2 -translate-y-1/2 z-30 bg-white hover:bg-white/90 text-primary rounded-full p-6 shadow-2xl transition-all duration-500 hover:scale-125 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+            className="absolute -right-28 top-1/2 -translate-y-1/2 z-30 bg-white hover:bg-white/90 text-primary rounded-full p-6 shadow-2xl transition-all duration-500 hover:scale-125 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             style={{ 
               boxShadow: '0 30px 80px rgba(0,0,0,0.4), 0 0 0 6px rgba(255,255,255,0.15), 0 0 40px rgba(76,175,180,0.3)'
             }}
@@ -97,7 +97,7 @@ export const DecreesSection = () => {
             <ChevronRight className="w-12 h-12" />
           </button>
 
-          {/* Carousel Container - Showing 3 cards in a row */}
+          {/* Carousel Container - Showing 6 cards in 2 rows of 3 */}
           <div className="overflow-hidden">
             <div 
               className="flex transition-transform duration-700 ease-in-out"
