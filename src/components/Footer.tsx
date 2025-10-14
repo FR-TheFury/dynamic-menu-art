@@ -67,7 +67,7 @@ export const Footer = () => {
           {/* Carte */}
           <div className="bg-white rounded-lg p-6">
             <img
-              src="/dynamic-menu-art/Image-Mairie/Carte pévèle carembault.png"
+              src="/dynamic-menu-art/Image-Mairie/Carte pe╠üve╠Çle carembault.png"
               alt="Carte Pévèle Carembault"
               className="w-full h-auto object-contain"
             />
@@ -76,7 +76,7 @@ export const Footer = () => {
           {/* Logos */}
           <div className="bg-white rounded-none p-8 flex items-center justify-between flex-wrap gap-8">
             <img
-              src="/dynamic-menu-art/Image-Mairie/Logoccpévèlecarembault.jpg"
+              src="/dynamic-menu-art/Image-Mairie/Logoccpe╠üve╠Çlecarembault.jpg"
               alt="Logo Mons-en-Pévèle"
               className="h-20 w-auto object-contain"
             />
@@ -91,7 +91,7 @@ export const Footer = () => {
               className="h-20 w-auto object-contain"
             />
             <img
-              src="/dynamic-menu-art/Image-Mairie/Logo_de_la_République_française_(1999).svg"
+              src="/dynamic-menu-art/Image-Mairie/Logo_de_la_Re╠üpublique_franc╠ºaise_(1999).svg"
               alt="République Française"
               className="h-20 w-auto object-contain"
             />
