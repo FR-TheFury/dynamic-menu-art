@@ -118,11 +118,11 @@ export const ServicesSection = () => {
 
           {/* Map Card - 4 columns */}
           <div className="lg:col-span-4">
-            <div className="h-full bg-white rounded-[32px] overflow-hidden shadow-md relative min-h-[400px]">
+            <div className="h-full bg-white rounded-[32px] overflow-hidden shadow-md relative min-h-[400px] p-4">
               <img
                 src="/dynamic-menu-art/Image-Mairie/Carte pe╠üve╠Çle carembault.png"
                 alt="Carte Pévèle Carembault"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
               />
             </div>
           </div>
