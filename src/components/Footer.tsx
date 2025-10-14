@@ -62,17 +62,8 @@ export const Footer = () => {
           </div>
         </div>
 
-        {/* Carte et Bande logos */}
-        <div className="border-t border-white/30 pt-8 space-y-8">
-          {/* Carte */}
-          <div className="bg-white rounded-lg p-6">
-            <img
-              src="/dynamic-menu-art/Image-Mairie/Carte pe╠üve╠Çle carembault.png"
-              alt="Carte Pévèle Carembault"
-              className="w-full h-auto object-contain"
-            />
-          </div>
-
+        {/* Bande logos */}
+        <div className="border-t border-white/30 pt-8">
           {/* Logos */}
           <div className="bg-white rounded-none p-8 flex items-center justify-between flex-wrap gap-8">
             <img

@@ -118,19 +118,12 @@ export const ServicesSection = () => {
 
           {/* Map Card - 4 columns */}
           <div className="lg:col-span-4">
-            <div className="h-full bg-[#267884] rounded-[32px] overflow-hidden shadow-md relative min-h-[400px]">
-              <div className="absolute inset-0 flex items-center justify-center p-8">
-                <svg viewBox="0 0 400 400" className="w-full h-full">
-                  <path 
-                    d="M200 50 L350 150 L350 300 L200 380 L50 300 L50 150 Z" 
-                    fill="#1a5f66" 
-                    opacity="0.5"
-                  />
-                  <text x="200" y="200" textAnchor="middle" fill="white" fontSize="16" opacity="0.7">
-                    Pévèle Carembault
-                  </text>
-                </svg>
-              </div>
+            <div className="h-full bg-white rounded-[32px] overflow-hidden shadow-md relative min-h-[400px]">
+              <img
+                src="/dynamic-menu-art/Image-Mairie/Carte pe╠üve╠Çle carembault.png"
+                alt="Carte Pévèle Carembault"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>
