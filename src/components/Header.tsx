@@ -12,9 +12,9 @@ export const Header = () => {
             {/* Logo */}
             <div className="flex items-center gap-3">
               <img
-                src={logoMairie}
+                src="/dynamic-menu-art/Image-Mairie/Logoccpévèlecarembault.jpg"
                 alt="Logo Mairie Mons-en-Pévèle"
-                className="h-12 w-auto object-contain brightness-0 invert"
+                className="h-12 w-auto object-contain"
               />
               <div className="leading-tight">
                 <h1 className="text-xl font-bold tracking-tight">Mons-en-pévèle</h1>
