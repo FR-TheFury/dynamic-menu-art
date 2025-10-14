@@ -5,11 +5,36 @@ import villageBackground from "@/assets/village-background.jpg";
 import logoMairie from "@/assets/logo-mairie.png";
 
 const menuItems = [
-  { id: "etatcivile", label: "État civil", icon: "/dynamic-menu-art/Image-Mairie/carte-didentite.png" },
-  { id: "urbanisme", label: "Urbanisme", icon: "/dynamic-menu-art/Image-Mairie/maison-de-repos.png" },
-  { id: "perischool", label: "Perishcool", icon: "/dynamic-menu-art/Image-Mairie/retour-a-lecole.png" },
-  { id: "communaute", label: "Communauté de commune", icon: "/dynamic-menu-art/Image-Mairie/mairie.png" },
-  { id: "seniors", label: "Séniors", icon: "/dynamic-menu-art/Image-Mairie/personne-agee.png" },
+  { 
+    id: "etatcivile", 
+    label: "État civil", 
+    icon: "/dynamic-menu-art/Image-Mairie/carte-didentite.png",
+    links: ["Acte de naissance", "Acte de mariage", "Carte d'identité", "Passeport", "Certificat"]
+  },
+  { 
+    id: "urbanisme", 
+    label: "Urbanisme", 
+    icon: "/dynamic-menu-art/Image-Mairie/maison-de-repos.png",
+    links: ["Permis de construire", "Déclaration de travaux", "Plan local", "Certificat d'urbanisme"]
+  },
+  { 
+    id: "perischool", 
+    label: "Perishcool", 
+    icon: "/dynamic-menu-art/Image-Mairie/retour-a-lecole.png",
+    links: ["Inscription", "Horaires", "Menus", "Activités", "Contact"]
+  },
+  { 
+    id: "communaute", 
+    label: "Communauté de commune", 
+    icon: "/dynamic-menu-art/Image-Mairie/mairie.png",
+    links: ["Services", "Compétences", "Élus", "Actualités", "Contacts"]
+  },
+  { 
+    id: "seniors", 
+    label: "Séniors", 
+    icon: "/dynamic-menu-art/Image-Mairie/personne-agee.png",
+    links: ["Services d'aide", "Activités", "Portage repas", "Transport", "Résidences"]
+  },
 ];
 
 type TopItem = { id: string; label: string; links: string[] };
@@ -34,9 +59,13 @@ const topNav: TopItem[] = [
 
 export const HeroSection = () => {
   const [hoveredTop, setHoveredTop] = useState<string | null>(null);
+  const [hoveredSide, setHoveredSide] = useState<string | null>(null);
   const [topPos, setTopPos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+  const [sidePos, setSidePos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   const closeTimer = useRef<number | null>(null);
+  const closeSideTimer = useRef<number | null>(null);
   const activeTop = topNav.find((t) => t.id === hoveredTop);
+  const activeSide = menuItems.find((m) => m.id === hoveredSide);
 
   const cancelClose = () => {
     if (closeTimer.current) {
@@ -45,9 +74,21 @@ export const HeroSection = () => {
     }
   };
 
+  const cancelCloseSide = () => {
+    if (closeSideTimer.current) {
+      clearTimeout(closeSideTimer.current);
+      closeSideTimer.current = null;
+    }
+  };
+
   const scheduleClose = () => {
     cancelClose();
     closeTimer.current = window.setTimeout(() => setHoveredTop(null), 150);
+  };
+
+  const scheduleCloseSide = () => {
+    cancelCloseSide();
+    closeSideTimer.current = window.setTimeout(() => setHoveredSide(null), 150);
   };
 
   const onTopEnter = (id: string, e: React.MouseEvent<HTMLButtonElement>) => {
@@ -58,6 +99,13 @@ export const HeroSection = () => {
     cancelClose();
     setHoveredTop(id);
     setTopPos({ x: clampedX, y: rect.bottom });
+  };
+
+  const onSideEnter = (id: string, e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    cancelCloseSide();
+    setHoveredSide(id);
+    setSidePos({ x: rect.right, y: rect.top });
   };
 
   return (
@@ -120,6 +168,8 @@ export const HeroSection = () => {
         {menuItems.map((item, index) => (
           <div
             key={item.id}
+            onMouseEnter={(e) => onSideEnter(item.id, e)}
+            onMouseLeave={scheduleCloseSide}
             className={`py-6 px-4 text-center hover:bg-white/10 transition-all cursor-pointer text-white font-manrope ${
               index < menuItems.length - 1 ? 'border-b border-white/20' : ''
             }`}
@@ -133,6 +183,35 @@ export const HeroSection = () => {
           </div>
         ))}
       </aside>
+
+      {/* Dropdown menu for side icons */}
+      {activeSide && (
+        <div
+          data-dropdown
+          className="fixed z-[100] bg-background border border-border rounded-xl shadow-2xl p-6 min-w-[280px]"
+          style={{ left: sidePos.x + 10, top: sidePos.y }}
+          onMouseEnter={() => {
+            cancelCloseSide();
+            setHoveredSide(activeSide.id);
+          }}
+          onMouseLeave={scheduleCloseSide}
+        >
+          <div className="absolute left-0 top-6 -translate-x-1/2 w-0 h-0 border-r-[12px] border-r-background border-y-[12px] border-y-transparent" />
+          <div className="absolute left-0 top-6 -translate-x-[14px] w-0 h-0 border-r-[12px] border-r-border border-y-[12px] border-y-transparent" />
+
+          <h3 className="text-base font-bold text-primary mb-3">{activeSide.label}</h3>
+          <ul className="space-y-1">
+            {activeSide.links.map((l, i) => (
+              <li
+                key={i}
+                className="text-foreground hover:text-primary hover:translate-x-1 transition-all cursor-pointer py-2 border-b border-border/50 last:border-0 text-sm"
+              >
+                {l}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {/* Contenu central */}
       <div className="relative z-0 mx-auto flex max-w-[1200px] items-center px-4 pt-[9vh] md:pt-[12vh]">
