@@ -49,7 +49,7 @@ const decrees = [
 export const DecreesSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const cardsPerPage = 4;
+  const cardsPerPage = 3;
   const totalPages = Math.ceil(decrees.length / cardsPerPage);
 
   const nextPage = () => {
@@ -97,7 +97,7 @@ export const DecreesSection = () => {
             <ChevronRight className="w-12 h-12" />
           </button>
 
-          {/* Carousel Container - Showing 4 cards in 2x2 grid */}
+          {/* Carousel Container - Showing 3 cards in a row */}
           <div className="overflow-hidden">
             <div 
               className="flex transition-transform duration-700 ease-in-out"
@@ -106,30 +106,30 @@ export const DecreesSection = () => {
               }}
             >
               {Array.from({ length: totalPages }).map((_, pageIndex) => (
-                <div key={pageIndex} className="min-w-full grid grid-cols-2 grid-rows-2 gap-8 px-4">
+                <div key={pageIndex} className="min-w-full grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
                   {decrees
                     .slice(pageIndex * cardsPerPage, (pageIndex + 1) * cardsPerPage)
                     .map((decree) => (
                       <Card
                         key={decree.id}
-                        className="bg-white border-0 hover:shadow-2xl p-7 space-y-4 rounded-[35px] group transform hover:scale-105 transition-all duration-300"
+                        className="bg-white border-0 hover:shadow-2xl p-8 space-y-5 rounded-[35px] group transform hover:scale-105 transition-all duration-300"
                         style={{
                           boxShadow: '0 25px 80px rgba(0,0,0,0.35)',
                         }}
                       >
-                        <div className="inline-block px-4 py-2 bg-primary/10 rounded-full">
-                          <span className="text-primary font-semibold text-xs">Arrêté municipal</span>
+                        <div className="inline-block px-5 py-2.5 bg-primary/10 rounded-full">
+                          <span className="text-primary font-semibold text-sm">Arrêté municipal</span>
                         </div>
 
-                        <h3 className="font-bold text-foreground text-lg leading-tight min-h-[56px] group-hover:text-primary transition-colors">
+                        <h3 className="font-bold text-foreground text-xl leading-tight min-h-[60px] group-hover:text-primary transition-colors">
                           {decree.title}
                         </h3>
 
-                        <p className="text-muted-foreground text-sm line-clamp-3">
+                        <p className="text-muted-foreground text-base line-clamp-4 leading-relaxed">
                           {decree.description}
                         </p>
 
-                        <Button className="w-full bg-primary hover:bg-primary/90 text-white rounded-xl font-semibold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:scale-105 transition-all py-3">
+                        <Button className="w-full bg-primary hover:bg-primary/90 text-white rounded-xl font-semibold flex items-center justify-center gap-3 shadow-lg hover:shadow-xl hover:scale-105 transition-all py-4 text-base">
                           <Download className="w-5 h-5" />
                           Télécharger
                         </Button>

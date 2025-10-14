@@ -155,7 +155,7 @@ export const ServicesSection = () => {
               <ChevronLeft className="w-12 h-12 text-[#267884]" strokeWidth={3} />
             </button>
             
-            <div className="flex-1 flex items-center justify-center gap-8 overflow-hidden">
+            <div className="flex-1 flex items-center justify-center gap-12 overflow-hidden">
               {partners.map((partner, index) => {
                 const position = (index - currentPartnerIndex + partners.length) % partners.length;
                 const isVisible = position < 3;
@@ -168,7 +168,7 @@ export const ServicesSection = () => {
                       isVisible ? 'opacity-100' : 'opacity-0 hidden'
                     } ${isCurrent ? 'scale-100' : 'scale-90'}`}
                   >
-                    <div className="w-48 h-32 bg-white rounded-lg flex items-center justify-center p-4 shadow-md">
+                    <div className="w-80 h-56 bg-white rounded-2xl flex items-center justify-center p-8 shadow-lg hover:shadow-xl transition-shadow">
                       <img 
                         src={partner.image} 
                         alt={partner.name}
