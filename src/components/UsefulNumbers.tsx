@@ -39,7 +39,7 @@ export const UsefulNumbers = () => {
       <div className="container mx-auto max-w-7xl">
         <div className="mb-12 text-center">
           <div className="flex items-center justify-center gap-4 mb-4">
-            <img src="/Image-Mairie/appel.png" alt="Téléphone" className="w-12 h-12" />
+            <img src="/dynamic-menu-art/Image-Mairie/appel.png" alt="Téléphone" className="w-12 h-12" />
             <h2 className="text-5xl font-bold text-foreground inline-block">
               <span className="relative">
                 Numéros utiles
@@ -72,7 +72,7 @@ export const UsefulNumbers = () => {
               </h3>
 
               <div className="flex items-center gap-2 pt-2">
-                <img src="/Image-Mairie/appel.png" alt="Téléphone" className="w-5 h-5" />
+                <img src="/dynamic-menu-art/Image-Mairie/appel.png" alt="Téléphone" className="w-5 h-5" />
                 <span className="font-semibold">{item.phone}</span>
               </div>
 

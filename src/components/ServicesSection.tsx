@@ -11,37 +11,37 @@ const services = [
   {
     id: 1,
     title: "Inscription accueil et loisirs",
-    icon: "/Image-Mairie/famille.png",
+    icon: "/dynamic-menu-art/Image-Mairie/famille.png",
     color: "orange",
   },
   {
     id: 2,
     title: "Demander mon Pass'déchetteries",
-    icon: "/Image-Mairie/poubelle-de-recyclage.png",
+    icon: "/dynamic-menu-art/Image-Mairie/poubelle-de-recyclage.png",
     color: "green",
   },
   {
     id: 3,
     title: "Demander ma carte Pass Prév'ailles",
-    icon: "/Image-Mairie/cartes-de-poker.png",
+    icon: "/dynamic-menu-art/Image-Mairie/cartes-de-poker.png",
     color: "cyan",
   },
   {
     id: 4,
     title: "Trouver un emploi",
-    icon: "/Image-Mairie/mallette.png",
+    icon: "/dynamic-menu-art/Image-Mairie/mallette.png",
     color: "purple",
   },
   {
     id: 5,
     title: "Demande d'urbanisme",
-    icon: "/Image-Mairie/immeubles.png",
+    icon: "/dynamic-menu-art/Image-Mairie/immeubles.png",
     color: "brown",
   },
   {
     id: 6,
     title: "Séniors",
-    icon: "/Image-Mairie/personne-agee.png",
+    icon: "/dynamic-menu-art/Image-Mairie/personne-agee.png",
     color: "beige",
   },
 ];

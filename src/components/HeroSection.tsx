@@ -5,11 +5,11 @@ import villageBackground from "@/assets/village-background.jpg";
 import logoMairie from "@/assets/logo-mairie.png";
 
 const menuItems = [
-  { id: "etatcivile", label: "État civil", icon: "/Image-Mairie/carte-didentite.png" },
-  { id: "urbanisme", label: "Urbanisme", icon: "/Image-Mairie/maison-de-repos.png" },
-  { id: "perischool", label: "Perishcool", icon: "/Image-Mairie/retour-a-lecole.png" },
-  { id: "communaute", label: "Communauté de commune", icon: "/Image-Mairie/mairie.png" },
-  { id: "seniors", label: "Séniors", icon: "/Image-Mairie/personne-agee.png" },
+  { id: "etatcivile", label: "État civil", icon: "/dynamic-menu-art/Image-Mairie/carte-didentite.png" },
+  { id: "urbanisme", label: "Urbanisme", icon: "/dynamic-menu-art/Image-Mairie/maison-de-repos.png" },
+  { id: "perischool", label: "Perishcool", icon: "/dynamic-menu-art/Image-Mairie/retour-a-lecole.png" },
+  { id: "communaute", label: "Communauté de commune", icon: "/dynamic-menu-art/Image-Mairie/mairie.png" },
+  { id: "seniors", label: "Séniors", icon: "/dynamic-menu-art/Image-Mairie/personne-agee.png" },
 ];
 
 type TopItem = { id: string; label: string; links: string[] };
