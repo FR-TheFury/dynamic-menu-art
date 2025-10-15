@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { Facebook, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import villageBackground from "@/assets/village-background.jpg";
+import villageBackground from "public/Image-Mairie/slide-mons-01.jpg";
 import logoMairie from "@/assets/logo-mairie.png";
 
 const menuItems = [
