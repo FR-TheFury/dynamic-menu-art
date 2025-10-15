@@ -136,7 +136,7 @@ export const ServicesSection = () => {
           </div>
           <div className="flex justify-end">
             <img
-              src="/Image-Mairie/Logoccpe╠üve╠Çlecarembault.jpg"
+              src="/dynamic-menu-art/Image-Mairie/Logoccpe╠üve╠Çlecarembault.jpg"
               alt="Logo Pévèle Carembault"
               className="h-28 w-auto"
             />
