@@ -6,14 +6,14 @@ import logoRepublique from "@/assets/logo-republique-francaise.svg";
 
 export const Footer = () => {
   return (
-    <footer className="bg-[#3d6d7a]">
+    <footer className="bg-[#2a5360]">
       {/* Bande blanche supérieure */}
       <div className="bg-white h-2"></div>
       
       <div className="container mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 md:divide-x md:divide-white/40 gap-12 mb-12">
           {/* Adresse */}
-          <div className="text-center md:text-left">
+          <div className="text-center md:text-left md:pr-12">
             <h3 className="text-2xl font-bold mb-6 text-white">Adresse</h3>
             <div className="space-y-1 text-white">
               <p className="font-medium">Mairie de</p>
@@ -24,7 +24,7 @@ export const Footer = () => {
           </div>
 
           {/* Horaires */}
-          <div className="text-center">
+          <div className="text-center md:px-12">
             <h3 className="text-2xl font-bold mb-6 text-white">Horraires</h3>
             <div className="space-y-1 text-white">
               <p>Lundi et jeudi</p>
@@ -39,7 +39,7 @@ export const Footer = () => {
           </div>
 
           {/* Contact */}
-          <div className="text-center md:text-right">
+          <div className="text-center md:text-right md:pl-12">
             <h3 className="text-2xl font-bold mb-6 text-white">Nous contacter</h3>
             <div className="flex gap-4 justify-center md:justify-end">
               <a
@@ -47,21 +47,21 @@ export const Footer = () => {
                 className="bg-white p-4 rounded-full transition-all hover:scale-110"
                 aria-label="Facebook"
               >
-                <Facebook className="w-8 h-8 text-[#3d6d7a]" />
+                <Facebook className="w-8 h-8 text-[#2a5360]" />
               </a>
               <a
                 href="#"
                 className="bg-white p-4 rounded-full transition-all hover:scale-110"
                 aria-label="Instagram"
               >
-                <Instagram className="w-8 h-8 text-[#3d6d7a]" />
+                <Instagram className="w-8 h-8 text-[#2a5360]" />
               </a>
               <a
                 href="tel:0320000000"
                 className="bg-white p-4 rounded-full transition-all hover:scale-110"
                 aria-label="Téléphone"
               >
-                <Phone className="w-8 h-8 text-[#3d6d7a]" />
+                <Phone className="w-8 h-8 text-[#2a5360]" />
               </a>
             </div>
           </div>

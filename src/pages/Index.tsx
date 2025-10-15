@@ -12,7 +12,6 @@ import { OrganicShapes } from "@/components/OrganicShapes";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background relative">
-      <OrganicShapes />
       <Header />
       <HeroSection />
       <NewsSection />
