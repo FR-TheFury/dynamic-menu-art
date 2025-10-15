@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
-import logoReference from "@/assets/logo-pevele-carembault.png";
 import partnerFlexipervilles from "@/assets/partner-flexipervilles.png";
 import partnerGraines from "@/assets/partner-graines.png";
 import partnerPerischool from "@/assets/partner-perischool.png";
@@ -137,7 +136,7 @@ export const ServicesSection = () => {
           </div>
           <div className="flex justify-end">
             <img
-              src={logoReference}
+              src="/Image-Mairie/Logoccpe╠üve╠Çlecarembault.jpg"
               alt="Logo Pévèle Carembault"
               className="h-28 w-auto"
             />
