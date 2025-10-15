@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { Facebook, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logoMairie from "@/assets/logo-mairie.png";
+import ecusson from "@/assets/ecusson.png";
 
 const menuItems = [
   { 
@@ -230,15 +230,13 @@ export const HeroSection = () => {
         </div>
       </div>
 
-      {/* Blason en bas à droite - fond jaune/rouge */}
+      {/* Blason en bas à droite */}
       <div className="absolute bottom-8 right-8 z-0">
-        <div className="h-16 w-16 rounded-lg bg-gradient-to-br from-yellow-400 to-red-500 grid place-items-center shadow-xl">
-          <img
-            src={logoMairie}
-            alt="Blason Mons-en-Pévèle"
-            className="h-12 w-auto"
-          />
-        </div>
+        <img
+          src={ecusson}
+          alt="Blason Mons-en-Pévèle"
+          className="h-24 w-auto drop-shadow-2xl"
+        />
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logoMairie from "@/assets/logo-mairie.png";
+import logoMonsBlanc from "@/assets/logo-mons-blanc.png";
 
 export const Header = () => {
   return (
@@ -12,7 +12,7 @@ export const Header = () => {
             {/* Logo */}
             <div className="flex items-center gap-3">
               <img
-                src="/dynamic-menu-art/Image-Mairie/Logoccpe╠üve╠Çlecarembault.jpg"
+                src={logoMonsBlanc}
                 alt="Logo Mairie Mons-en-Pévèle"
                 className="h-12 w-auto object-contain"
               />
