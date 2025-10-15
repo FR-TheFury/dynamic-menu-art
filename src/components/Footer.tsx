@@ -26,15 +26,21 @@ export const Footer = () => {
           {/* Horaires */}
           <div className="text-center md:px-12">
             <h3 className="text-2xl font-bold mb-6 text-white">Horraires</h3>
-            <div className="space-y-1 text-white">
-              <p>Lundi et jeudi</p>
-              <p>de 9h00 à 12h00</p>
-              <p className="mt-3">Mardi, mercredi,</p>
-              <p>vendredi</p>
-              <p>de 9h00 à 12h00 et</p>
-              <p>de 14h00 à 17h30</p>
-              <p className="mt-3">Samedi 9h00 à 12h00.</p>
-              <p>1 samedi sur 2.</p>
+            <div className="flex flex-col md:flex-row gap-6 md:gap-4 text-white text-sm md:text-base justify-center">
+              <div className="flex-1">
+                <p>Lundi et jeudi</p>
+                <p>de 9h00 à 12h00</p>
+              </div>
+              <div className="flex-1">
+                <p>Mardi, mercredi,</p>
+                <p>vendredi</p>
+                <p>de 9h00 à 12h00 et</p>
+                <p>de 14h00 à 17h30</p>
+              </div>
+              <div className="flex-1">
+                <p>Samedi 9h00 à 12h00.</p>
+                <p>1 samedi sur 2.</p>
+              </div>
             </div>
           </div>
 
