@@ -3,7 +3,6 @@ import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import partnerFlexipervilles from "@/assets/partner-flexipervilles.png";
 import partnerGraines from "@/assets/partner-graines.png";
 import partnerPerischool from "@/assets/partner-perischool.png";
-import partnerServicesPlus from "@/assets/partner-services-plus.png";
 import { useState } from "react";
 
 const services = [
@@ -48,8 +47,7 @@ const services = [
 const partners = [
   { name: "Flexi'Pér'villes", image: partnerFlexipervilles },
   { name: "Graines de Culture(s)", image: partnerGraines },
-  { name: "Peri'school", image: partnerPerischool },
-  { name: "Services +", image: partnerServicesPlus },
+  { name: "My Péri'school", image: partnerPerischool },
 ];
 
 export const ServicesSection = () => {
