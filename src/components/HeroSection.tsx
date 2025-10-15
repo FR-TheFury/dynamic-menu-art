@@ -110,7 +110,7 @@ export const HeroSection = () => {
   return (
     <section 
       className="relative min-h-[550px] bg-cover bg-center flex items-center justify-center"
-      style={{ backgroundImage: `url(/Image-Mairie/slide-mons-01.jpg)` }}
+      style={{ backgroundImage: `url(${import.meta.env.BASE_URL}Image-Mairie/slide-mons-01.jpg)` }}
     >
       {/* Radial vignette overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(1200px_600px_at_60%_55%,rgba(0,0,0,.15),rgba(0,0,0,.55))]"></div>
