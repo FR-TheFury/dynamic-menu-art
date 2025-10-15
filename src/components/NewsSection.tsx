@@ -54,129 +54,124 @@ const newsItems = [
 export const NewsSection = () => {
   return (
     <section className="py-20 px-6 bg-background relative overflow-hidden">
-      {/* Decorative dotted line */}
-      <div className="absolute left-1/2 top-0 bottom-0 w-px border-l-2 border-dotted border-primary/30 -translate-x-1/2" />
-      
       <div className="container mx-auto max-w-7xl relative z-10">
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center justify-between mb-6">
           <div>
-            <h2 className="text-5xl font-bold mb-4 relative inline-block">
+            <h2 className="text-4xl font-bold">
               <span className="text-foreground">Les actualités </span>
               <span className="text-primary">de mon village</span>
-              <div className="absolute -bottom-2 left-0 w-[400px] h-1 bg-accent" />
             </h2>
+            <p className="text-muted-foreground mt-3 max-w-2xl text-sm">
+              Vita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque, ut sit species matrimonii, dotis nomine futura coniunx
+            </p>
           </div>
           <Button className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 py-3 font-semibold shadow-lg transition-all">
             Toutes les actualités
           </Button>
         </div>
-        
-        <p className="text-muted-foreground mb-12 max-w-2xl">
-          Vita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque, ut sit species matrimonii, dotis nomine futura coniunx
-        </p>
 
-        {/* Layout Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 auto-rows-[minmax(200px,auto)]">
+        {/* Grid - 2 rows of 3 cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
           
-          {/* Card 1 - Large left - Teal border */}
-          <div className="lg:col-span-5 lg:row-span-2 border-[12px] border-primary rounded-[40px] overflow-hidden bg-primary shadow-2xl">
-            <div className="relative h-64">
+          {/* Row 1 - Card 1: Large with image */}
+          <div className="border-[8px] border-primary rounded-[32px] overflow-hidden bg-primary shadow-xl">
+            <div className="relative h-48">
               <img
                 src={newsItems[0].image}
                 alt={newsItems[0].title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-t-[24px]"
               />
             </div>
-            <div className="p-6 space-y-3 bg-primary text-white">
-              <h3 className="font-bold text-2xl">Lorem ipsum</h3>
-              <p className="text-sm opacity-90">29/09/2025</p>
+            <div className="p-6 space-y-2 bg-primary text-white">
+              <h3 className="font-bold text-xl">Lorem ipsum</h3>
+              <p className="text-xs opacity-80">29/09/2025</p>
               <p className="text-sm opacity-90 leading-relaxed">
                 Vita est illis semper in fuga uxoresque mercenariae conductae
               </p>
-              <Button className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/40 rounded-full px-6 py-2 font-semibold backdrop-blur-sm">
+              <Button className="bg-white/20 hover:bg-white/30 text-white border border-white/40 rounded-full px-5 py-2 text-sm font-semibold backdrop-blur-sm mt-3">
                 Plus d'infos
               </Button>
             </div>
           </div>
 
-          {/* Card 2 - Medium center - Teal border */}
-          <div className="lg:col-span-4 lg:row-span-2 border-[12px] border-primary rounded-[40px] overflow-hidden bg-primary shadow-2xl">
+          {/* Row 1 - Card 2: Medium with image */}
+          <div className="border-[8px] border-primary rounded-[32px] overflow-hidden bg-primary shadow-xl">
             <div className="relative h-48">
               <img
                 src={newsItems[1].image}
                 alt={newsItems[1].title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-t-[24px]"
               />
             </div>
-            <div className="p-5 space-y-3 bg-primary text-white">
+            <div className="p-6 space-y-2 bg-primary text-white">
               <h3 className="font-bold text-xl">Lorem ipsum</h3>
-              <p className="text-sm opacity-90">25/09/2025</p>
-              <p className="text-sm opacity-90 leading-relaxed line-clamp-3">
-                Vita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque, ut sit species matrimonii, ad tempus ex pacto atque
+              <p className="text-xs opacity-80">25/09/2025</p>
+              <p className="text-sm opacity-90 leading-relaxed">
+                Vita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque, ut sit species matrimonii, ad tempus ex
               </p>
-              <Button className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/40 rounded-full px-6 py-2 font-semibold backdrop-blur-sm text-sm">
+              <Button className="bg-white/20 hover:bg-white/30 text-white border border-white/40 rounded-full px-5 py-2 text-sm font-semibold backdrop-blur-sm mt-3">
                 Plus d'infos
               </Button>
             </div>
           </div>
 
-          {/* Card 3 - Text only right - Teal background */}
-          <div className="lg:col-span-3 lg:row-span-2 border-[12px] border-primary rounded-[40px] overflow-hidden bg-primary shadow-2xl">
-            <div className="p-6 space-y-3 text-white h-full flex flex-col justify-between">
+          {/* Row 1 - Card 3: Text only */}
+          <div className="border-[8px] border-primary rounded-[32px] overflow-hidden bg-primary shadow-xl">
+            <div className="p-6 space-y-2 text-white h-full flex flex-col justify-between">
               <div>
-                <h3 className="font-bold text-xl mb-3">Lorem ipsum</h3>
-                <p className="text-sm opacity-90 mb-4">01/10/2025</p>
-                <p className="text-sm opacity-90 leading-relaxed">
+                <h3 className="font-bold text-xl">Lorem ipsum</h3>
+                <p className="text-xs opacity-80 mt-2">01/10/2025</p>
+                <p className="text-sm opacity-90 leading-relaxed mt-3">
                   Vita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque, ut sit species matrimonii, ad tempus ex pacto atque, ut sit species matrimonii
                 </p>
               </div>
-              <Button className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/40 rounded-full px-6 py-2 font-semibold backdrop-blur-sm text-sm mt-4">
+              <Button className="bg-white/20 hover:bg-white/30 text-white border border-white/40 rounded-full px-5 py-2 text-sm font-semibold backdrop-blur-sm mt-4">
                 Plus d'infos
               </Button>
             </div>
           </div>
 
-          {/* Card 4 - Wide bottom left - RED border */}
-          <div className="lg:col-span-7 lg:row-span-2 border-[12px] border-accent rounded-[40px] overflow-hidden bg-accent shadow-2xl">
+          {/* Row 2 - Card 4: Wide with image (red/accent) */}
+          <div className="md:col-span-2 border-[8px] border-accent rounded-[32px] overflow-hidden bg-accent shadow-xl">
             <div className="flex flex-col md:flex-row h-full">
-              <div className="relative md:w-1/2 h-48 md:h-auto">
+              <div className="relative md:w-2/5 h-48 md:h-auto">
                 <img
                   src={newsItems[3].image}
                   alt={newsItems[3].title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover rounded-tl-[24px] md:rounded-bl-[24px] md:rounded-tr-none"
                 />
               </div>
-              <div className="p-6 md:w-1/2 flex flex-col justify-between bg-accent text-white">
+              <div className="p-6 md:w-3/5 flex flex-col justify-between bg-accent text-white">
                 <div>
-                  <h3 className="font-bold text-2xl mb-3">Lorem ipsum</h3>
-                  <p className="text-sm opacity-90 mb-4">28/09/2025</p>
-                  <p className="text-sm opacity-90 leading-relaxed">
-                    Vita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque, ut sit species matrimonii, ad tempus ex pacto atque, ut sit species matrimonii, vita est illis semper in fuga
+                  <h3 className="font-bold text-xl">Lorem ipsum</h3>
+                  <p className="text-xs opacity-80 mt-2">28/09/2025</p>
+                  <p className="text-sm opacity-90 leading-relaxed mt-3">
+                    Vita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque, ut sit species matrimonii, ad tempus ex pacto atque, ut sit species matrimonii
                   </p>
                 </div>
-                <Button className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/40 rounded-full px-6 py-2 font-semibold backdrop-blur-sm mt-4">
+                <Button className="bg-white/20 hover:bg-white/30 text-white border border-white/40 rounded-full px-5 py-2 text-sm font-semibold backdrop-blur-sm mt-4">
                   Plus d'infos
                 </Button>
               </div>
             </div>
           </div>
 
-          {/* Card 5 - Vertical right bottom - Teal border */}
-          <div className="lg:col-span-5 lg:row-span-2 border-[12px] border-primary rounded-[40px] overflow-hidden bg-primary shadow-2xl">
-            <div className="relative h-56">
+          {/* Row 2 - Card 5: Vertical with image */}
+          <div className="border-[8px] border-primary rounded-[32px] overflow-hidden bg-primary shadow-xl">
+            <div className="relative h-48">
               <img
                 src={newsItems[4].image}
                 alt={newsItems[4].title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-t-[24px]"
               />
             </div>
-            <div className="p-6 space-y-3 bg-primary text-white">
+            <div className="p-6 space-y-2 bg-primary text-white">
               <h3 className="font-bold text-xl">Lorem ipsum</h3>
-              <p className="text-sm opacity-90">26/09/2025</p>
-              <p className="text-sm opacity-90 leading-relaxed line-clamp-3">
-                Vita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque, ut sit species matrimonii, ad tempus ex pacto atque. Vita est illis semper in fuga
+              <p className="text-xs opacity-80">26/09/2025</p>
+              <p className="text-sm opacity-90 leading-relaxed">
+                Vita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque, ut sit species matrimonii, in fuga
               </p>
-              <Button className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/40 rounded-full px-6 py-2 font-semibold backdrop-blur-sm">
+              <Button className="bg-white/20 hover:bg-white/30 text-white border border-white/40 rounded-full px-5 py-2 text-sm font-semibold backdrop-blur-sm mt-3">
                 Plus d'infos
               </Button>
             </div>
