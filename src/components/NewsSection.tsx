@@ -61,7 +61,8 @@ export const NewsSection = () => {
               <span className="text-foreground">Les actualités </span>
               <span className="text-primary">de mon village</span>
             </h2>
-            <p className="text-muted-foreground mt-3 max-w-2xl text-sm">
+            <div className="w-24 h-1 bg-accent mt-3 mb-3"></div>
+            <p className="text-muted-foreground max-w-2xl text-sm">
               Vita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque, ut sit species matrimonii, dotis nomine futura coniunx
             </p>
           </div>

@@ -50,118 +50,126 @@ export const EventsSection = () => {
     <section className="py-20 px-6 bg-[#267884] relative overflow-hidden">
       <div className="container mx-auto max-w-7xl">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-6xl md:text-7xl font-bold text-white mb-6">Événements</h2>
+        <div className="flex items-center justify-between mb-6">
+          <div>
+            <h2 className="text-4xl font-bold text-white">Événements</h2>
+            <div className="w-24 h-1 bg-accent mt-3 mb-3"></div>
+            <p className="text-white/80 max-w-2xl text-sm">
+              Vita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque, ut sit species matrimonii, dotis nomine futura coniunx
+            </p>
+          </div>
           <Button className="bg-white/30 hover:bg-white/40 text-white border-0 rounded-full px-8 py-3 font-semibold backdrop-blur-sm">
             Toutes les dates
           </Button>
         </div>
 
-        {/* Events Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-auto">
-          {/* Event 1 - Small text only card (top left) */}
-          <div className="md:col-span-4 bg-white rounded-3xl p-6 shadow-lg">
-            <div className="flex items-start justify-between mb-3">
-              <h3 className="text-xl font-bold text-[#267884]">{events[0].title}</h3>
-              <span className="text-[#267884] font-bold text-sm whitespace-nowrap ml-4">{events[0].date}</span>
+        {/* Events Grid - 2 rows of 3 cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+          
+          {/* Row 1 - Card 1: Text only */}
+          <div className="border-[8px] border-white rounded-[32px] overflow-hidden bg-white shadow-xl">
+            <div className="p-6 space-y-2 text-[#267884] h-full flex flex-col justify-between">
+              <div>
+                <h3 className="font-bold text-xl">{events[0].title}</h3>
+                <p className="text-xs opacity-80 mt-2">{events[0].date}</p>
+                <p className="text-sm opacity-90 leading-relaxed mt-3">
+                  {events[0].description}
+                </p>
+              </div>
+              <Button className="bg-[#267884] hover:bg-[#1f6470] text-white rounded-full px-5 py-2 text-sm font-semibold mt-4">
+                Plus d'infos
+              </Button>
             </div>
-            <p className="text-[#267884] text-sm mb-6 leading-relaxed">
-              {events[0].description}
-            </p>
-            <Button className="bg-[#267884] hover:bg-[#1f6470] text-white rounded-full px-6 py-2 font-semibold w-auto">
-              Plus d'infos
-            </Button>
           </div>
 
-          {/* Event 2 - Card with rounded image (top middle) */}
-          <div className="md:col-span-4 bg-white rounded-3xl p-6 shadow-lg">
-            <div className="flex justify-center mb-4">
-              <img 
-                src={events[1].image} 
-                alt={events[1].title}
-                className="w-48 h-48 object-cover rounded-full"
+          {/* Row 1 - Card 2: With rounded image */}
+          <div className="border-[8px] border-white rounded-[32px] overflow-hidden bg-white shadow-xl">
+            <div className="p-6 space-y-2 text-[#267884]">
+              <div className="flex justify-center mb-4">
+                <img 
+                  src={events[1].image} 
+                  alt={events[1].title}
+                  className="w-32 h-32 object-cover rounded-full"
+                />
+              </div>
+              <h3 className="font-bold text-xl">{events[1].title}</h3>
+              <p className="text-xs opacity-80">{events[1].date}</p>
+              <p className="text-sm opacity-90 leading-relaxed">
+                {events[1].description}
+              </p>
+              <Button className="bg-[#267884] hover:bg-[#1f6470] text-white rounded-full px-5 py-2 text-sm font-semibold mt-3">
+                Plus d'infos
+              </Button>
+            </div>
+          </div>
+
+          {/* Row 1 - Card 3: With rectangular image */}
+          <div className="border-[8px] border-white rounded-[32px] overflow-hidden bg-white shadow-xl">
+            <div className="relative h-48">
+              <img
+                src={events[2].image}
+                alt={events[2].title}
+                className="w-full h-full object-cover rounded-t-[24px]"
               />
             </div>
-            <div className="flex items-start justify-between mb-3">
-              <h3 className="text-xl font-bold text-[#267884]">{events[1].title}</h3>
-              <span className="text-[#267884] font-bold text-sm whitespace-nowrap ml-4">{events[1].date}</span>
-            </div>
-            <p className="text-[#267884] text-sm mb-6 leading-relaxed">
-              {events[1].description}
-            </p>
-            <Button className="bg-[#267884] hover:bg-[#1f6470] text-white rounded-full px-6 py-2 font-semibold w-auto">
-              Plus d'infos
-            </Button>
-          </div>
-
-          {/* Event 3 - Card with rectangular image (top right) */}
-          <div className="md:col-span-4 bg-white rounded-3xl overflow-hidden shadow-lg">
-            <img 
-              src={events[2].image} 
-              alt={events[2].title}
-              className="w-full h-48 object-cover"
-            />
-            <div className="p-6">
-              <div className="flex items-start justify-between mb-3">
-                <h3 className="text-xl font-bold text-[#267884]">{events[2].title}</h3>
-                <span className="text-[#267884] font-bold text-sm whitespace-nowrap ml-4">{events[2].date}</span>
-              </div>
-              <p className="text-[#267884] text-sm mb-6 leading-relaxed">
+            <div className="p-6 space-y-2 text-[#267884]">
+              <h3 className="font-bold text-xl">{events[2].title}</h3>
+              <p className="text-xs opacity-80">{events[2].date}</p>
+              <p className="text-sm opacity-90 leading-relaxed">
                 {events[2].description}
               </p>
-              <Button className="bg-[#267884] hover:bg-[#1f6470] text-white rounded-full px-6 py-2 font-semibold w-auto">
+              <Button className="bg-[#267884] hover:bg-[#1f6470] text-white rounded-full px-5 py-2 text-sm font-semibold mt-3">
                 Plus d'infos
               </Button>
             </div>
           </div>
 
-          {/* Event 4 - Card with image (middle left) */}
-          <div className="md:col-span-4 bg-white rounded-3xl overflow-hidden shadow-lg">
-            <img 
-              src={events[3].image} 
-              alt={events[3].title}
-              className="w-full h-48 object-cover"
-            />
-            <div className="p-6">
-              <div className="flex items-start justify-between mb-3">
-                <h3 className="text-xl font-bold text-[#267884]">{events[3].title}</h3>
-                <span className="text-[#267884] font-bold text-sm whitespace-nowrap ml-4">{events[3].date}</span>
+          {/* Row 2 - Card 4: Wide with image (red/accent) */}
+          <div className="md:col-span-2 border-[8px] border-accent rounded-[32px] overflow-hidden bg-accent shadow-xl">
+            <div className="flex flex-col md:flex-row h-full">
+              <div className="relative md:w-2/5 h-48 md:h-auto">
+                <img
+                  src={events[4].image}
+                  alt={events[4].title}
+                  className="w-full h-full object-cover rounded-tl-[24px] md:rounded-bl-[24px] md:rounded-tr-none"
+                />
               </div>
-              <p className="text-[#267884] text-sm mb-6 leading-relaxed">
-                {events[3].description}
-              </p>
-              <Button className="bg-[#267884] hover:bg-[#1f6470] text-white rounded-full px-6 py-2 font-semibold w-auto">
-                Plus d'infos
-              </Button>
-            </div>
-          </div>
-
-          {/* Event 5 - Large red card with image on right (bottom, spanning 2 columns) */}
-          <div className="md:col-span-8 bg-[#d64545] rounded-3xl overflow-hidden shadow-lg">
-            <div className="flex flex-col md:flex-row">
-              <div className="p-6 md:w-1/2 flex flex-col justify-between">
+              <div className="p-6 md:w-3/5 flex flex-col justify-between bg-accent text-white">
                 <div>
-                  <div className="flex items-start justify-between mb-3">
-                    <h3 className="text-xl font-bold text-white">{events[4].title}</h3>
-                    <span className="text-white font-bold text-sm whitespace-nowrap ml-4">{events[4].date}</span>
-                  </div>
-                  <p className="text-white text-sm mb-6 leading-relaxed">
+                  <h3 className="font-bold text-xl">{events[4].title}</h3>
+                  <p className="text-xs opacity-80 mt-2">{events[4].date}</p>
+                  <p className="text-sm opacity-90 leading-relaxed mt-3">
                     {events[4].description}
                   </p>
                 </div>
-                <Button className="bg-white/30 hover:bg-white/40 text-white rounded-full px-6 py-2 font-semibold w-auto backdrop-blur-sm">
+                <Button className="bg-white/20 hover:bg-white/30 text-white border border-white/40 rounded-full px-5 py-2 text-sm font-semibold backdrop-blur-sm mt-4">
                   Plus d'infos
                 </Button>
               </div>
-              <div className="md:w-1/2 h-64 md:h-auto">
-                <img 
-                  src={events[4].image} 
-                  alt={events[4].title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
             </div>
           </div>
+
+          {/* Row 2 - Card 5: Vertical with image */}
+          <div className="border-[8px] border-white rounded-[32px] overflow-hidden bg-white shadow-xl">
+            <div className="relative h-48">
+              <img
+                src={events[3].image}
+                alt={events[3].title}
+                className="w-full h-full object-cover rounded-t-[24px]"
+              />
+            </div>
+            <div className="p-6 space-y-2 text-[#267884]">
+              <h3 className="font-bold text-xl">{events[3].title}</h3>
+              <p className="text-xs opacity-80">{events[3].date}</p>
+              <p className="text-sm opacity-90 leading-relaxed">
+                {events[3].description}
+              </p>
+              <Button className="bg-[#267884] hover:bg-[#1f6470] text-white rounded-full px-5 py-2 text-sm font-semibold mt-3">
+                Plus d'infos
+              </Button>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
