@@ -1,6 +1,8 @@
 import { Facebook, Instagram, Phone } from "lucide-react";
-import logoMonsVert from "@/assets/logo-mons-blanc.png";
-import ecussonBlason from "@/assets/ecusson.png";
+import logoMairie from "@/assets/logo-mairie.png";
+import ecussonBlason from "@/assets/ecusson-2.png";
+import logoPeveleCarembault from "@/assets/logo-pevele-carembault-2.jpg";
+import logoRepublique from "@/assets/logo-republique-francaise.svg";
 
 export const Footer = () => {
   return (
@@ -68,7 +70,7 @@ export const Footer = () => {
         {/* Bande logos */}
         <div className="bg-white p-8 flex items-center justify-center md:justify-between flex-wrap gap-8">
           <img
-            src={logoMonsVert}
+            src={logoMairie}
             alt="Logo Mons-en-Pévèle"
             className="h-20 w-auto object-contain"
           />
@@ -78,12 +80,12 @@ export const Footer = () => {
             className="h-20 w-auto object-contain"
           />
           <img
-            src="/dynamic-menu-art/Image-Mairie/Logoccpe╠üve╠Çlecarembault.jpg"
+            src={logoPeveleCarembault}
             alt="Logo Pévèle Carembault"
             className="h-20 w-auto object-contain"
           />
           <img
-            src="/dynamic-menu-art/Image-Mairie/Logo_de_la_Re╠üpublique_franc╠ºaise_(1999).svg"
+            src={logoRepublique}
             alt="République Française"
             className="h-20 w-auto object-contain"
           />
